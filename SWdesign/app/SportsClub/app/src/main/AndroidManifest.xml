@@ -39,6 +39,10 @@
         <activity android:name=".tab.TabMyInfoActivity"
             android:screenOrientation="portrait"
             />
+
+        <activity android:name=".tab.TabSettingActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>
