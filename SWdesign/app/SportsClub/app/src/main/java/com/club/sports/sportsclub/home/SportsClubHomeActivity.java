@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -21,7 +22,7 @@ import com.club.sports.sportsclub.tab.TabRankActivity;
  * Created by again on 2017-09-12.
  */
 
-public class SportsClubHomeActivity extends TabActivity{
+public class SportsClubHomeActivity extends TabActivity {
 
     private BackPressCloseHandler mBackPressCloseHandler;
     private TabHost mTabHost;
@@ -37,18 +38,18 @@ public class SportsClubHomeActivity extends TabActivity{
         initialize();
     }
 
-    private void initialize(){
+    private void initialize() {
         mBackPressCloseHandler = new BackPressCloseHandler(this);
         findView();
         initializeTab();
         onClickTopLogoImageView();
     }
 
-    private void findView(){
+    private void findView() {
         mTopLogoImageView = (ImageView) findViewById(R.id.top_logo);
     }
 
-    private void initializeTab(){
+    private void initializeTab() {
         mTabHost = getTabHost();
 
         applyIntentContest();
@@ -56,9 +57,12 @@ public class SportsClubHomeActivity extends TabActivity{
         applyIntentRank();
         applyIntentMyInfo();
         applyIntentTextColor();
+        setTabTextViewColor(0);
+
+        startTabChanged();
     }
 
-    private void onClickTopLogoImageView(){
+    private void onClickTopLogoImageView() {
         mTopLogoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,39 +73,74 @@ public class SportsClubHomeActivity extends TabActivity{
         });
     }
 
-    private void applyIntentContest(){
+    private void applyIntentContest() {
         mIntent = new Intent().setClass(this, TabContestInfoActivity.class);
         mSpec = mTabHost.newTabSpec("Contest").setIndicator("대회 정보", getResources().getDrawable(R.drawable.contest_info)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
-    private void applyIntentGroup(){
+    private void applyIntentGroup() {
         mIntent = new Intent().setClass(this, TabGroupActivity.class);
         mSpec = mTabHost.newTabSpec("Group").setIndicator("클럽", getResources().getDrawable(R.drawable.group)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
-    private void applyIntentRank(){
+    private void applyIntentRank() {
         mIntent = new Intent().setClass(this, TabRankActivity.class);
         mSpec = mTabHost.newTabSpec("Rank").setIndicator("랭킹", getResources().getDrawable(R.drawable.rank)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
-    private void applyIntentMyInfo(){
+    private void applyIntentMyInfo() {
         mIntent = new Intent().setClass(this, TabMyInfoActivity.class);
         mSpec = mTabHost.newTabSpec("MyInfo").setIndicator("내 정보", getResources().getDrawable(R.drawable.my)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
-    private void applyIntentTextColor(){
-        for(int i = 0; i<getTabWidget().getChildCount(); i++) {
+    private void applyIntentTextColor() {
+        for (int i = 0; i < getTabWidget().getChildCount(); i++) {
             TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             textView.setTextColor(Color.BLACK);
         }
     }
 
+    private void startTabChanged() {
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                findTabChanged(tabId);
+            }
+        });
+    }
+
+    private void findTabChanged(String tabId){
+        switch (tabId) {
+            case "Contest":
+                applyIntentTextColor();
+                setTabTextViewColor(0);
+                break;
+            case "Group":
+                applyIntentTextColor();
+                setTabTextViewColor(1);
+                break;
+            case "Rank":
+                applyIntentTextColor();
+                setTabTextViewColor(2);
+                break;
+            case "MyInfo":
+                applyIntentTextColor();
+                setTabTextViewColor(3);
+                break;
+        }
+    }
+
+    private void setTabTextViewColor(int index){
+        TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
+        textView.setTextColor(Color.RED);
+    }
+
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         mBackPressCloseHandler.onBackPressed();
     }
 }
