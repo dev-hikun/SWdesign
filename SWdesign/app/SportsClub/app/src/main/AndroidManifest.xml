@@ -23,6 +23,22 @@
         <activity android:name=".home.SportsClubHomeActivity"
             android:screenOrientation="portrait"
             />
+
+        <activity android:name=".tab.TabContestInfoActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.TabGroupActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.TabRankActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.TabMyInfoActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>
