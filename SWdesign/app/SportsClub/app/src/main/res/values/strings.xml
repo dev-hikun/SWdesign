@@ -5,10 +5,8 @@
     <string name="group">클럽</string>
     <string name="rank">랭킹</string>
     <string name="my_info">내 정보</string>
-    <string name="setting">설정</string>
     <string name="contest_name">Contest</string>
     <string name="group_naem">Group</string>
     <string name="rank_name">Rank</string>
     <string name="my_info_name">MyInfo</string>
-    <string name="setting_name">Setting</string>
 </resources>

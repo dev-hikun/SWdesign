@@ -42,6 +42,7 @@ public class SportsClubMainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 Intent intent = new Intent(SportsClubMainActivity.this, SportsClubHomeActivity.class);
+                intent.putExtra("login_info", "main_activity");
                 startActivity(intent);
                 finish();
             }

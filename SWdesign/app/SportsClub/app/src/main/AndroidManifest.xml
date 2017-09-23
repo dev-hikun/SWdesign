@@ -40,9 +40,10 @@
             android:screenOrientation="portrait"
             />
 
-        <activity android:name=".tab.TabSettingActivity"
+        <activity android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
             />
+
     </application>
 
 </manifest>
