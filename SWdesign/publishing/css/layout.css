@@ -17,9 +17,11 @@ nav.gnb .gnbArea{width:980px; margin: 0 auto;} /* 크기관련 */
 nav.gnb .gnbArea{line-height:50px;}
 nav.gnb .gnbArea ul li{display:inline-block; position:relative; font-size:14px; cursor: pointer; min-width:115px; text-align: center;}
 nav.gnb .gnbArea ul li:hover{background:#000;}
-nav.gnb .gnbArea ul li:hover:after{width:1px; height:1px; position:absolute; bottom: 0px;}
+nav.gnb .gnbArea ul li:after{width:100%; height:0px; display:block; position:absolute; background:#e85840; bottom:0px; left:0px; content:'';}
+nav.gnb .gnbArea ul li:hover:after{height:3px;}
 nav.gnb .gnbArea ul li:before{display:inline-block; margin-right:5px; vertical-align: middle; width:21px; height:14px; background-position: 0px -17px; background-image: url('../images/common/i_common.png'); background-repeat: no-repeat; content:'';}
 nav.gnb .gnbArea ul li.competition:before{}
 nav.gnb .gnbArea ul li.club:before{background-position:-21px -17px;}
 nav.gnb .gnbArea ul li.rank:before{background-position:-42px -17px;}
 nav.gnb .gnbArea ul li.info:before{background-position:-63px -17px;}
+nav.gnb .gnbArea ul li a {color:white;}
