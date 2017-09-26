@@ -35,7 +35,6 @@ public class SportsClubHomeActivity extends TabActivity {
     private TabHost mTabHost;
     private TabHost.TabSpec mSpec;
     private Intent mIntent;
-    private ImageView mTopLogoImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +46,7 @@ public class SportsClubHomeActivity extends TabActivity {
 
     private void initialize() {
         mBackPressCloseHandler = new BackPressCloseHandler(this);
-        findView();
         initializeTab();
-        onClickTopLogoImageView();
-    }
-
-    private void findView() {
-        mTopLogoImageView = (ImageView) findViewById(R.id.top_logo);
     }
 
     private void initializeTab() {
@@ -79,17 +72,6 @@ public class SportsClubHomeActivity extends TabActivity {
             return true;
         }
         return false;
-    }
-
-    private void onClickTopLogoImageView() {
-        mTopLogoImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mIntent = new Intent().setClass(SportsClubHomeActivity.this, SportsClubHomeActivity.class);
-                startActivity(mIntent);
-                finish();
-            }
-        });
     }
 
     private void applyIntentContest() {
