@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SportsClub</string>
+    <string name="back_quit">\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.</string>
+    <string name="contest_info">대회 정보</string>
+    <string name="group">클럽</string>
+    <string name="rank">랭킹</string>
+    <string name="my_info">내 정보</string>
+    <string name="contest_name">Contest</string>
+    <string name="group_naem">Group</string>
+    <string name="rank_name">Rank</string>
+    <string name="my_info_name">MyInfo</string>
+</resources>
