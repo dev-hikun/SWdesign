@@ -1,30 +1,33 @@
-package com.club.sports.sportsclub.tab;
+package com.club.sports.sportsclub.tab.club;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.club.sports.sportsclub.R;
 import com.club.sports.sportsclub.back.BackPressCloseHandler;
 
 /**
- * Created by again on 2017-09-23.
+ * Created by again on 2017-09-12.
  */
 
-public class TabRankActivity extends AppCompatActivity {
+public class TabClubManagementActivity extends AppCompatActivity {
 
     private BackPressCloseHandler mBackPressCloseHandler;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBackPressCloseHandler = new BackPressCloseHandler(this);
-        setContentView(R.layout.sprotsclub_rank);
+        setContentView(R.layout.sportsclub_list_index_3);
+
+        initialize();
     }
 
+    private void initialize() {
+        mBackPressCloseHandler = new BackPressCloseHandler(this);
+    }
+
+
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         mBackPressCloseHandler.onBackPressed();
     }
 }
