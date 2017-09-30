@@ -44,6 +44,34 @@
             android:screenOrientation="portrait"
             />
 
+        <activity android:name=".tab.club.TabClubListActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.club.TabClubRegisterActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.club.TabClubManagementActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabTotalContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabPublicContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabFriendshipContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabContestManagementActivity"
+            android:screenOrientation="portrait"
+            />
+
     </application>
 
 </manifest>

@@ -82,7 +82,7 @@ public class SportsClubHomeActivity extends TabActivity {
 
     private void applyIntentGroup() {
         mIntent = new Intent().setClass(this, TabGroupActivity.class);
-        mSpec = mTabHost.newTabSpec(getResources().getString(R.string.group_naem)).setIndicator(getResources().getString(R.string.group)).setContent(mIntent);
+        mSpec = mTabHost.newTabSpec(getResources().getString(R.string.group_name)).setIndicator(getResources().getString(R.string.group)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
