@@ -6,14 +6,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.club.sports.sportsclub.R;
 import com.club.sports.sportsclub.back.BackPressCloseHandler;
-import com.club.sports.sportsclub.login.LoginActivity;
 import com.club.sports.sportsclub.tab.TabContestInfoActivity;
 import com.club.sports.sportsclub.tab.TabGroupActivity;
 import com.club.sports.sportsclub.tab.TabMyInfoActivity;
@@ -29,7 +26,7 @@ public class SportsClubHomeActivity extends TabActivity {
     private static final int GROUP = 1;
     private static final int RANK = 2;
     private static final int MY_INFO = 3;
-    private static final float FONT_SIZE = 9.0f;
+    private static final float FONT_SIZE = 10.0f;
 
     private BackPressCloseHandler mBackPressCloseHandler;
     private TabHost mTabHost;
@@ -62,18 +59,6 @@ public class SportsClubHomeActivity extends TabActivity {
         startTabChanged();
     }
 
-    private boolean checkIntentResult() {
-        Intent intent = getIntent();
-        Log.d("Intent result = ", String.valueOf(intent));
-
-        String loginInfo = intent.getExtras().getString("login_info");
-        Log.d("Intent result = ", String.valueOf(loginInfo));
-        if (loginInfo.equals("login_activity")) {
-            return true;
-        }
-        return false;
-    }
-
     private void applyIntentContest() {
         mIntent = new Intent().setClass(this, TabContestInfoActivity.class);
         mSpec = mTabHost.newTabSpec(getResources().getString(R.string.contest_name)).setIndicator(getResources().getString(R.string.contest_info)).setContent(mIntent);
@@ -93,11 +78,7 @@ public class SportsClubHomeActivity extends TabActivity {
     }
 
     private void applyIntentMyInfo() {
-        if (checkIntentResult()) {
-            mIntent = new Intent().setClass(this, TabMyInfoActivity.class);
-        } else {
-            mIntent = new Intent().setClass(this, LoginActivity.class);
-        }
+        mIntent = new Intent().setClass(this, TabMyInfoActivity.class);
         mSpec = mTabHost.newTabSpec(getResources().getString(R.string.my_info_name)).setIndicator(getResources().getString(R.string.my_info)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
@@ -106,7 +87,7 @@ public class SportsClubHomeActivity extends TabActivity {
     private void applyIntentTextColor() {
         for (int i = 0; i < getTabWidget().getChildCount(); i++) {
             TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.WHITE);
             textView.setTextSize(FONT_SIZE);
         }
     }
@@ -143,7 +124,7 @@ public class SportsClubHomeActivity extends TabActivity {
 
     private void setTabTextViewColor(int index) {
         TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
-        textView.setTextColor(Color.RED);
+        textView.setTextColor(Color.BLACK);
     }
 
     @Override

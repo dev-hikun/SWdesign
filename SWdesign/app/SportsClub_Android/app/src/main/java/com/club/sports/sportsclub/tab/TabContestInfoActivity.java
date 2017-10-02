@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.club.sports.sportsclub.R;
 import com.club.sports.sportsclub.back.BackPressCloseHandler;
-import com.club.sports.sportsclub.login.LoginActivity;
 import com.club.sports.sportsclub.tab.contests.TabContestManagementActivity;
 import com.club.sports.sportsclub.tab.contests.TabFriendshipContestActivity;
 import com.club.sports.sportsclub.tab.contests.TabPublicContestActivity;
@@ -25,7 +24,7 @@ public class TabContestInfoActivity extends TabActivity{
     private static final int PUBLIC_CONTEST = 1;
     private static final int FEINDSHIP_CONTEST = 2;
     private static final int CONTEST_MANAGEMENT = 3;
-    private static final float FONT_SIZE = 9.0f;
+    private static final float FONT_SIZE = 10.0f;
 
     private BackPressCloseHandler mBackPressCloseHandler;
     private TabHost mTabHost;
@@ -86,7 +85,7 @@ public class TabContestInfoActivity extends TabActivity{
     private void applyIntentTextColor() {
         for (int i = 0; i < getTabWidget().getChildCount(); i++) {
             TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.WHITE);
             textView.setTextSize(FONT_SIZE);
         }
     }
@@ -123,7 +122,7 @@ public class TabContestInfoActivity extends TabActivity{
 
     private void setTabTextViewColor(int index) {
         TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
-        textView.setTextColor(Color.RED);
+        textView.setTextColor(Color.BLACK);
     }
 
     @Override

@@ -76,7 +76,7 @@ public class TabGroupActivity extends TabActivity {
     private void applyIntentTextColor() {
         for (int i = 0; i < getTabWidget().getChildCount(); i++) {
             TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.WHITE);
             textView.setTextSize(FONT_SIZE);
         }
     }
@@ -109,7 +109,7 @@ public class TabGroupActivity extends TabActivity {
 
     private void setTabTextViewColor(int index) {
         TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
-        textView.setTextColor(Color.RED);
+        textView.setTextColor(Color.BLACK);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class TabTotalContestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sprotsclub_contest_index_1_2);
+        setContentView(R.layout.sprotsclub_contest_index_1_1);
 
         initialize();
     }
