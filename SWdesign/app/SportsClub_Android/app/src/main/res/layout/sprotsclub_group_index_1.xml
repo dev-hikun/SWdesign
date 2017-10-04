@@ -25,9 +25,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="대회 정보"
-                    android:textColor="@color/colorBlack"
+                    android:text="클럽"
                     android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -36,15 +36,16 @@
                     android:gravity="right">
 
                     <TextView
-                        android:id="@+id/contest_menu_button"
+                        android:id="@+id/club_menu_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="대회 메뉴"
+                        android:text="클럽 메뉴"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/colorPrimary"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

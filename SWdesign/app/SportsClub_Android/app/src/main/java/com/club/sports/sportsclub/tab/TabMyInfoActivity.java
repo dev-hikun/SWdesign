@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.club.sports.sportsclub.R;
 import com.club.sports.sportsclub.back.BackPressCloseHandler;
 import com.club.sports.sportsclub.tab.myinfo.MyInfoManager;
+import com.club.sports.sportsclub.tab.myinfo.TabSettingMyInfoActivity;
 
 /**
  * Created by again on 2017-09-23.
@@ -23,12 +26,13 @@ public class TabMyInfoActivity extends AppCompatActivity {
     private TextView mMyInfoProfileAliasTextview;
     private TextView mMyInfoProfileNameEmailTextview;
     private TextView mMyInfoProfileClubTextview;
+    private TextView mSettingMenuButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sprotsclub_my_info);
+        setContentView(R.layout.sprotsclub_my_info_index_1);
 
         initialize();
     }
@@ -36,6 +40,7 @@ public class TabMyInfoActivity extends AppCompatActivity {
     private void initialize() {
         mBackPressCloseHandler = new BackPressCloseHandler(this);
         findView();
+        onClickButton();
         initMyInfoManager();
     }
 
@@ -44,6 +49,19 @@ public class TabMyInfoActivity extends AppCompatActivity {
         mMyInfoProfileAliasTextview = (TextView) findViewById(R.id.my_info_profile_alias_textview);
         mMyInfoProfileNameEmailTextview = (TextView) findViewById(R.id.my_info_profile_name_email_textview);
         mMyInfoProfileClubTextview = (TextView) findViewById(R.id.my_info_profile_club_textview);
+        mSettingMenuButton = (TextView) findViewById(R.id.setting_menu_button);
+
+    }
+
+
+    private void onClickButton() {
+        mSettingMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent().setClass(TabMyInfoActivity.this, TabSettingMyInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initMyInfoManager() {

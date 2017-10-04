@@ -9,24 +9,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:background="#ffffff"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/top_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/top_logo"
-                android:layout_gravity="center"
-                />
-
-        </LinearLayout>
-
-
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="match_parent"
@@ -35,23 +17,15 @@
             android:background="@color/colorGray">
 
         </FrameLayout>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#00a36e">
-
-
+            android:background="#ffffff">
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </TabWidget>
-
-
         </LinearLayout>
-
     </LinearLayout>
 </TabHost>
