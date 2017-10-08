@@ -4,12 +4,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="내 정보"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/setting_menu_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="설정"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
-        android:background="#e6e6e6">
+        android:background="#dddddd">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,6 +63,7 @@
                 android:padding="10dp">
 
                 <ImageView
+                    android:id="@+id/my_info_profile_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/my" />
@@ -34,6 +74,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/my_info_profile_alias_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -43,6 +84,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/my_info_profile_name_email_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -52,6 +94,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/my_info_profile_club_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -82,6 +125,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_image_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -99,6 +143,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_alias_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -116,6 +161,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_member_out_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -133,6 +179,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_logout_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -166,6 +213,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_notice_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -183,6 +231,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_send_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -200,6 +249,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_rule_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -217,6 +267,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_info_app_version_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"

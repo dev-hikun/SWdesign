@@ -10,7 +10,6 @@
         android:layout_height="50dp"
         android:background="#ffffff"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -22,30 +21,25 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/alert_home_button"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="대회 정보"
-                    android:textColor="@color/colorBlack"
+                    android:text="알림"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textSize="18sp" />
+                    />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right">
-
-                    <TextView
-                        android:id="@+id/contest_menu_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="대회 메뉴"
-                        android:layout_marginRight="10dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/top_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/top_logo" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

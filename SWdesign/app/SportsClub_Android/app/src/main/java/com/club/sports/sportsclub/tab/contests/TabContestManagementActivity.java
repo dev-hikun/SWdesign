@@ -25,9 +25,4 @@ public class TabContestManagementActivity extends AppCompatActivity {
         mBackPressCloseHandler = new BackPressCloseHandler(this);
     }
 
-
-    @Override
-    public void onBackPressed() {
-        mBackPressCloseHandler.onBackPressed();
-    }
 }
