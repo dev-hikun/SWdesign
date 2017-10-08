@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .wrap{width:100%;}
-.globalArea{width:100%; height:35px; box-sizing: border-box; border-bottom:1px solid #e3e3e3;}
+.globalArea{width:100%; height:35px; box-sizing: border-box; border-bottom:1px solid #e3e3e3; min-width:980px;} /* 크기관련 */
 .globalArea nav.global{width:980px; text-align: right; margin:0 auto; font-size:0px;} /* 크기관련 */
 .globalArea nav.global a{display:inline-block; margin-right:15px; border-right: 1px solid #e3e3e3; font-size:11px; line-height: 35px; position:relative; padding:0px 15px}
 .globalArea nav.global a:before{position:absolute; left:0px; top:11.5px; background:url('../images/common/i_common.png') no-repeat; content:''; width:12px; height:12px;}
@@ -12,16 +12,39 @@
 
 h1.logo{text-align:center; height:105px; box-sizing: border-box; padding-top:15px;}
 
-nav.gnb{background:#333; height:50px; width:100%; font-size:0px; color:#fff; font-weight:700;}
+nav.gnb{background:#333; height:50px; width:100%; font-size:0px; color:#fff; font-weight:700; min-width:980px;} /* 크기관련 */
 nav.gnb .gnbArea{width:980px; margin: 0 auto;} /* 크기관련 */
 nav.gnb .gnbArea{line-height:50px;}
 nav.gnb .gnbArea ul li{display:inline-block; position:relative; font-size:14px; cursor: pointer; min-width:115px; text-align: center;}
-nav.gnb .gnbArea ul li:hover{background:#000;}
+nav.gnb .gnbArea ul li:hover, nav.gnb .gnbArea ul li.on{background:#000;}
 nav.gnb .gnbArea ul li:after{width:100%; height:0px; display:block; position:absolute; background:#e85840; bottom:0px; left:0px; content:'';}
-nav.gnb .gnbArea ul li:hover:after{height:3px;}
+nav.gnb .gnbArea ul li:hover:after, nav.gnb .gnbArea ul li.on:after{height:3px;}
 nav.gnb .gnbArea ul li:before{display:inline-block; margin-right:5px; vertical-align: middle; width:21px; height:14px; background-position: 0px -17px; background-image: url('../images/common/i_common.png'); background-repeat: no-repeat; content:'';}
 nav.gnb .gnbArea ul li.competition:before{}
 nav.gnb .gnbArea ul li.club:before{background-position:-21px -17px;}
 nav.gnb .gnbArea ul li.rank:before{background-position:-42px -17px;}
 nav.gnb .gnbArea ul li.info:before{background-position:-63px -17px;}
 nav.gnb .gnbArea ul li a {color:white;}
+
+section{min-height:600px; padding:20px 0px;}
+section > article{width:980px; clear:both; margin:0 auto;}
+section article.title h2{font-size:20px; height:24px; vertical-align:bottom}
+section article.title h2:before{width:30px; height:24px; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
+section article.title div{margin-top:10px;}
+
+section nav.lnb{width:980px; margin:0 auto; box-sizing:border-box; height:55px; margin-top:15px;}
+section nav.lnb ul{font-size:0px;}
+section nav.lnb ul li{font-size:14px; height:55px; line-height:55px; box-sizing:border-box; display:inline-block; color:#aaa; text-align:center; border:1px solid #d5d5d5; border-right:0px;}
+section nav.lnb ul li:last-child{border-right:1px solid #d5d5d5}
+section nav.lnb ul li.on, section nav.lnb ul li:hover{border:1px solid #333; color:#333;}
+section nav.lnb ul li.on+li,section nav.lnb ul li:hover+li{border-left:0px;}
+section nav.lnb ul.four li{width:25%}
+
+nav.bottom{height:30px; line-height:30px; background-color:#333; min-width:980px;} /* 크기관련 */
+nav.bottom div.bottomArea{width:980px; color:white; margin:0 auto;}  /* 크기관련 */
+nav.bottom div.bottomArea ul{font-size:0px;}
+nav.bottom div.bottomArea ul li{display:inline-block; font-size:12px; text-align:center; padding-left:20px;}
+nav.bottom div.bottomArea ul li:first-child{padding-left:0px;}
+
+footer{background-color:#f6f6f6; padding:20px 0px; min-width:980px;} /* 크기관련 */
+footer div.siteInfo{width:980px; margin:0 auto}  /* 크기관련 */
