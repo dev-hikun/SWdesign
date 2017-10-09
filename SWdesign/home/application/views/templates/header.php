@@ -5,11 +5,7 @@
     <link href="/libraries/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/layout.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/common.css" rel="stylesheet" type="text/css">
-    <?php
-        if($css_link != ""){
-            echo $css_link;
-        }
-    ?>
+    <?php echo $css_link; ?>
     <title>
         <?php
         echo "We run";
