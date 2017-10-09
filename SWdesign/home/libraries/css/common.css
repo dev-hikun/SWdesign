@@ -3,6 +3,11 @@
 .blind{position: absolute; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; width: 1px; height: 1px;}
 
 .cOrg{color:#e85840;}
+.cMint{color:#29c2b5;}
+.cCeruleanBlue{color:#618bdf;}
+
+.bgMint{background:#29c2b5;}
+.bgCeruleanBlue{background:#618bdf;}
 
 button.icoBtn{border:0px; background:none; padding:0px; margin-right:10px;}
 button.icoBtn > span.icon{background-image:url('../images/common/i_common.png'); cursor: pointer; background-repeat: no-repeat; width:12px; height:12px; display:inline-block;}

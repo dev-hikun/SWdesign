@@ -26,10 +26,10 @@ nav.gnb .gnbArea ul li.rank:before{background-position:-42px -17px;}
 nav.gnb .gnbArea ul li.info:before{background-position:-63px -17px;}
 nav.gnb .gnbArea ul li a {color:white;}
 
-section{min-height:600px; padding:20px 0px;}
+section{min-height:300px; padding:20px 0px;}
 section > article{width:980px; clear:both; margin:0 auto;}
 section article.title h2{font-size:20px; height:24px; vertical-align:bottom}
-section article.title h2:before{width:30px; height:24px; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
+section article.title h2:before{width:30px; float:left; height:24px; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
 section article.title div{margin-top:10px;}
 
 section nav.lnb{width:980px; margin:0 auto; box-sizing:border-box; height:55px; margin-top:15px;}

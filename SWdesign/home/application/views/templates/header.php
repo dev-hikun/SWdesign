@@ -5,8 +5,19 @@
     <link href="/libraries/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/layout.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/common.css" rel="stylesheet" type="text/css">
-    <link href="/libraries/css/main.css" rel="stylesheet" type="text/css">
-    <title>We Run<?= " - ".$page_title ?></title>
+    <?php
+        if($css_link != ""){
+            echo $css_link;
+        }
+    ?>
+    <title>
+        <?php
+        echo "We run";
+        if($page_title != ""){
+            echo " - ".$page_title;
+        }
+        ?>
+    </title>
 </head>
 <body>
     <div class="wrap">
@@ -14,12 +25,12 @@
             <div class="globalArea">
                 <nav class="global">
                         <a href="#" class="login">로그인</a>
-                        <a href="#" class="join">회원가입</a>
+                        <a href="/member/join" class="join">회원가입</a>
                         <a href="#" class="findInfo">정보찾기</a>
                 </nav>
             </div>
             <h1 class="logo">
-                <img src="/libraries/images/common/c_logo_big.jpg" alt="We run" />
+                <a href='/'><img src="/libraries/images/common/c_logo_big.jpg" alt="We run" /></a>
             </h1>
             <nav class="gnb">
                 <div class="gnbArea">

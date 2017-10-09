@@ -36,6 +36,7 @@ html,body{
   font-size:12px;
   color:#333;
 }
+button{cursor:pointer;}
 ul,ol,dl,dd,li{list-style: none;}
 i{font-style: normal}
 body,div,ul,li,header,section,footer,nav,h1,h2,h3,h4,h5,h6,img,p,form{margin:0px; padding:0px;}
