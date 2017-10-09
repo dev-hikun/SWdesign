@@ -7,15 +7,16 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.club.sports.sportsclub.R;
+import com.club.sports.sportsclub.alert.AlertHomeActivity;
 import com.club.sports.sportsclub.back.BackPressCloseHandler;
-import com.club.sports.sportsclub.login.LoginActivity;
 import com.club.sports.sportsclub.tab.TabContestInfoActivity;
 import com.club.sports.sportsclub.tab.TabGroupActivity;
+import com.club.sports.sportsclub.tab.TabHomeActivity;
 import com.club.sports.sportsclub.tab.TabMyInfoActivity;
 import com.club.sports.sportsclub.tab.TabRankActivity;
 
@@ -25,11 +26,12 @@ import com.club.sports.sportsclub.tab.TabRankActivity;
 
 public class SportsClubHomeActivity extends TabActivity {
 
-    private static final int CONTEST = 0;
-    private static final int GROUP = 1;
-    private static final int RANK = 2;
-    private static final int MY_INFO = 3;
-    private static final float FONT_SIZE = 9.0f;
+    private static final int HOME = 0;
+    private static final int CONTEST = 1;
+    private static final int GROUP = 2;
+    private static final int RANK = 3;
+    private static final int MY_INFO = 4;
+    private static final float FONT_SIZE = 10.0f;
 
     private BackPressCloseHandler mBackPressCloseHandler;
     private TabHost mTabHost;
@@ -52,26 +54,21 @@ public class SportsClubHomeActivity extends TabActivity {
     private void initializeTab() {
         mTabHost = getTabHost();
 
+        applyIntentHome();
         applyIntentContest();
         applyIntentGroup();
         applyIntentRank();
         applyIntentMyInfo();
         applyIntentTextColor();
-        setTabTextViewColor(CONTEST);
+        setTabTextViewColor(HOME);
 
         startTabChanged();
     }
 
-    private boolean checkIntentResult() {
-        Intent intent = getIntent();
-        Log.d("Intent result = ", String.valueOf(intent));
-
-        String loginInfo = intent.getExtras().getString("login_info");
-        Log.d("Intent result = ", String.valueOf(loginInfo));
-        if (loginInfo.equals("login_activity")) {
-            return true;
-        }
-        return false;
+    private void applyIntentHome() {
+        mIntent = new Intent().setClass(this, TabHomeActivity.class);
+        mSpec = mTabHost.newTabSpec(getResources().getString(R.string.home_name)).setIndicator(getResources().getString(R.string.home)).setContent(mIntent);
+        mTabHost.addTab(mSpec);
     }
 
     private void applyIntentContest() {
@@ -82,7 +79,7 @@ public class SportsClubHomeActivity extends TabActivity {
 
     private void applyIntentGroup() {
         mIntent = new Intent().setClass(this, TabGroupActivity.class);
-        mSpec = mTabHost.newTabSpec(getResources().getString(R.string.group_naem)).setIndicator(getResources().getString(R.string.group)).setContent(mIntent);
+        mSpec = mTabHost.newTabSpec(getResources().getString(R.string.group_name)).setIndicator(getResources().getString(R.string.group)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
 
@@ -93,11 +90,7 @@ public class SportsClubHomeActivity extends TabActivity {
     }
 
     private void applyIntentMyInfo() {
-        if (checkIntentResult()) {
-            mIntent = new Intent().setClass(this, TabMyInfoActivity.class);
-        } else {
-            mIntent = new Intent().setClass(this, LoginActivity.class);
-        }
+        mIntent = new Intent().setClass(this, TabMyInfoActivity.class);
         mSpec = mTabHost.newTabSpec(getResources().getString(R.string.my_info_name)).setIndicator(getResources().getString(R.string.my_info)).setContent(mIntent);
         mTabHost.addTab(mSpec);
     }
@@ -106,7 +99,7 @@ public class SportsClubHomeActivity extends TabActivity {
     private void applyIntentTextColor() {
         for (int i = 0; i < getTabWidget().getChildCount(); i++) {
             TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.DKGRAY);
             textView.setTextSize(FONT_SIZE);
         }
     }
@@ -121,21 +114,22 @@ public class SportsClubHomeActivity extends TabActivity {
     }
 
     private void findTabChanged(String tabId) {
+        applyIntentTextColor();
+
         switch (tabId) {
+            case "Home":
+                setTabTextViewColor(HOME);
+                break;
             case "Contest":
-                applyIntentTextColor();
                 setTabTextViewColor(CONTEST);
                 break;
             case "Group":
-                applyIntentTextColor();
                 setTabTextViewColor(GROUP);
                 break;
             case "Rank":
-                applyIntentTextColor();
                 setTabTextViewColor(RANK);
                 break;
             case "MyInfo":
-                applyIntentTextColor();
                 setTabTextViewColor(MY_INFO);
                 break;
         }
@@ -143,7 +137,7 @@ public class SportsClubHomeActivity extends TabActivity {
 
     private void setTabTextViewColor(int index) {
         TextView textView = (TextView) mTabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
-        textView.setTextColor(Color.RED);
+        textView.setTextColor(Color.BLUE);
     }
 
     @Override

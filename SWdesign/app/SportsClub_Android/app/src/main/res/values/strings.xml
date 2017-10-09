@@ -5,8 +5,29 @@
     <string name="group">클럽</string>
     <string name="rank">랭킹</string>
     <string name="my_info">내 정보</string>
+    <string name="club_list">클럽 리스트</string>
+    <string name="club_register">클럽 등록</string>
+    <string name="club_management">클럽 관리</string>
+    <string name="contest_total">전체대회</string>
+    <string name="contest_public">정식대회</string>
+    <string name="contest_friendship">친선대회</string>
+    <string name="contest_management">대회운영</string>
+    <string name="home">홈</string>
+    <string name="total_rank">전체 랭킹</string>
+    <string name="my_rank">내 랭킹</string>
+    <string name="total_rank_name">TotalRank</string>
+    <string name="my_rank_name">MyRank</string>
+    <string name="home_name">Home</string>
     <string name="contest_name">Contest</string>
-    <string name="group_naem">Group</string>
+    <string name="group_name">Group</string>
     <string name="rank_name">Rank</string>
     <string name="my_info_name">MyInfo</string>
+    <string name="club_list_name">ClubList</string>
+    <string name="club_register_name">ClubRegister</string>
+    <string name="club_management_name">ClubManagement</string>
+    <string name="contest_total_name">ContestTotal</string>
+    <string name="contest_public_name">ContestPublic</string>
+    <string name="contest_friendship_name">ContestFriendship</string>
+    <string name="contest_management_name">ContestManagement</string>
+
 </resources>

@@ -40,7 +40,67 @@
             android:screenOrientation="portrait"
             />
 
-        <activity android:name=".login.LoginActivity"
+        <activity android:name=".tab.club.TabClubListActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.club.TabClubRegisterActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.club.TabClubManagementActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabTotalContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabPublicContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabFriendshipContestActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabContestManagementActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.myinfo.AliasModifyActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".alert.AlertHomeActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.TabHomeActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.contests.TabAllContestIActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.club.TabAllGroupActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.rank.TabAllRankIActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.rank.TabMyRankActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.rank.TabTotalRankActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".tab.myinfo.TabSettingMyInfoActivity"
             android:screenOrientation="portrait"
             />
 

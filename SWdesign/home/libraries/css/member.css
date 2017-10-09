@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+p.join{height:485px; width:980px; margin:60px auto; display:block; text-align:center; background:url('../images/member/bg_choice.jpg') no-repeat;}
+p.join .tit{font-size:16px; display:block; padding-top:20px; height:20px;}
+p.join .msg{font-size:30px; display:block; height:50px; line-height:50px;}
+p.join .contWrap{width:820px; height:185px; margin:185px auto 0px auto; display:block;}
+p.join .contWrap:after{content:''; clear:both; display:block;}
+p.join .contWrap > span{width:410px; height:195px; float:left; display:block;}
+p.join .contWrap > span > strong{font-size:18px; line-height:25px; height:50px; display:block;}
+p.join .contWrap > span > i{font-size:14px; margin-top:20px; line-height:25px; display:block; color:#666;}
+p.join .contWrap > span > button{width:200px; height:40px; border-radius:3px 3px; border:0px none; font-weight:700; color:#fff; font-size:18px;}
+
+/* 회원가입폼 */
+div.joinForm{width:980px; margin:0 auto;}
+div.joinForm:after{clear:both; content:''; display:block;}
+div.joinForm h1{text-align:center; font-size:18px; font-weight:bold;}

@@ -3,16 +3,24 @@
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e6e6"
+    android:background="#ffffff"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
         android:layout_marginBottom="1dp"
-        android:background="#e6e6e6"
+        android:background="#ffffff"
         >
 
         <RelativeLayout
@@ -20,7 +28,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="#aadddd">
+            android:background="#e6e6e6">
 
             <EditText
                 android:id="@+id/id_edittext"
@@ -47,7 +55,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="#aadddd">
+            android:background="#e6e6e6">
 
             <EditText
                 android:id="@+id/password_edittext"
@@ -76,13 +84,13 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="#bbddff">
+            android:background="#00a36e">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center_horizontal"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="13sp"
                 android:text="로그인"
                 />
@@ -95,13 +103,13 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="#bbddff">
+            android:background="#00a36e">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center_horizontal"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="13sp"
                 android:text="회원가입"
                 />
