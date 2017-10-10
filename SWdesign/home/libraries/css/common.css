@@ -8,13 +8,14 @@
 
 .bgMint{background:#29c2b5;}
 .bgCeruleanBlue{background:#618bdf;}
+.bgBlue{background:#1d4082 !important;}
 
 button.icoBtn{border:0px; background:none; padding:0px; margin-right:10px;}
 button.icoBtn > span.icon{background-image:url('../images/common/i_common.png'); cursor: pointer; background-repeat: no-repeat; width:12px; height:12px; display:inline-block;}
 button.icoBtn > span.icon.searchIconSmall{background-position: -36px 0px;}
 
-button.txtBtn{border:1px solid #1d4082; color:#666; font-size:14px; width:160px; height:38px; line-height:38px; background:transparent; padding:0px; margin:0 4px; display:inline-block;}
-button.txtBtn.blue{background:#1d4082}
+button.txtBtn{border:1px solid #1d4082; font-weight:700; color:#666; font-size:14px; width:160px; height:38px; line-height:38px; background:transparent; padding:0px; margin:0 4px; display:inline-block;}
+button.txtBtn.bgBlue{color:white;}
 
 .listTopWrap{width:980px; font-size:0px; height:30px; margin-top:10px; line-height: 30px;}
 .listTopWrap > * {display:inline-block; font-size:12px;}

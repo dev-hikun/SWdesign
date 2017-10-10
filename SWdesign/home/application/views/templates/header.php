@@ -14,6 +14,7 @@
         }
         ?>
     </title>
+    <script type="text/javascript" src="/libraries/extern/jQuery/jquery-3.2.1.min"></script>
 </head>
 <body>
     <div class="wrap">
