@@ -48,4 +48,8 @@
             <input type="checkbox" id="is_agree2" name="is_agree2" />위런의 개인정보 수집, 제공 및 활용에 동의합니다.
         </label>
     </div>
+	<div class="buttonArea">
+		<button type="button" class="txtBtn">취소</button>
+		<button type="submit" class="txtBtn blue">다음</button>
+	</div>
 </div>
