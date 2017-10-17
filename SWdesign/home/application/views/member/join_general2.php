@@ -8,11 +8,13 @@
 
 <nav class="lnb join">
     <ul class="three">
-        <li class="on">01 회원약관동의</li>
-        <li>02 회원정보 입력</li>
+        <li>01 회원약관동의</li>
+        <li class="on">02 회원정보 입력</li>
         <li>03 가입완료</li>
     </ul>
 </nav>
+
+<?php echo form_open('/member/join/general/2'); ?>
 
 <div class="termsForm">
     <div class="agreeHeader">
@@ -27,7 +29,7 @@
         </div>
     </div>
     <div class="termsHeader">
-        <p class="tit">위런 회원 이용약관</p>
+        <p class="tit">위런 회원 이용약관(필수)</p>
     </div>
     <div class="termsBox">
         이용약관 내용이 들어가는 부분
@@ -48,12 +50,9 @@
             <input type="checkbox" id="is_agree2" name="is_agree2" />위런의 개인정보 수집, 제공 및 활용에 동의합니다.
         </label>
     </div>
-	<div class="buttonArea">
-		<button type="button" class="txtBtn" onclick="history.back();">취소</button>
-		<button type="button" class="txtBtn bgBlue" onclick="">다음</button>
-	</div>
+    <div class="buttonArea">
+        <button type="button" class="txtBtn">취소</button>
+        <button type="submit" class="txtBtn bgBlue">다음</button>
+    </div>
 </div>
-
-<script type="text/javascript">
-
-</script>
+</form>

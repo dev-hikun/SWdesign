@@ -9,7 +9,23 @@ p.join .contWrap > span > strong{font-size:18px; line-height:25px; height:50px; 
 p.join .contWrap > span > i{font-size:14px; margin-top:20px; line-height:25px; display:block; color:#666;}
 p.join .contWrap > span > button{width:200px; height:40px; border-radius:3px 3px; border:0px none; font-weight:700; color:#fff; font-size:18px;}
 
+section nav.lnb.join ul li{font-weight:700;}
+section nav.lnb.join ul li:hover{border:1px solid #d5d5d5; border-right:0px; color:#aaa;}
+section nav.lnb.join ul li:last-child{border-right:1px solid #d5d5d5;}
+section nav.lnb.join ul li.on{border:1px solid #29c2b5; background:#29c2b5; color:#fff;}
+section nav.lnb.join ul li.on:hover{border:1px solid #29c2b5; background:#29c2b5; color:#fff;}
+section nav.lnb.join ul li:hover+li{border-left:1px solid #d5d5d5;}
+section nav.lnb.join ul li.on:hover+li{border-left:0px;}
+section nav.lnb.join ul li.on+li{border-left:0px;}
+
 /* 회원가입폼 */
-div.joinForm{width:980px; margin:0 auto;}
-div.joinForm:after{clear:both; content:''; display:block;}
-div.joinForm h1{text-align:center; font-size:18px; font-weight:bold;}
+div.termsForm{width:980px; margin:0 auto; margin-top:30px;}
+div.termsForm:after{clear:both; content:''; display:block;}
+div.termsForm div.agreeHeader{font-size:13px; color:#666; line-height:20px; border-top:1px solid #333; border-bottom:1px solid #ccc;}
+div.termsForm div.agreeHeader div.agreeText{border-bottom:1px dashed #ccc;box-sizing:border-box; padding:15px 30px;}
+div.termsForm div.agreeHeader div.agreeText p:before{content:''; width:4px; height:4px; display:inline-block; background:#333; border-radius:2px 2px; vertical-align:middle; margin-right:5px;}
+div.termsForm div.agreeHeader div.agreeCheck{ box-sizing:border-box; padding:10px 30px;}
+div.termsForm div.termsHeader{margin-top:30px;}
+div.termsForm div.termsHeader p.tit{font-size:18px; font-weight:700; line-height:30px;}
+div.termsForm div.termsBox{border:1px solid #d7d7d7; overflow:hidden; overflow-y:scroll; box-sizing:border-box; height:150px; padding:25px 30px; clear:both;}
+div.termsForm div.termsCheck{padding:5px 0px; box-sizing:border-box; font-size:13px;}
