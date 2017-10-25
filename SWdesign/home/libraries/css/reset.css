@@ -47,6 +47,7 @@ a:link, a:active, a:visited{color:#333; text-decoration: none;}
 a:hover{color:#666; text-decoration: underline;}
 input{height:30px; vertical-align:middle; box-sizing:border-box; color:#333; padding-left:10px; border:0px none; font-size:12px; background:transparent;}
 input[type=checkbox]{margin-right:6px;}
+input[type=radio]{margin-right:6px;}
 
 
 
