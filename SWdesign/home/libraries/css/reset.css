@@ -45,8 +45,14 @@ h1,h2,h3,h4,h5,h6{-webkit-margin-before:0px;-webkit-margin-after:0px;}
 img{display:inline-block;}
 a:link, a:active, a:visited{color:#333; text-decoration: none;}
 a:hover{color:#666; text-decoration: underline;}
-input{height:30px; vertical-align:middle; box-sizing:border-box; color:#333; padding-left:10px; border:0px none; font-size:12px; background:transparent;}
+
+/* input */
+input{height:30px; line-height:30px; vertical-align:middle; box-sizing:border-box; color:#333; padding-left:10px; border:0px none; font-size:12px; background:transparent;}
 input[type=checkbox]{margin-right:6px;}
+input[type=radio]{margin-right:6px;}
+input[type=text], input[type=password]{border:1px solid #e3e3e3; border-radius:3px; padding-right:10px;}
+select{height:30px; outline:0px; box-sizing:border-box; border:0; padding:0 8px; border:1px solid #e3e3e3;}
 
-
-
+/*table*/
+caption{display:none;}
+table{width: 100%; border-collapse: collapse; border-spacing: 0; text-align: left;}
