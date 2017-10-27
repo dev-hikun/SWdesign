@@ -42,7 +42,7 @@ section nav.lnb ul.four li{width:25%}
 section nav.lnb ul.three li{width:33%}
 section nav.lnb ul.three li:last-child{width:34%}
 
-nav.bottom{height:30px; line-height:30px; background-color:#333; min-width:980px;} /* 크기관련 */
+nav.bottom{height:30px; margin-top:100px; line-height:30px; background-color:#333; min-width:980px;} /* 크기관련 */
 nav.bottom div.bottomArea{width:980px; color:white; margin:0 auto;}  /* 크기관련 */
 nav.bottom div.bottomArea ul{font-size:0px;}
 nav.bottom div.bottomArea ul li{display:inline-block; font-size:12px; text-align:center; padding-left:20px;}

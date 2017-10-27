@@ -2,20 +2,35 @@
 
 .blind{position: absolute; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; width: 1px; height: 1px;}
 
-.cOrg{color:#e85840;}
-.cMint{color:#29c2b5;}
-.cCeruleanBlue{color:#618bdf;}
+.cOrg{color:#e85840 !important;}
+.cMint{color:#29c2b5 !important;}
+.cCeruleanBlue{color:#618bdf !important;}
+.cBold{font-weight:700;}
+.cExBold{font-weight:800;}
 
+/* background */
 .bgMint{background:#29c2b5;}
 .bgCeruleanBlue{background:#618bdf;}
 .bgBlue{background:#1d4082 !important;}
 
+
+.pl20{padding-left:20px;}
+
+/* button */
 button.icoBtn{border:0px; background:none; padding:0px; margin-right:10px;}
 button.icoBtn > span.icon{background-image:url('../images/common/i_common.png'); cursor: pointer; background-repeat: no-repeat; width:12px; height:12px; display:inline-block;}
 button.icoBtn > span.icon.searchIconSmall{background-position: -36px 0px;}
 
 button.txtBtn{border:1px solid #1d4082; font-weight:700; color:#666; font-size:14px; width:160px; height:38px; line-height:38px; background:transparent; padding:0px; margin:0 4px; display:inline-block;}
 button.txtBtn.bgBlue{color:white;}
+button.resetBtn{background:#bbb; border:1px solid #999; width:160px; font-weight:700; color:#666; height:38px; line-height:38px; font-size:14px; display:inline-block; margin:0 4px; padding:0px;}
+button.tableBtn{border:1px solid #e3e3e3; border-radius:3px 3px; box-sizing:border-box; color:#333; background:#eee; height:30px; line-height:30px; font-size:14px; display:inline-block; vertical-align:middle;}
+
+/*게시판 쓰기*/
+.bbs_write{border-top:1px solid #000;}
+.bbs_write th {padding: 10px 18px; border-bottom: 1px solid #d6d6d6; background: #f6f6f6;}
+.bbs_write th.required:before{content:'*'; display:inline-block; width:14px; vertical-align:middle; color:#e85840;}
+.bbs_write td {padding: 10px 18px; border-bottom: 1px solid #d6d6d6;}
 
 .listTopWrap{width:980px; font-size:0px; height:30px; margin-top:10px; line-height: 30px;}
 .listTopWrap > * {display:inline-block; font-size:12px;}
