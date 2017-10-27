@@ -21,7 +21,7 @@
         <header>
             <div class="globalArea">
                 <nav class="global">
-                        <a href="#" class="login">로그인</a>
+                        <a href="/member/login" class="login">로그인</a>
                         <a href="/member/join" class="join">회원가입</a>
                         <a href="#" class="findInfo">정보찾기</a>
                 </nav>

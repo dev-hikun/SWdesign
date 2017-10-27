@@ -56,13 +56,30 @@ class Join extends CI_Controller {
         }
 
         private function _ok(){
-          $config['upload_path'] = '/site_data/member_img/';
-          $config['allowed_types'] = 'gif|jpg|png';
-          $config['max_size'] = '100';
-          $config['max_width']  = '1024';
-          $config['max_height']  = '768';
+          //post data 받음
+          $data['post'] = $this->input->post();
+
+          //업로드를 위한..
+          $config = array(
+            'upload_path' => './site_data/member_img/',
+            'allowed_types' => 'gif|jpg|png',
+            'max_size' => '100',
+            'max_width' => '1024',
+            'max_height' => '768',
+            'remove_spaces' => true,
+            'encrypt_name' => true
+          );
 
           $this->load->library('upload', $config);
-          $error = array('error' => $this->upload->display_errors());
+
+
+          if($this->upload->do_upload("profileImage")){
+            echo $this->upload->data("file_name"); // converted file name
+            echo $this->upload->data("orig_name"); // original name
+            echo $this->upload->data("file_size"); // uploaded file size
+          }else{
+            $error = array('error' => $this->upload->display_errors());
+
+          }
         }
 }
