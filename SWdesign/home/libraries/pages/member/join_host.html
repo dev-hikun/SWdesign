@@ -8,7 +8,7 @@
     <link href="../../css/common.css" rel="stylesheet" type="text/css">
     <link href="../../css/member.css" rel="stylesheet" type="text/css">
 
-    <title>일반회원 회원가입 정보입력폼</title>
+    <title>주최측 회원가입 정보입력폼</title>
 </head>
 <body>
     <div class="wrap">
@@ -19,7 +19,7 @@
 
 
 <article class="title">
-    <h2 class="join">일반회원 가입</h2>
+    <h2 class="join">회원 가입</h2>
     <div>
         <span>&nbsp;</span>
     </div>
@@ -27,8 +27,8 @@
 
 <nav class="lnb join">
     <ul class="three">
-        <li>01 회원약관동의</li>
-        <li class="on">02 회원정보 입력</li>
+        <li class="on">01 회원약관동의</li>
+        <li>02 회원정보 입력</li>
         <li>03 가입완료</li>
     </ul>
 </nav>
@@ -36,86 +36,40 @@
 <div class="termsForm">
     <div class="agreeHeader">
         <div class="agreeText">
-            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다..</p>
+            <p>위런에 오신 것을 환영합니다. 회원 가입 후 위런 회원만을 위한 다양한 혜택을 누리세요.</p>
+            <p>위런 회원 가입을 위하여 아래 회원약관 및 개인정보처리방침 등을 확인하시고 동의하여 주시기 바립니다.</p>
+        </div>
+        <div class="agreeCheck">
+            <label for="is_agree">
+                <input type="checkbox" id="is_agree" name="is_agree" />전체 약관에 동의합니다
+            </label>
         </div>
     </div>
-
     <div class="termsHeader">
-        <p class="tit">기본정보</p>
+        <p class="tit">위런 회원 이용약관</p>
     </div>
-    <table class="bbs_write">
-        <caption>기본정보</caption>
-        <colgroup>
-            <col style="width:30%" />
-            <col style="width:70%" />
-        </colgroup>
-        <!-- 윤희야 우리 디비에 있는만큼 더 추가해야한다 -->
-        <tbody>
-            <tr>
-                <th class="required">이메일</th>
-                <td>
-                    <input type="text" placeholder="ex) admin" name="email">
-                    <span>@</span>
-                    <input type="text" placeholder="ex) werun.pe.kr" name="email">
-                    <button class="tableBtn">중복확인</button>
-                </td>
-            </tr>
-            <tr>
-                <th class="required">비밀번호</th>
-                <td>
-                    <input type="password" placeholder="8자 이상의 영문,숫자,특수문자 조합" name="password">
-                    <input type="password" placeholder="패스워드 확인" name="password2">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-
+    <div class="termsBox">
+        이용약관 내용이 들어가는 부분
+    </div>
+    <div class="termsCheck">
+        <label for="is_agree1">
+            <input type="checkbox" id="is_agree1" name="is_agree1" />위런 회원약관에 동의합니다.
+        </label>
+    </div>
     <div class="termsHeader">
-        <p class="tit">선택정보</p>
+        <p class="tit">개인정보 수집, 제공 및 활용 동의</p>
     </div>
-    <table class="bbs_write">
-        <caption>기본정보</caption>
-        <colgroup>
-            <col style="width:30%" />
-            <col style="width:70%" />
-        </colgroup>
-        <tbody>
-            <tr>
-                <th>관심있는 종목</th>
-                <td>
-                    <select name="parts">
-                        <option>야구</option>
-                        <option>배드민턴</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>거주지</th>
-                <td>
-                    <span>시/도 : </span>
-                    <select name="state">
-                        <option value="서울">서울</option>
-                    </select>
-                    <span class="pl20">시/군/구 : </span>
-                    <select name="city">
-                        <option value="강남구">강남구</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>프로필 이미지</th>
-                <td>
-                    <input type="file" name="profileImage">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+    <div class="termsBox">
+        개인정보 수집, 제공 및 활용 동의 내용이 들어가는 부분
+    </div>
+    <div class="termsCheck">
+        <label for="is_agree2">
+            <input type="checkbox" id="is_agree2" name="is_agree2" />위런의 개인정보 수집, 제공 및 활용에 동의합니다.
+        </label>
+    </div>
     <div class="buttonArea">
-        <button type="button" class="txtBtn">취소</button>
-        <button type="submit" class="resetBtn">다시입력</button>
-        <button type="submit" class="txtBtn bgBlue">회원가입</button>
+        <button type="button" class="txtBtn" onclick="history.back();">취소</button>
+        <button type="button" class="txtBtn bgBlue" onclick="">다음</button>
     </div>
 </div>
 
