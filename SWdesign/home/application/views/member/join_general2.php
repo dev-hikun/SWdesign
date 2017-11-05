@@ -32,7 +32,6 @@
             <col style="width:30%" />
             <col style="width:70%" />
         </colgroup>
-        <!-- 윤희야 우리 디비에 있는만큼 더 추가해야한다 -->
         <tbody>
             <tr>
                 <th class="required">이메일</th>
@@ -49,6 +48,22 @@
                     <input type="password" placeholder="8자 이상의 영문,숫자,특수문자 조합" name="password">
                     <input type="password" placeholder="패스워드 확인" name="password2">
                 </td>
+            </tr>
+            <tr>
+                    <th class = "required">이름</th>
+                    <td><input type="text" placeholder="한글 or 영문 전체 이름 입력." name="name"></td>
+            </tr>
+            <tr>
+                <th class = "required">닉네임</th>
+                <td>
+                <input type = "text" placeholder = "한글 or 영문, 2글자 이상" name ="nickname">
+                </td>
+            </tr>
+            <tr>
+                <th class = "required">생년월일</th>
+                    <td>
+                        <input type="text" placeholder="0000-00-00" name="bDate" />
+                    </td>
             </tr>
         </tbody>
     </table>
@@ -103,3 +118,15 @@
 </div>
 
 </form>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("[name=bDate]").datepicker();
+    //{
+    //    dayNames: [ "월", "화", "수", "목", "금", "토", "일" ],
+    //    dateFormat : "yyyy-mm-dd"
+    //});
+});
+</script>
