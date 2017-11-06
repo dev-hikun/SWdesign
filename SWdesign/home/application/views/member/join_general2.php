@@ -65,6 +65,27 @@
                         <input type="text" placeholder="0000-00-00" name="bDate" />
                     </td>
             </tr>
+            <tr>
+                <th class = "required">전화번호</th>
+                    <td>
+                        <input type="text" placeholder="010-1234-5678" name="phone" />
+                    </td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td>
+                    <p>
+                        <button class="tableBtn" type="button" name="addrSearch">주소검색</button>
+                        <input type="text" name="addr1" readonly="readonly" />
+                    </p>
+
+                    <p class="mt5">
+                        <input type="text" name="addr2" placeholder="상세주소" />
+                    </p>
+
+                    <input type="hidden" name="zipNo" />
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -82,29 +103,36 @@
             <tr>
                 <th>관심있는 종목</th>
                 <td>
-                    <select name="parts">
-                        <option>야구</option>
-                        <option>배드민턴</option>
-                    </select>
+                    <div class="parts">
+                        <button class="tableBtn" type="button" name="1">야구</button>
+                        <button class="tableBtn" type="button" name="2|3">배드민턴</button>
+                        <button class="tableBtn" type="button" name="no">축구</button>
+                        <button class="tableBtn" type="button" name="no">테니스</button>
+                        <button class="tableBtn" type="button" name="no">League of Legends</button>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <th>거주지</th>
+                <th>이름공개여부</th>
                 <td>
-                    <span>시/도 : </span>
-                    <select name="state">
-                        <option value="서울">서울</option>
-                    </select>
-                    <span class="pl20">시/군/구 : </span>
-                    <select name="city">
-                        <option value="강남구">강남구</option>
-                    </select>
+
+                <label for="public1">
+                    <input type="radio" name="public" id="public1" value="Y" selected="selected" />
+                    예
+                </label>
+                <label for="public2" class="ml10">
+                    <input type="radio" name="public" id="public2" value="N" />
+                    아니오(닉네임으로 공개)
+                </label>
+
                 </td>
             </tr>
             <tr>
                 <th>프로필 이미지</th>
                 <td>
+
                     <input type="file" name="profileImage">
+
                 </td>
             </tr>
         </tbody>
@@ -128,5 +156,15 @@ $(document).ready(function(){
     //    dayNames: [ "월", "화", "수", "목", "금", "토", "일" ],
     //    dateFormat : "yyyy-mm-dd"
     //});
+
+    /* 주소검색 팝업 */
+    function goPopup(){
+        // 주소검색을 수행할 팝업 페이지를 호출합니다.
+        var pop = window.open("/popup/juso","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    }
+
+    /*이벤트 설정 */
+    $("[name=addr1]").click(function(){ goPopup(); });
+    $("[name=addrSearch]").click(function(){ goPopup(); });
 });
 </script>
