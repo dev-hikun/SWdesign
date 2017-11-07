@@ -14,7 +14,7 @@
     </ul>
 </nav>
 
-<?php echo form_open_multipart('/member/join/ok', array('id'=>'joinForm')); ?>
+<?php echo form_open_multipart('/member/join/ok', array('id'=>'joinForm', 'name'=>'joinForm')); ?>
 
 <div class="termsForm">
     <div class="agreeHeader">
@@ -67,6 +67,15 @@
                     </td>
             </tr>
             <tr>
+                <th class = "required">성별</th>
+                    <td>
+                        <label for="sex">
+                            <input type="radio" name="sex" id="sex" value="남" checked="checked" />남성
+                            <input type="radio" name="sex" id="sex" value="여" />여성
+                        </label>
+                    </td>
+            </tr>
+            <tr>
                 <th class = "required">전화번호</th>
                     <td>
                         <input type="text" placeholder="010-1234-5678" title="전화번호" name="phone" required />
@@ -105,12 +114,14 @@
                 <th>관심있는 종목</th>
                 <td>
                     <div class="parts">
-                        <button class="tableBtn" type="button" name="1">야구</button>
-                        <button class="tableBtn" type="button" name="2|3">배드민턴</button>
-                        <button class="tableBtn" type="button" name="no">축구</button>
-                        <button class="tableBtn" type="button" name="no">테니스</button>
-                        <button class="tableBtn" type="button" name="no">League of Legends</button>
+                        <label for="part1">
+                            <input type="checkbox" value="1" name="part[]" id="part" />야구
+                        </label>
+                        <label for="part2">
+                            <input type="checkbox" value="2" name="part[]" id="part2" />배드민턴
+                        </label>
                     </div>
+                    <input type="hidden" name="permit" value="3" />
                 </td>
             </tr>
             <tr>
@@ -118,11 +129,11 @@
                 <td>
 
                 <label for="public1">
-                    <input type="radio" name="public" id="public1" value="Y" selected="selected" />
+                    <input type="radio" name="public" id="public1" value="1" checked="checked" />
                     예
                 </label>
                 <label for="public2" class="ml10">
-                    <input type="radio" name="public" id="public2" value="N" />
+                    <input type="radio" name="public" id="public2" value="0" />
                     아니오(닉네임으로 공개)
                 </label>
 
@@ -142,7 +153,7 @@
     <div class="buttonArea">
         <button type="button" class="txtBtn" onclick="history.back();">뒤로가기</button>
         <button type="reset" class="resetBtn">다시입력</button>
-        <button type="submit" class="txtBtn bgBlue">회원가입</button>
+        <button type="submit" name="submit" class="txtBtn bgBlue">회원가입</button>
     </div>
 </div>
 
@@ -164,6 +175,7 @@ var goPopup = function(){
     var pop = window.open("/popup/juso","pop","width=570,height=440, scrollbars=yes, resizable=yes");
 }
 
+/* 중복확인 버튼 ui 변경하기 */
 var ChangeDupBtn = function(b){
 	if(b == true){
 		$("[name=email]").val($("[name=id]").val()+"@"+$("[name=domain]").val());
@@ -178,15 +190,21 @@ var ChangeDupBtn = function(b){
 
 /* 중복체크 ajax */
 var chkDuplicate = function(){
-	
+
 	id = $("[name=id]");
 	domain = $("[name=domain]");
-	
-	if(id.val() == "" || domain.val() == ""){
-		alert("이메일을 확인해주세요.");
-		return false;
-		reChk = false;
-	}
+
+    if(id.val() == "" || domain.val() == ""){
+        alert("이메일 또는 도메인을 입력해주세요.");
+        id.focus();
+        return false;
+    }
+
+    //형식체크
+    if(Werun.util.EmailCheck(id.val()+"@"+domain.val()) == false){
+        alert("이메일 형식이 올바르지 않습니다.");
+        return false;
+    };
 
 	$.ajax({
 	  type: "POST",
@@ -215,11 +233,34 @@ var setEvent = function(){
     $("[name=addrSearch]").click(function(){ goPopup(); });
     $("[name=bDate]").datepicker();
     $("[name=dupChk]").click(function(){ chkDuplicate(); });
+    $("#joinForm [name=submit]").click(function(){
+        if($("[name=email]").val() == ""){
+            alert("이메일 중복확인이 필요합니다.");
+            $("[name=email]").focus();
+            return false;
+        }
+
+        if(($("[name=password]").val() != $("[name=password2]").val()) == true){
+            alert("비밀번호와 비밀번호 확인이 올바르지 않습니다.");
+            $("[name=password]").focus();
+            return false;
+        }
+
+        if(Werun.util.LengthCheck($("[name=password]").val(), 8) == false){
+            alert("비밀번호는 8자 이상으로 입력해주세요.");
+            $("[name=password]").focus();
+            return false;
+        }
+        if(Werun.util.FormCheck($(this).closest("form")) == false){
+            return false;
+        }
+        return true;
+    });
 }
 
 $(document).ready(function(){
 
     setEvent();
-	Werun.util.FormCheck($("#joinForm"));
+
 });
 </script>

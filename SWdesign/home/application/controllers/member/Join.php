@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Join extends CI_Controller {
@@ -6,7 +6,6 @@ class Join extends CI_Controller {
             parent::__construct();
 
             $this->load->helper(array('form', 'url'));
-            $this->load->model('member/email_chk');
         }
         public function _remap($mode="", $args)
         {
@@ -64,43 +63,98 @@ class Join extends CI_Controller {
           if(!$_POST){
               $this->output->set_content_type('application/json; charset=utf-8');
           }else{
-			  
-            $this->output->set_content_type('application/json; charset=utf-8');
-            $json_dt['id'] = $_POST['id'];
-            $json_dt['domain'] = $_POST['domain'];
-			$this->email_chk->dupChk($json_dt);
-			echo json_encode($this->email_chk->dupChk($json_dt));
-			exit;
+              $this->output->set_content_type('application/json; charset=utf-8');
+              $this->load->model('member/email_chk');
+              $json_dt['id'] = $_POST['id'];
+              $json_dt['domain'] = $_POST['domain'];
+        			$this->email_chk->dupChk($json_dt);
+        			echo json_encode($this->email_chk->dupChk($json_dt));
+        			exit;
           }
         }
 
         //회원가입 완료
         private function _ok(){
-			echo "<script type='text/javascript'>alert('준비중입니다.'); history.back(); exit;</script>";
-          //post data 받음
-          $data['post'] = $this->input->post();
+			    //echo "<script type='text/javascript'>alert('준비중입니다.'); history.back(); exit;</script>";
+          if(!$_POST){
+            echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back(); exit;</script>";
+            exit;
+          }
+
+          $mdata['id'] = $_POST["id"];
+          $mdata['pw'] = $_POST["password"];
+          $mdata['name'] = $_POST["name"];
+          $mdata['nickName'] = $_POST["nickname"];
+          $mdata['birth'] = $_POST["bDate"];
+          $mdata['phone'] = $_POST["phone"];
+          $mdata['addr1'] = $_POST["addr1"];
+          $mdata['addr2'] = $_POST["addr2"];
+          $mdata['zipCode'] = $_POST["zipCode"];
+          $mdata['sex'] = $_POST["sex"];
+          $mdata['file'] = "";
+          $mdata['parts'] = "";
+          $mdata['permit'] = $_POST['permit'];
+          $mdata['public'] = $_POST['public'];
+
+          if($mdata['pw'] != $_POST['password']){
+              echo "<script type='text/javascript'>
+                alert('비밀번호와 비밀번호확인이 다릅니다.');
+                history.back();
+                exit;
+              </script>";
+              exit;
+          }
+
+          if(is_array($_POST["part"])){
+              foreach($_POST['part'] as $key=>$val){
+                  if($mdata['parts'] == ""){
+                    $mdata['parts'] = $mdata['parts'].$val;
+                  }else{
+                    $mdata['parts'] = $mdata['parts']."|".$val;
+                  }
+              }
+          }
 
           //업로드를 위한..
           $config = array(
             'upload_path' => './site_data/member_img/',
-            'allowed_types' => 'gif|jpg|png',
-            'max_size' => '100',
-            'max_width' => '1024',
-            'max_height' => '768',
+            'allowed_types' => 'gif|jpg|png|jpeg',
+            'max_size' => '10240',
+            'max_width' => '10240',
+            'max_height' => '7680',
             'remove_spaces' => true,
             'encrypt_name' => true
           );
 
           $this->load->library('upload', $config);
 
-
           if($this->upload->do_upload("profileImage")){
-            echo $this->upload->data("file_name"); // converted file name
-            echo $this->upload->data("orig_name"); // original name
-            echo $this->upload->data("file_size"); // uploaded file size
+            $mdata['file'] = $this->upload->data("file_name");
           }else{
-            $error = array('error' => $this->upload->display_errors());
-
+            $mdata['file'] = "";
           }
+
+
+          foreach($mdata as $key=>$val){
+            $mdata[$key] = addslashes($val);
+          }
+
+          $this->load->model('member/member');
+          $val = $this->member->join($mdata);
+          if($val == true){
+            echo "<script type='text/javascript'>
+              alert('회원가입이 완료되었습니다.');
+              document.location.href='/';
+              exit;
+            </script>";
+          }else{
+            echo "<script type='text/javascript'>
+              alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
+              history.back();
+              exit;
+            </script>";
+          }
+          //header('Location: /');
+          exit;
         }
 }
