@@ -19,7 +19,7 @@
 <div class="termsForm">
     <div class="agreeHeader">
         <div class="agreeText">
-            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다..</p>
+            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다.</p>
         </div>
     </div>
 
@@ -36,10 +36,10 @@
             <tr>
                 <th class="required">이메일</th>
                 <td>
-                    <input type="text" placeholder="ex) admin" name="email">
+                    <input type="text" placeholder="ex) admin" name="id" required>
                     <span>@</span>
-                    <input type="text" placeholder="ex) werun.pe.kr" name="email">
-                    <button class="tableBtn" type="button">중복확인</button>
+                    <input type="text" placeholder="ex) werun.pe.kr" name="domain" required>
+                    <button class="tableBtn" type="button" name="dupChk">중복확인</button>
                 </td>
             </tr>
             <tr>
@@ -83,7 +83,7 @@
                         <input type="text" name="addr2" placeholder="상세주소" />
                     </p>
 
-                    <input type="hidden" name="zipNo" />
+                    <input type="hidden" name="zipCode" />
                 </td>
             </tr>
         </tbody>
@@ -150,21 +150,59 @@
 
 
 <script type="text/javascript">
-$(document).ready(function(){
-    $("[name=bDate]").datepicker();
-    //{
-    //    dayNames: [ "월", "화", "수", "목", "금", "토", "일" ],
-    //    dateFormat : "yyyy-mm-dd"
-    //});
 
-    /* 주소검색 팝업 */
-    function goPopup(){
-        // 주소검색을 수행할 팝업 페이지를 호출합니다.
-        var pop = window.open("/popup/juso","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+/* 주소 받아주기 */
+var jusoCallBack = function(addr1, addr2, addr3, zipcode){
+    $("[name=addr1]").val(addr1);
+    $("[name=addr2]").val(addr2+" "+addr3);
+    $("[name=zipCode]").val(zipcode);
+}
+
+/* 주소검색 팝업 */
+var goPopup = function(){
+    var pop = window.open("/popup/juso","pop","width=570,height=440, scrollbars=yes, resizable=yes");
+}
+
+var chkDuplicate = function(){
+    id = $("[name=email]");
+    domain = $("[name=domain]");
+    reChk = true;
+
+    if(id.val() == "" || domain.val() == ""){
+        alert("이메일을 확인해주세요.");
+        return false;
+        reChk = false;
     }
 
-    /*이벤트 설정 */
+    $.ajax({
+      type: "POST",
+      url: "/member/join/chk",
+      data: {
+           id:     $("[name=email]").val(),
+           domain: $("[name=domain]").val()
+        },
+      success:function(data){
+        console.log(data);
+      },
+      error:function(request, status, error){
+        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+      }
+
+    })
+
+}
+
+/*이벤트 설정 */
+var setEvent = function(){
     $("[name=addr1]").click(function(){ goPopup(); });
     $("[name=addrSearch]").click(function(){ goPopup(); });
+    $("[name=bDate]").datepicker();
+    $("[name=dupChk]").click(function(){ chkDuplicate(); });
+}
+
+$(document).ready(function(){
+
+    setEvent();
+
 });
 </script>

@@ -9,8 +9,20 @@ class Juso extends CI_Controller {
 
   public function _remap($mode="", $args)
   {
-      $this->load->view('popup/juso');
+      $data['inputYn'] = "N";
+      $data['addr1'] = " ";
+      $data['addr2'] = " ";
+      $data['addr3'] = " ";
+      $data['zipCode'] = " ";
 
-      if()
+      if($_POST){
+        $data['inputYn'] = "Y";
+        $data['addr1'] = $_POST['roadAddrPart1'];
+        $data['addr2'] = $_POST['roadAddrPart2'];
+        $data['addr3'] = $_POST['addrDetail'];
+        $data['zipCode'] = $_POST['zipNo'];
+      }
+
+      $this->load->view('popup/juso', $data);
   }
 }

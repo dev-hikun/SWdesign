@@ -13,9 +13,9 @@ $ad = $_SERVER['SERVER_ADDR'];
 ?>
 var init = function(){
     var url = location.href;
-    var confmKey = "TESTJUSOGOKR";
+    var confmKey = "U01TX0FVVEgyMDE3MTEwNzAwMDAyMzEwNzQ2MDQ=";
     var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
-    var inputYn= "N";
+    var inputYn= "<?= $inputYn ?>";
     if(inputYn != "Y"){
         document.form.confmKey.value = confmKey;
         document.form.returnUrl.value = url;
@@ -24,9 +24,8 @@ var init = function(){
         //document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
         document.form.submit();
     }else{
-        /*
-        opener.jusoCallBack("<?=$ADDR[roadFullAddr]?>","<?=$ADDR[roadAddrPart1]?>","<?=$ADDR[addrDetail]?>","<?=$ADDR[roadAddrPart2]?>","<?=$ADDR[engAddr]?>","<?=$ADDR[jibunAddr]?>","<?=$ADDR[zipNo]?>", "<?=$ADDR[admCd]?>", "<?=$ADDR[rnMgtSn]?>", "<?=$ADDR[bdMgtSn]?>", "<?=$ADDR[detBdNmList]?>", "<?=$ADDR[bdNm]?>", "<?=$ADDR[bdKdcd]?>", "<?=$ADDR[siNm]?>", "<?=$ADDR[sggNm]?>", "<?=$ADDR[emdNm]?>", "<?=$ADDR[liNm]?>", "<?=$ADDR[rn]?>", "<?=$ADDR[udrtYn]?>", "<?=$ADDR[buldMnnm]?>", "<?=$ADDR[buldSlno]?>", "<?=$ADDR[mtYn]?>", "<?=$ADDR[lnbrMnnm]?>", "<?=$ADDR[lnbrSlno]?>", "<?=$ADDR[emdNo]?>");
-        window.close();*/
+        opener.jusoCallBack('<?= $addr1 ?>', '<?= $addr2 ?>', '<?= $addr3 ?>', '<?= $zipCode ?>');
+        window.close();
     }
 }
 
@@ -34,36 +33,6 @@ $(document).ready(function(){
     init();
 })
 </script>
-<?
-    $ADDR['inputYn'] = $_POST['inputYn'];
-    $ADDR['roadFullAddr'] = $_POST['roadFullAddr'];
-    $ADDR['roadAddrPart1'] = $_POST['roadAddrPart1'];
-    $ADDR['roadAddrPart2'] = $_POST['roadAddrPart2'];
-    $ADDR['engAddr'] = $_POST['engAddr'];
-    $ADDR['jibunAddr'] = $_POST['jibunAddr'];
-    $ADDR['zipNo'] = $_POST['zipNo'];
-    $ADDR['addrDetail'] = $_POST['addrDetail'];
-    $ADDR['admCd'] = $_POST['admCd'];
-    $ADDR['rnMgtSn'] = $_POST['rnMgtSn'];
-    $ADDR['bdMgtSn'] = $_POST['bdMgtSn'];
-    $ADDR['detBdNmList'] = $_POST['detBdNmList'];
-    //** 2017년 2월 제공항목 추가 **/
-    $ADDR['bdNm'] = $_POST['bdNm'];
-    $ADDR['bdKdcd'] = $_POST['bdKdcd'];
-    $ADDR['siNm'] = $_POST['siNm'];
-    $ADDR['sggNm'] = $_POST['sggNm'];
-    $ADDR['emdNm'] = $_POST['emdNm'];
-    $ADDR['liNm'] = $_POST['liNm'];
-    $ADDR['rn'] = $_POST['rn'];
-    $ADDR['udrtYn'] = $_POST['udrtYn'];
-    $ADDR['buldMnnm'] = $_POST['buldMnnm'];
-    $ADDR['buldSlno'] = $_POST['buldSlno'];
-    $ADDR['mtYn'] = $_POST['mtYn'];
-    $ADDR['lnbrMnnm'] = $_POST['lnbrMnnm'];
-    $ADDR['lnbrSlno'] = $_POST['lnbrSlno'];
-    //** 2017년 3월 제공항목 추가 **/
-    $ADDR['emdNo'] = $_POST['emdNo'];
-?>
 </head>
 <body>
     <form id="form" name="form" method="post">

@@ -23,6 +23,9 @@ class Join extends CI_Controller {
             case "host":
               $this->_host();
             break;
+            case "chk":
+              $this->_chk();
+            break;
             case "ok":
               $this->_ok();
             break;
@@ -55,6 +58,18 @@ class Join extends CI_Controller {
             $this->load->view('member/join_select');
         }
 
+        //중복확인 체크
+        private function _chk(){
+          if(!$_POST){
+              $this->output->set_content_type('application/json');
+          }else{
+            $data['id'] = $_POST['id'];
+            $data['domain'] = $_POST['domain'];
+            $this->load->model('member/email_chk');
+          }
+        }
+
+        //회원가입 완료
         private function _ok(){
           //post data 받음
           $data['post'] = $this->input->post();
