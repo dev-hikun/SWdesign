@@ -5,6 +5,7 @@
     <link href="/libraries/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/layout.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/libraries/extern/jQuery/jquery-ui.css" rel="stylesheet" type="text/css">
     <?php echo $css_link; ?>
     <title>
         <?php
@@ -14,14 +15,17 @@
         }
         ?>
     </title>
-    <script type="text/javascript" src="/libraries/extern/jQuery/jquery-3.2.1.min"></script>
+    <script type="text/javascript" src="/libraries/extern/jQuery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/libraries/extern/jQuery/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="/libraries/js/common.js"></script>
 </head>
 <body>
     <div class="wrap">
         <header>
             <div class="globalArea">
                 <nav class="global">
-                        <a href="#" class="login">로그인</a>
+                        <a href="/member/login" class="login">로그인</a>
                         <a href="/member/join" class="join">회원가입</a>
                         <a href="#" class="findInfo">정보찾기</a>
                 </nav>

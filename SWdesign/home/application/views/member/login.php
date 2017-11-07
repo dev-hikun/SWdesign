@@ -19,7 +19,7 @@
                     </span>
 
                     <span class="txtBox">
-                        <i>아직 회원이 아니세요? <a href="#" class="cGry cBold">회원가입</a></i>
+                        <i>아직 회원이 아니세요? <a href="/member/join" class="cGry cBold">회원가입</a></i>
                         <i>아이디/비밀번호를 잊으셨나요? <a href="#" class="cGry cBold">정보찾기</a></i>
                     </span>
                 </span>
