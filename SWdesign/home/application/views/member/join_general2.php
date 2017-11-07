@@ -14,7 +14,7 @@
     </ul>
 </nav>
 
-<?php echo form_open_multipart('/member/join/ok'); ?>
+<?php echo form_open_multipart('/member/join/ok', array('id'=>'joinForm')); ?>
 
 <div class="termsForm">
     <div class="agreeHeader">
@@ -36,39 +36,40 @@
             <tr>
                 <th class="required">이메일</th>
                 <td>
-                    <input type="text" placeholder="ex) admin" name="id" required>
+                    <input type="text" placeholder="ex) admin" name="id" title="이메일 아이디" required>
                     <span>@</span>
-                    <input type="text" placeholder="ex) werun.pe.kr" name="domain" required>
+                    <input type="text" placeholder="ex) werun.pe.kr" name="domain" title="이메일 도메인" required>
                     <button class="tableBtn" type="button" name="dupChk">중복확인</button>
+					<input type="hidden" name="email" />
                 </td>
             </tr>
             <tr>
                 <th class="required">비밀번호</th>
                 <td>
-                    <input type="password" placeholder="8자 이상의 영문,숫자,특수문자 조합" name="password">
-                    <input type="password" placeholder="패스워드 확인" name="password2">
+                    <input type="password" placeholder="8자 이상의 영문,숫자,특수문자 조합" title="비밀번호" name="password" required>
+                    <input type="password" placeholder="패스워드 확인" title="비밀번호 확인" name="password2" required>
                 </td>
             </tr>
             <tr>
                     <th class = "required">이름</th>
-                    <td><input type="text" placeholder="한글 or 영문 전체 이름 입력." name="name"></td>
+                    <td><input type="text" placeholder="한글 or 영문 전체 이름 입력." title="이름" name="name" required></td>
             </tr>
             <tr>
                 <th class = "required">닉네임</th>
                 <td>
-                <input type = "text" placeholder = "한글 or 영문, 2글자 이상" name ="nickname">
+                <input type = "text" placeholder = "한글 or 영문, 2글자 이상" title="닉네임" name ="nickname" required>
                 </td>
             </tr>
             <tr>
                 <th class = "required">생년월일</th>
                     <td>
-                        <input type="text" placeholder="0000-00-00" name="bDate" />
+                        <input type="text" placeholder="0000-00-00" title="생년월일" name="bDate" required />
                     </td>
             </tr>
             <tr>
                 <th class = "required">전화번호</th>
                     <td>
-                        <input type="text" placeholder="010-1234-5678" name="phone" />
+                        <input type="text" placeholder="010-1234-5678" title="전화번호" name="phone" required />
                     </td>
             </tr>
             <tr>
@@ -80,7 +81,7 @@
                     </p>
 
                     <p class="mt5">
-                        <input type="text" name="addr2" placeholder="상세주소" />
+                        <input type="text" name="addr2" title="상세주소" placeholder="상세주소" />
                     </p>
 
                     <input type="hidden" name="zipCode" />
@@ -153,8 +154,8 @@
 
 /* 주소 받아주기 */
 var jusoCallBack = function(addr1, addr2, addr3, zipcode){
-    $("[name=addr1]").val(addr1);
-    $("[name=addr2]").val(addr2+" "+addr3);
+    $("[name=addr1]").val(addr1+" "+addr2);
+    $("[name=addr2]").val(addr3);
     $("[name=zipCode]").val(zipcode);
 }
 
@@ -163,32 +164,48 @@ var goPopup = function(){
     var pop = window.open("/popup/juso","pop","width=570,height=440, scrollbars=yes, resizable=yes");
 }
 
+var ChangeDupBtn = function(b){
+	if(b == true){
+		$("[name=email]").val($("[name=id]").val()+"@"+$("[name=domain]").val());
+		$("[name=dupChk]").text("중복확인 완료").addClass("bgTrans").addClass("cOrg").css({
+			cursor : "default",
+			outline : "0px none"
+		}).off();
+	}else{
+		return false;
+	}
+}
+
+/* 중복체크 ajax */
 var chkDuplicate = function(){
-    id = $("[name=email]");
-    domain = $("[name=domain]");
-    reChk = true;
+	
+	id = $("[name=id]");
+	domain = $("[name=domain]");
+	
+	if(id.val() == "" || domain.val() == ""){
+		alert("이메일을 확인해주세요.");
+		return false;
+		reChk = false;
+	}
 
-    if(id.val() == "" || domain.val() == ""){
-        alert("이메일을 확인해주세요.");
-        return false;
-        reChk = false;
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/member/join/chk",
-      data: {
-           id:     $("[name=email]").val(),
-           domain: $("[name=domain]").val()
-        },
-      success:function(data){
-        console.log(data);
-      },
-      error:function(request, status, error){
-        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
-      }
-
-    })
+	$.ajax({
+	  type: "POST",
+	  url: "/member/join/chk",
+	  data: {
+		   id:     $("[name=id]").val(),
+		   domain: $("[name=domain]").val()
+		},
+	  success:function(data){
+		if(data == "true"){
+			alert("이미 가입되어 있는 이메일입니다.\r\n다른 이메일을 사용하시기 바랍니다.");
+		}else{
+			ChangeDupBtn(confirm("사용 가능한 이메일입니다. 사용하시겠습니까?"));
+		}
+	  },
+	  error:function(request, status, error){
+		console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+	  }
+	});
 
 }
 
@@ -203,6 +220,6 @@ var setEvent = function(){
 $(document).ready(function(){
 
     setEvent();
-
+	Werun.util.FormCheck($("#joinForm"));
 });
 </script>

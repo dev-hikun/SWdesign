@@ -7,11 +7,14 @@
 .cCeruleanBlue{color:#618bdf !important;}
 .cBold{font-weight:700;}
 .cExBold{font-weight:800;}
+.cWhite{color:White !important;}
 
 /* background */
 .bgMint{background:#29c2b5;}
 .bgCeruleanBlue{background:#618bdf;}
 .bgBlue{background:#1d4082 !important;}
+.bgOrg{background:#e85840 !important;}
+.bgTrans{background:transparent !important}
 
 /*padding, margin*/
 .pl20{padding-left:20px;}

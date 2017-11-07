@@ -12,8 +12,16 @@ class Email_chk extends CI_Model {
         parent::__construct();
     }
 
-    public function dupChk()
+    public function dupChk($data)
     {
-        return false;
+		$query = $this->db->query("SELECT * FROM `MEMBER` WHERE EMAIL='".$data['id'].'@'.$data['domain']."';");
+		
+		if($query->num_rows() > 0){
+			return true;
+			exit;
+		}else{
+			return false;
+			exit;
+		}
     }
 }
