@@ -13,16 +13,46 @@ class Login extends CI_Controller {
           $data['css_link'] = '<link href="/libraries/css/member.css" rel="stylesheet" type="text/css" />';
 
           $this->load->view('templates/header', $data);
-		  if($mode == "index"){
-			$this->load->view('member/login', $data);
-		  }else if($mode == "ok"){
-			  $this->_ok();
-		  }
+    		  if($mode == "index"){
+    			$this->load->view('member/login', $data);
+    		  }else if($mode == "ok"){
+    			  $this->_ok();
+    		  }
           $this->load->view('templates/footer');
         }
-		
+
 		private function _ok(){
-			print_r($_POST);
+			if(!$_POST || isset($_SESSION['logged_in'])) exit('비정상적인 접근입니다.');
+      $mData['pw'] = $_POST['passwd'];
+      $mData['email'] = $_POST['email'];
+      $mData['permit'] = $_POST['permit'];
+      if($mData['email'] == "admin@werun.pe.kr") $mData['permit'] = 0;
+      $this->load->model('member/member');
+      $res = $this->member->login($mData);
+      if($res == false){
+          echo "<script type='text/javascript'>
+            alert('아이디나 비밀번호, 회원구분을 확인해주세요.');
+            history.back();
+          </script>";
+          exit;
+      }
+
+      if(isset($_SESSION['logged_in']) == true){
+          exit('비정상적인 접근입니다.');
+      }else{
+          $sessData = array(
+            'email' => $res['email'],
+            'permit' => $res['permit'],
+            'name' => $res['name'],
+            'nickName' => $res['nickName'],
+            'sex' => $res['sex'],
+            'addr' => $res['addr'],
+            'idx' => $res['memberIdx'],
+            'logged_in' => 'Y'
+          );
+          $this->session->set_userdata($sessData);
+          header('Location: /index.php');
+      }
 		}
 
 }

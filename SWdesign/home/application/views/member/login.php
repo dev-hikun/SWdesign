@@ -26,16 +26,17 @@
                 </span>
             </p>
 		</form>
-		
+
 <script type="text/javascript">
 
-var validation = function(){	
+var validation = function(){
 	return Werun.util.FormCheck($("#loginForm"));
 }
 
 var setEvent = function(){
 	$("input[type=text], input[type=password]").keypress(function(e){
 		if(e.keyCode == 13){
+            e.preventDefault();
             $(this).closest("form").submit();
 		}
 	});

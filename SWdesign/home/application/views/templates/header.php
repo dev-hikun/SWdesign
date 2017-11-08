@@ -24,11 +24,23 @@
     <div class="wrap">
         <header>
             <div class="globalArea">
+            <?php
+                if(!isset($_SESSION['logged_in'])):
+            ?>
                 <nav class="global">
                         <a href="/member/login" class="login">로그인</a>
                         <a href="/member/join" class="join">회원가입</a>
                         <a href="#" class="findInfo">정보찾기</a>
                 </nav>
+            <?php
+                else:
+            ?>
+                <nav class="global">
+                        <a href="#"><?= $_SESSION['name']."(".$_SESSION['nickName'].")님 환영합니다." ?></a>
+                        <a href="/member/login/bye" class="login">로그아웃</a>
+                        <a href="#" class="findInfo">내정보</a>
+                </nav>
+            <?php endif; ?>
             </div>
             <h1 class="logo">
                 <a href='/'><img src="/libraries/images/common/c_logo_big.jpg" alt="We run" /></a>
