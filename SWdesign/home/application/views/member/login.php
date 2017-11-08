@@ -1,5 +1,5 @@
 
-<?php echo form_open('/member/login/ok', array('id'=>'loginForm', 'name'=>'loginForm', 'onSubmit'=>'return false;')); ?>
+<?php echo form_open('/member/login/ok', array('id'=>'loginForm', 'name'=>'loginForm', 'onSubmit'=>'return validation();')); ?>
             <p class="login">
                 <span class="tit">We Run - 통합 대회 관리 시스템 <strong class="cOrg">로그인</strong></span>
                 <span class="contWrap">
@@ -29,26 +29,14 @@
 		
 <script type="text/javascript">
 
-var validation = function(){
-	var email = $("[name=email]");
-	var pw = $("[name=passwd]");
-	var obj = null;
-	var msg = null;
-	var returnValue = true;
-	
-	if(Werun.util.FormCheck($("#loginForm")) == false){
-		return false;
-	}
-	
-	if(msg != null) alert(msg);
-	if(obj != null) obj.focus();
-	return returnValue;
+var validation = function(){	
+	return Werun.util.FormCheck($("#loginForm"));
 }
 
 var setEvent = function(){
 	$("input[type=text], input[type=password]").keypress(function(e){
 		if(e.keyCode == 13){
-            validation();
+            $(this).closest("form").submit();
 		}
 	});
 }
