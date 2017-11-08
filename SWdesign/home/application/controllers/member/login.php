@@ -13,8 +13,16 @@ class Login extends CI_Controller {
           $data['css_link'] = '<link href="/libraries/css/member.css" rel="stylesheet" type="text/css" />';
 
           $this->load->view('templates/header', $data);
-          $this->load->view('member/login', $data);
+		  if($mode == "index"){
+			$this->load->view('member/login', $data);
+		  }else if($mode == "ok"){
+			  $this->_ok();
+		  }
           $this->load->view('templates/footer');
         }
+		
+		private function _ok(){
+			print_r($_POST);
+		}
 
 }
