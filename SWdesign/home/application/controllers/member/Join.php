@@ -74,7 +74,7 @@ class Join extends CI_Controller {
         }
 
         //회원가입 완료
-        private function _ok(){
+		private function _ok(){
 			    //echo "<script type='text/javascript'>alert('준비중입니다.'); history.back(); exit;</script>";
           if(!$_POST){
             echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back(); exit;</script>";
@@ -82,39 +82,40 @@ class Join extends CI_Controller {
           }
           if(!$_POST) exit('비정상적인 접근입니다.');
 
-          $mdata['id'] = $_POST["email"];
-          $mdata['pw'] = $_POST["password"];
-          $mdata['name'] = $_POST["name"];
-          $mdata['nickName'] = $_POST["nickname"];
-          $mdata['birth'] = $_POST["bDate"];
-          $mdata['phone'] = $_POST["phone"];
-          $mdata['addr1'] = $_POST["addr1"];
-          $mdata['addr2'] = $_POST["addr2"];
-          $mdata['zipCode'] = $_POST["zipCode"];
-          $mdata['sex'] = $_POST["sex"];
-          $mdata['file'] = "";
-          $mdata['parts'] = "";
-          $mdata['permit'] = $_POST['permit'];
-          $mdata['public'] = $_POST['public'];
+			$mdata['id'] = $_POST["email"];
+			$mdata['pw'] = $_POST["password"];
+			$mdata['name'] = $_POST["name"];
+			$mdata['nickName'] = $_POST["nickname"];
+			$mdata['birth'] = $_POST["bDate"];
+			$mdata['phone'] = $_POST["phone"];
+			$mdata['addr1'] = $_POST["addr1"];
+			$mdata['addr2'] = $_POST["addr2"];
+			$mdata['zipCode'] = $_POST["zipCode"];
+			$mdata['sex'] = $_POST["sex"];
+			$mdata['file'] = "";
+			$mdata['parts'] = "";
+			$mdata['permit'] = $_POST['permit'];
+			$mdata['public'] = $_POST['public'];
 
-          if($mdata['pw'] != $_POST['password']){
-              echo "<script type='text/javascript'>
-                alert('비밀번호와 비밀번호확인이 다릅니다.');
-                history.back();
-                exit;
-              </script>";
-              exit;
-          }
-
-          if(is_array($_POST["part"])){
-              foreach($_POST['part'] as $key=>$val){
-                  if($mdata['parts'] == ""){
-                    $mdata['parts'] = $mdata['parts'].$val;
-                  }else{
-                    $mdata['parts'] = $mdata['parts']."|".$val;
-                  }
-              }
-          }
+			if($mdata['pw'] != $_POST['password']){
+			  echo "<script type='text/javascript'>
+				alert('비밀번호와 비밀번호확인이 다릅니다.');
+				history.back();
+			  </script>";
+			  exit;
+			}
+			
+			if(is_array($_POST["part"])){
+				foreach($_POST['part'] as $key=>$val){
+					if($val == "start") continue;
+					
+					if($mdata['parts'] == ""){
+						$mdata['parts'] = $mdata['parts'].$val;
+					}else{
+						$mdata['parts'] = $mdata['parts']."|".$val;
+					}
+				}
+			}
 
           //업로드를 위한..
           $config = array(
