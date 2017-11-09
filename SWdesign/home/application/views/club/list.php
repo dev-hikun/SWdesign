@@ -86,8 +86,8 @@
                     <span class="title">테레사(테니스 레슨 받는 사람들)asdadasdasdasdadada</span>
                 </span>
                 <span class="btnBox">
-                    <button><strong class="cOrg">14</strong>명</button>
-                    <button>상세</button>
+                    <button type="button" class="people"><strong class="cOrg">14</strong>명</button>
+                    <button type="button" class="detail">상세</button>
                 </span>
             </a>
         </li>
