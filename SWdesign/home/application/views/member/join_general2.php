@@ -183,6 +183,7 @@ var ChangeDupBtn = function(b){
 			cursor : "default",
 			outline : "0px none"
 		}).off();
+		$("[name=id], [name=domain]").attr('readonly', 'readonly');
 	}else{
 		return false;
 	}
