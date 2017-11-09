@@ -2,19 +2,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>
+        <?php
+        echo "We run";
+        if($page_title != ""):
+		?>
+				<?= " - ".$page_title; ?>
+        <?php endif; ?>
+    </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
     <link href="/libraries/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/layout.css" rel="stylesheet" type="text/css">
     <link href="/libraries/css/common.css" rel="stylesheet" type="text/css">
     <link href="/libraries/extern/jQuery/jquery-ui.css" rel="stylesheet" type="text/css">
     <?php echo $css_link; ?>
-    <title>
-        <?php
-        echo "We run";
-        if($page_title != ""){
-            echo " - ".$page_title;
-        }
-        ?>
-    </title>
     <script type="text/javascript" src="/libraries/extern/jQuery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/libraries/extern/jQuery/jquery-ui.min.js"></script>
 
