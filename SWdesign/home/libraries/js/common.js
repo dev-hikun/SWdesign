@@ -89,7 +89,6 @@ var Werun = Werun || {};
 		var msg = null;
 		var obj = null;
 		$frm.find("input[type=text], input[type=password], textarea[data-valid], select[data-valid]").each(function(){
-
 			var $t = this;
 			var t_val = util.trim($t.value);
 
@@ -123,6 +122,14 @@ var Werun = Werun || {};
 			if(($t.name).indexOf("date") != -1 || ($t.name).indexOf("birth") != -1){
 				if(util.DateCheck(t_val) == false){
 					msg = "날짜 형식이 잘못되었습니다.";
+					returnVal = false;
+					obj = $(this);
+				}
+			}
+			
+			if(($t.name).indexOf("email") != -1){
+				if(util.EmailCheck(t_val) == false){
+					msg = "이메일 형식이 잘못되었습니다.";
 					returnVal = false;
 					obj = $(this);
 				}
