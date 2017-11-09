@@ -113,6 +113,7 @@
             <tr>
                 <th>관심있는 종목</th>
                 <td>
+					<input type="hidden" name="part[]" value="start" />
                     <div class="parts">
                         <label for="part1">
                             <input type="checkbox" value="1" name="part[]" id="part" />야구
@@ -121,22 +122,21 @@
                             <input type="checkbox" value="2" name="part[]" id="part2" />배드민턴
                         </label>
                     </div>
+				
                     <input type="hidden" name="permit" value="3" />
                 </td>
             </tr>
             <tr>
                 <th>이름공개여부</th>
                 <td>
-
-                <label for="public1">
-                    <input type="radio" name="public" id="public1" value="1" checked="checked" />
-                    예
-                </label>
-                <label for="public2" class="ml10">
-                    <input type="radio" name="public" id="public2" value="0" />
-                    아니오(닉네임으로 공개)
-                </label>
-
+					<label for="public1">
+						<input type="radio" name="public" id="public1" value="1" checked="checked" />
+						예
+					</label>
+					<label for="public2" class="ml10">
+						<input type="radio" name="public" id="public2" value="0" />
+						아니오(닉네임으로 공개)
+					</label>
                 </td>
             </tr>
             <tr>
@@ -183,6 +183,7 @@ var ChangeDupBtn = function(b){
 			cursor : "default",
 			outline : "0px none"
 		}).off();
+		$("[name=id], [name=domain]").attr('readonly', 'readonly');
 	}else{
 		return false;
 	}
