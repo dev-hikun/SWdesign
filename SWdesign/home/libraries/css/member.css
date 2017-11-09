@@ -49,3 +49,7 @@ div.termsForm div.termsCheck{padding:5px 0px; box-sizing:border-box; font-size:1
 
 div.termsForm input[name="email"]{width:160px;}
 div.termsForm input[type="password"]{width:300px;}
+div.termsForm input[name="addr1"]{width:400px;}
+div.termsForm input[name="addr2"]{width:473px;}
+
+div.parts button[data-chk]{background:#e85840 !important; color:White; outline:0px none;}
