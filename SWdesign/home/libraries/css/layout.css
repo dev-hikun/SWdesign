@@ -8,7 +8,9 @@
 .globalArea nav.global a:last-child{border-right:0px; margin-right:0px;}
 .globalArea nav.global a.login:before{background-position:0px 0px;}
 .globalArea nav.global a.join:before{background-position:-18px 0px;}
-.globalArea nav.global a.findInfo:before{background-position:-36px 0px;}
+.globalArea nav.global a.findInfo:before{background-position:-36px 0px}
+.globalArea nav.global a.none:before{background:none;}
+.globalArea nav.global a.none:hover{text-decoration:none;}
 
 h1.logo{text-align:center; height:105px; box-sizing: border-box; padding-top:15px;}
 

@@ -82,7 +82,7 @@ class Join extends CI_Controller {
           }
           if(!$_POST) exit('비정상적인 접근입니다.');
 
-          $mdata['id'] = $_POST["id"];
+          $mdata['id'] = $_POST["email"];
           $mdata['pw'] = $_POST["password"];
           $mdata['name'] = $_POST["name"];
           $mdata['nickName'] = $_POST["nickname"];

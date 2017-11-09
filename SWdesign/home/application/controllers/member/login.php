@@ -17,7 +17,9 @@ class Login extends CI_Controller {
     			$this->load->view('member/login', $data);
     		  }else if($mode == "ok"){
     			  $this->_ok();
-    		  }
+    		  }else if($mode == "bye"){
+				  $this->_logout();
+			  }
           $this->load->view('templates/footer');
         }
 
@@ -53,6 +55,26 @@ class Login extends CI_Controller {
           $this->session->set_userdata($sessData);
           header('Location: /index.php');
       }
+		}
+		
+		// 로그아웃
+		private function _logout(){
+			if(isset($_SESSION['logged_in']) == false){
+				exit('비정상적인 접근입니다.');
+			}
+			
+			unset(
+				$_SESSION['email'],
+				$_SESSION['permit'],
+				$_SESSION['name'],
+				$_SESSION['nickName'],
+				$_SESSION['sex'],
+				$_SESSION['addr'],
+				$_SESSION['memberIdx'],
+				$_SESSION['logged_in']
+			);
+			
+			header('Location: /index.php');
 		}
 
 }

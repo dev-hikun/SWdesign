@@ -36,7 +36,7 @@
                 else:
             ?>
                 <nav class="global">
-                        <a href="#"><?= $_SESSION['name']."(".$_SESSION['nickName'].")님 환영합니다." ?></a>
+                        <a href="#" class="none" style="cursor:default"><?= $_SESSION['name']."(".$_SESSION['nickName'].")님 환영합니다." ?></a>
                         <a href="/member/login/bye" class="login">로그아웃</a>
                         <a href="#" class="findInfo">내정보</a>
                 </nav>
