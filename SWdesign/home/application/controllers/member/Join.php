@@ -80,8 +80,9 @@ class Join extends CI_Controller {
             echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back(); exit;</script>";
             exit;
           }
+          if(!$_POST) exit('비정상적인 접근입니다.');
 
-          $mdata['id'] = $_POST["id"];
+          $mdata['id'] = $_POST["email"];
           $mdata['pw'] = $_POST["password"];
           $mdata['name'] = $_POST["name"];
           $mdata['nickName'] = $_POST["nickname"];
