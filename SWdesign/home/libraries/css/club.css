@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+.club_search{max-width:1200px; min-width:980px; height:280px; padding-top:123px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; margin:20px auto 0px auto; background:url('/libraries/images/club/bg_search.jpg') top center no-repeat;}
+.club_search .searchArea{width:392px; height:52px; margin:0 auto; border:3px solid #fff; background:#1a406e; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.club_search .btnArea{width:630px; height:45px; font-size:0px; padding-top:20px; border-top:1px dashed #406088; margin:20px auto 0 auto;}
+.club_search .btnArea .txtBtn{width:202px; margin:0px; margin-left:12px; height:45px; background:rgba(0,0,0,.5); color:white; font-size:14px; font-weight:normal;}
+.club_search .btnArea .txtBtn.on{background:rgba(118,140,198,1.0);}
+.club_search .btnArea button:first-child{margin-left:0px;}
+.club_count{display:block; margin-top:15px; height:25px; line-height:25px; text-align:center; font-size:14px;}
+
+.club_list_wrap{min-width:980px; width:980px; margin:10px auto 0px auto;}
+.club_list_wrap:after{content:''; clear:both; display:block;}
+.club_list > li{width:314px; height:245px; border:1px solid #e3e3e3; float:left; margin-right:19px; overflow:hidden; position:relative; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.club_list > li:nth-child(3n){margin-right:0px;}
+.club_list > li:hover{border:3px solid #1d4082;}
+.club_list > li > a{display:block; width:314px; height:245px; position:absolute; top:0px; left:0px;}
+.club_list > li > a:hover{text-decoration:none}
+.club_list > li:hover > a{top:-2px; left:-2px;}
+.club_list > li > a > span{display:block;}
+.club_list li a span.imgBox{position:relative;}
+.club_list li a span.imgBox img{display:block; z-index:0;}
+.club_list li a span.imgBox div.tags{position:absolute; z-index:1; right:10px; top:10px;}
+.club_list li:hover a span.imgBox div.tags{right:10px;}
+.club_list li a span.imgBox div.tags span{ color:white; height:15px; padding:0px 5px; background:#e85840;}
+.club_list li a span.imgBox div.tags span.part{background-color:#768cc6;}
+.club_list li a span.titleBox{margin:10px 10px 0px 10px;}
+.club_list li a span.titleBox span{display:block;}
+.club_list li a span.titleBox span.loc{font-size:12px; line-height:15px; height:15px; color:#666;}
+.club_list li a span.titleBox span.title{font-size:14px; line-height:25px; height:25px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal}
+.club_list li a span.btnBox{margin:9px 10px 0px 10px; border-top:1px solid #e3e3e3; height:33px; line-height:33px; text-align:right;}
+.club_list li a span.btnBox button{padding-left:17px; font-size:12px; border:0px; background:0px; position:relative; color:#666;}
+.club_list li a span.btnBox button:hover{text-decoration:underline;}
+.club_list li a span.btnBox button:before{content:''; width:12px; height:12px; position:absolute; display:block; top:4px; left:0px; background:url('/libraries/images/common/i_common.png') no-repeat; background-position:-51px -0px;}
+.club_list li a span.btnBox button.detail:before{background-position:-68px 0px;}
