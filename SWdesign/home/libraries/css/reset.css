@@ -51,6 +51,7 @@ input{height:30px; line-height:30px; vertical-align:middle; box-sizing:border-bo
 input[type=checkbox]{margin-right:6px;}
 input[type=radio]{margin-right:6px;}
 input[type=text], input[type=password]{border:1px solid #e3e3e3; border-radius:3px; padding-right:10px;}
+textarea{border:1px solid #e3e3e3; border-radius:3px; font-family:'Nanum Gothic', sans-serif; outline:0px; padding:5px 5px; width:100%; min-height:300px; font-size:12px; box-sizing:border-box;}
 select{height:30px; outline:0px; box-sizing:border-box; border:0; padding:0 8px; border:1px solid #e3e3e3;}
 
 /*table*/

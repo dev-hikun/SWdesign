@@ -12,7 +12,7 @@
 .globalArea nav.global a.none:before{background:none;}
 .globalArea nav.global a.none:hover{text-decoration:none;}
 
-h1.logo{text-align:center; height:105px; box-sizing: border-box; padding-top:15px;}
+h1.logo{text-align:center; height:105px; box-sizing: border-box; padding-top:15px; min-width:980px; margin:0 auto;}
 
 nav.gnb{background:#333; height:50px; width:100%; font-size:0px; color:#fff; font-weight:700; min-width:980px;} /* 크기관련 */
 nav.gnb .gnbArea{width:980px; margin: 0 auto;} /* 크기관련 */
@@ -43,6 +43,8 @@ section nav.lnb ul li.on+li, section nav.lnb ul li:hover+li{border-left:0px;}
 section nav.lnb ul.four li{width:25%}
 section nav.lnb ul.three li{width:33%}
 section nav.lnb ul.three li:last-child{width:34%}
+section nav.lnb ul li a{width:100%; height:53px; display:block; line-height:53px;}
+section nav.lnb ul li a:hover{text-decoration:none;}
 
 nav.bottom{height:30px; margin-top:100px; line-height:30px; background-color:#333; min-width:980px;} /* 크기관련 */
 nav.bottom div.bottomArea{width:980px; color:white; margin:0 auto;}  /* 크기관련 */
