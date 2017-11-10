@@ -12,15 +12,16 @@
 
 <nav class="lnb">
     <ul class="three">
-        <li class="on">클럽 리스트 / 검색</li>
-        <li>클럽 등록</li>
-        <li>클럽 관리</li>
+        <li <?php if($mode == 'index'): ?> class="on"<?php endif; ?>><a href="/club" title="클럽 리스트">클럽 리스트 / 검색</a></li>
+        <li <?php if($mode == 'regist'): ?> class="on"<?php endif; ?>><a href="/club/regist" title="클럽 등록">클럽 등록</a></li>
+        <li <?php if($mode == 'admin'): ?> class="on"<?php endif; ?>><a href="/club/manage" title="클럽 관리">클럽 관리</a></li>
     </ul>
 </nav>
 
 <div class="club_search">
     <div class="searchArea">
-
+        <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
+        <button type="submit">검색</button>
     </div>
     <div class="btnArea">
         <button class="txtBtn all on">전체</button>
@@ -92,4 +93,14 @@
             </a>
         </li>
     </ul>
+</div>
+
+<div class="paginated">
+    <a href="#" class="first">&lt;&lt;</a>
+    <a href="#" class="prev">&lt;</a>
+    <a href="#" class="now">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="next">&gt;</a>
+    <a href="#" class="end">&gt;&gt;</a>
 </div>
