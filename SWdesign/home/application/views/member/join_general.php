@@ -50,10 +50,33 @@
     </div>
 	<div class="buttonArea">
 		<button type="button" class="txtBtn" onclick="history.back();">취소</button>
-		<button type="button" class="txtBtn bgBlue" onclick="">다음</button>
+		<button type="button" class="txtBtn bgBlue" onclick="chkAgree();">다음</button>
 	</div>
 </div>
 
 <script type="text/javascript">
+function chkAgree(){
+    if($("#is_agree").prop("checked") == false){
+        alert("약관에 전체 동의하셔야 회원가입이 가능합니다.");
+        return false;
+    }else{
+        document.location.href='/member/join/general/2';
+    }
+}
 
+$(document).ready(function(){
+
+    $("#is_agree").change(function(){
+        $("#is_agree1, #is_agree2").prop("checked", $(this).prop("checked"));
+    });
+
+    $("#is_agree1, #is_agree2").change(function(){
+        var all = $("#is_agree");
+        var chk1 = $("#is_agree1").prop("checked");
+        var chk2 = $("#is_agree2").prop("checked");
+
+        if(chk1 == true && chk2 == true) all.prop("checked", true);
+        else all.prop("checked", false);
+    });
+});
 </script>
