@@ -23,7 +23,13 @@ class Club extends CI_Controller {
 
         /* 클럽 등록 */
         public function _regist($mode){
-          if(!isset($_SESSION['logged_in'])) exit;
+          if(!isset($_SESSION['logged_in'])){
+            echo "<script type='text/javascript'>
+              alert('해당 서비스를 이용하기 위해서는 로그인이 필요합니다.');
+              document.location.href='/member/login?ref=club'
+            </script>";
+            exit;
+          }
           $this->load->view('club/regist', $mode);
         }
 }
