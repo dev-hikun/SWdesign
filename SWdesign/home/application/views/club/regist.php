@@ -19,14 +19,32 @@
             <tr>
                 <th class="required">클럽 이름</th>
                 <td>
-                    <input type="text" name="clubname" /> <!--placeholder = "한글이나 영문으로 2글자 이상 입력"-->
+                    <input type="text" name="title" placeholder="사용하실 클럽명을 입력해주세요." />
                     <button class="tableBtn">중복확인</button>
                 </td>
             </tr>
             <tr>
-                <th>대표 이미지</th>
+                <th class="required">활동 지역</th>
                 <td>
-                    <input type="file" name="profileImage">
+                    <p>
+                        <span class="cOrg">*</span>
+                        활동 지역은 최대 3개까지 선택 가능합니다.
+                    </p>
+                    <div class="addr">
+                        <div class="sido">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="required">클럽소개(간단히)</th>
+                <td>
+                    <input type="text" name="description" placeholder="이곳에 간단히 클럽 소개를 적어주세요." />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="content" placeholder="클럽 소개를 자세히 입력 해 주세요."></textarea>
                 </td>
             </tr>
             <tr>
@@ -40,24 +58,18 @@
                 </td>
             </tr>
             <tr>
-                <th class="required">활동 지역</th>
-                <td>
-                    <p><span class="cOrg">*</span> 활동 지역은 최대 3개까지 선택 가능합니다.</p>
-                    <div class="addr">
-                        <div class="sido">
-                        </div>
-                        <div class="siGungu">
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
 
             <th class = "required">클럽 공개 여부</th>
                 <td>
                     <input type="radio" name="public" value="2" checked="checked"> 아무나
                     <input type="radio" name="public" value="1"> 승인제
                     <input type="radio" name="public" value="0"> 비공개
+                </td>
+            </tr>
+            <tr>
+                <th>대표 이미지</th>
+                <td>
+                    <input type="file" name="profileImage">
                 </td>
             </tr>
         </tbody>
@@ -100,7 +112,22 @@ var settingSigungu = function(data, idx){
     for(i=0; i<parent.data.length; i++){
         var addrName = "addr_"+idx+"_"+i;
         var lbl = $("<label>").attr("for", addrName);
-        lbl.append($("<input type='checkbox' name='addrs' id='"+addrName+"' value='"+parent.data[i]+"'>"));
+        lbl.append($("<input type='checkbox' name='addrs' id='"+addrName+"' value='"+parent.data[i]+"'>").change(function(e){
+            var pTag = $(".addr").siblings("p");
+            if(pTag.find("i").length > 4){
+                alert("5개 지역까지만 선택 가능합니다.");
+                if($(this).is(":checked")) $(this).prop('checked', false);
+                return;
+            }
+
+            if($(this).prop('checked') == true){
+                $(".addr").prepend($("<input>").attr({name: 'addr[]', value: parent.name+" "+$(this).val(), class : addrName, type : 'hidden'}));
+                pTag.append("<i class='"+addrName+"'>"+parent.name+" "+$(this).val()+"</i>");
+            }else{
+                $(".addr input."+addrName).remove();
+                pTag.find("i."+addrName).remove();
+            }
+        }));
         lbl.append(parent.data[i]);
         div.append(lbl);
     }

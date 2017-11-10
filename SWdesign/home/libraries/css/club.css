@@ -42,9 +42,14 @@
 .club_list li a span.btnBox button.detail:before{background-position:-68px 0px;}
 
 .regist_wrap{margin-top:20px;}
+.regist_wrap p i{color:#e85840}
+.regist_wrap p i:after{content:','; display:inline-block; text-align:left; width:10px; height:12px;}
+.regist_wrap p i:last-child:after{content:'';}
 .regist_wrap .addr{margin-top:5px; padding:5px 5px; background:#f6f6f6; text-align:center;}
 .regist_wrap .sidoBtn{display:inline-block; cursor:pointer; padding:3px 4px; border:1px solid #e3e3e3; margin-right:2px; background:white;}
 .regist_wrap .sidoBtn.on{background:#1d4082; color:white;}
-.regist_wrap .addr .siGungu{background:#fff; margin-top:10px; padding:0px 10px; text-align:left;}
+.regist_wrap .addr .siGungu{background:#fff; margin-top:10px; padding:10px; text-align:left;}
 .regist_wrap .addr label{min-width:77px; display:inline-block;}
 .regist_wrap .addr input[type=checkbox]{height:14px; line-height:14px;}
+.regist_wrap input[name=title]{width:300px;}
+.regist_wrap input[name=description]{width:100%;}
