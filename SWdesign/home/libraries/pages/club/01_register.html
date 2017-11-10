@@ -6,7 +6,7 @@
 	<link href="../../css/reset.css" rel="stylesheet" type="text/css">
 	<link href="../../css/layout.css" rel="stylesheet" type="text/css">
 	<link href="../../css/common.css" rel="stylesheet" type="text/css">
-	<link href="../../css/competition.css" rel="stylesheet" type="text/css">
+	<link href="../../css/club.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="wrap">
@@ -51,6 +51,109 @@
 				배너영역
 			</article>
 		</section>
+
+
+
+
+	<div class="termsForm">
+    <div class="agreeHeader">
+        <div class="agreeText">
+            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다</p>
+        </div>
+    </div>
+
+	<div class="termsHeader">
+        <p class="tit">기본정보</p>
+    </div>
+    <table class="bbs_write">
+        <caption>클럽정보</caption>
+        <colgroup>
+            <col style="width:30%" />
+            <col style="width:70%" />
+        </colgroup>
+		<tbody>
+            <tr>
+                <th class="required">클럽 이름</th>
+                <td>
+                    <input type="text" name="club name"> <!--placeholder = "한글이나 영문으로 2글자 이상 입력"--> 
+                    <button class="tableBtn">중복확인</button>
+                </td>
+            </tr>
+			<tr>
+                <th class = "required">관심있는 종목</th>
+                <td>
+                    <select name="parts">
+                        <option>야구</option>
+                        <option>배드민턴</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th class = "required">활동 지역</th>
+                <td>
+                    <span>시/도 : </span>
+                    <select name="state">
+                        <option value="서울">서울</option>
+                    </select>
+
+                    <span class="pl20">시/군/구 : </span>
+                    <select name="city">
+                        <option value="강남구">강남구</option>
+						<option value="강동구">강동구</option>
+						<option value="강북구">강북구</option>
+						<option value="강서구">강서구</option>
+						<option value="관악구">관악구</option>
+						<option value="광진구">광진구</option>
+						<option value="구로구">구로구</option>
+						<option value="금천구">금천구</option>
+						<option value="노원구">노원구</option>
+						<option value="도봉구">도봉구</option>
+						<option value="동대문구">동대문구</option>
+						<option value="동작구">동작구</option>
+						<option value="마포구">마포구</option>
+						<option value="서대문구">서대문구</option>
+						<option value="서초구">서초구</option>
+						<option value="성동구">성동구</option>
+						<option value="성북구">성북구</option>
+						<option value="송파구">송파구</option>
+						<option value="양천구">양천구</option>
+						<option value="영등포구">영등포구</option>
+						<option value="용산구">용산구</option>
+						<option value="은평구">은평구</option>
+						<option value="종로구">종로구</option>
+						<option value="중구">중구</option>
+						<option value="중랑구">중랑구</option>
+					</select>
+                </td>
+            </tr>
+            <tr>
+                <th>클럽 프로필 이미지</th>
+                <td>
+                    <input type="file" name="profileImage">
+                </td>
+            </tr>
+            <tr>
+            <!--
+			<th class = "required">클럽 공개 여부</th>
+				<td>
+					<input type="radio" name="public" value="public" checked> 공개
+					<input type="radio" name="private" value="private"> 비공개
+				</td>
+			</tr>
+		-->
+        </tbody>
+    </table>
+
+    <div class="buttonArea">
+        <button type="button" class="txtBtn">취소</button>
+        <button type="submit" class="resetBtn">다시입력</button>
+        <button type="submit" class="txtBtn bgBlue">클럽 등록</button>
+    </div>
+</div>
+
+
+
+
 		<nav class="bottom">
 			<div class="bottomArea">
 				<ul>
@@ -61,6 +164,7 @@
 			</div>
 		</nav>
 		<footer>
+
 			<div class="siteInfo">
 				<p>Copyright Werun 2017. All Right Reserved.</p>
 			</div>
