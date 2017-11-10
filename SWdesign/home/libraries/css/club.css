@@ -1,7 +1,15 @@
 @charset 'UTF-8';
 
 .club_search{max-width:1200px; min-width:980px; height:280px; padding-top:123px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; margin:20px auto 0px auto; background:url('/libraries/images/club/bg_search.jpg') top center no-repeat;}
-.club_search .searchArea{width:392px; height:52px; margin:0 auto; border:3px solid #fff; background:#1a406e; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.club_search .searchArea{width:392px; font-size:0px; height:52px; margin:0 auto; border:3px solid #fff; background:#1a406e; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.club_search .searchArea > *{display:block;}
+.club_search .searchArea input{width:322px; height:46px; border:0px; color:white; font-size:14px; float:left;}
+.club_search .searchArea input::placeholder{color:#ddd;}
+.club_search .searchArea input::-webkit-placeholder{color:#ddd;}
+.club_search .searchArea input::-moz-placeholder{color:#ddd;}
+.club_search .searchArea input::-ms-placeholder{color:#ddd;}
+
+.club_search .searchArea button{width:64px; font-size:14px; height:46px; color:#333; outline:0px; margin:0px; border:0px; background:white; float:left; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
 .club_search .btnArea{width:630px; height:45px; font-size:0px; padding-top:20px; border-top:1px dashed #406088; margin:20px auto 0 auto;}
 .club_search .btnArea .txtBtn{width:202px; margin:0px; margin-left:12px; height:45px; background:rgba(0,0,0,.5); color:white; font-size:14px; font-weight:normal;}
 .club_search .btnArea .txtBtn.on{background:rgba(118,140,198,1.0);}

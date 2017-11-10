@@ -1,5 +1,6 @@
 
 <?php echo form_open('/member/login/ok', array('id'=>'loginForm', 'name'=>'loginForm', 'onSubmit'=>'return validation();')); ?>
+            <input type="hidden" name="ref" value="<?php if($_GET): echo $_GET['ref']; endif; ?>" />
             <p class="login">
                 <span class="tit">We Run - 통합 대회 관리 시스템 <strong class="cOrg">로그인</strong></span>
                 <span class="contWrap">
