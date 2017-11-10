@@ -40,3 +40,11 @@
 .club_list li a span.btnBox button:hover{text-decoration:underline;}
 .club_list li a span.btnBox button:before{content:''; width:12px; height:12px; position:absolute; display:block; top:4px; left:0px; background:url('/libraries/images/common/i_common.png') no-repeat; background-position:-51px -0px;}
 .club_list li a span.btnBox button.detail:before{background-position:-68px 0px;}
+
+.regist_wrap{margin-top:20px;}
+.regist_wrap .addr{margin-top:5px; padding:5px 5px; background:#f6f6f6; text-align:center;}
+.regist_wrap .sidoBtn{display:inline-block; cursor:pointer; padding:3px 4px; border:1px solid #e3e3e3; margin-right:2px; background:white;}
+.regist_wrap .sidoBtn.on{background:#1d4082; color:white;}
+.regist_wrap .addr .siGungu{background:#fff; margin-top:10px; padding:0px 10px; text-align:left;}
+.regist_wrap .addr label{min-width:77px; display:inline-block;}
+.regist_wrap .addr input[type=checkbox]{height:14px; line-height:14px;}
