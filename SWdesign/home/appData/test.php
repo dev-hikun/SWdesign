@@ -25,6 +25,24 @@
                 error(e){
                     console.log(e);
                 }
+            });
+
+            $.ajax({
+                type : "POST",
+                url : "/appData/selectResponse.php",
+                data : {
+                    table : "member",
+                    fields : ["*"],
+                    where : "memberIdx = 1",
+                    order : "order by memberIdx asc"
+                },
+                async:false,
+                success(data){
+                    console.log(data);
+                },
+                error(e){
+                    console.log(e);
+                }
             })
         </script>
 
