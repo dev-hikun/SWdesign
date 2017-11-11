@@ -8,7 +8,7 @@
 <?php $this->load->view('club/clubNav'); ?>
 
 <article class="regist_wrap">
-<?php echo form_open_multipart('/club/regist/ok', array('id'=>'clubRegForm', 'name'=>'clubRegForm')); ?>
+<?php echo form_open_multipart('club/regist/ok', array('id'=>'clubRegForm', 'name'=>'clubRegForm', 'onSubmit'=>'return formSubmit();')); ?>
     <table class="bbs_write">
         <caption>클럽정보입력 테이블</caption>
         <colgroup>
@@ -19,7 +19,7 @@
             <tr>
                 <th class="required">클럽 이름</th>
                 <td>
-                    <input type="text" name="title" placeholder="사용하실 클럽명을 입력해주세요." />
+                    <input type="text" name="title" title="클럽명" placeholder="사용하실 클럽명을 입력해주세요." required />
                 </td>
             </tr>
             <tr>
@@ -38,21 +38,19 @@
             <tr>
                 <th class="required">클럽소개(간단히)</th>
                 <td>
-                    <input type="text" name="description" placeholder="이곳에 간단히 클럽 소개를 적어주세요." />
+                    <input type="text" name="description" title="짧은 클럽소개" placeholder="이곳에 간단히 클럽 소개를 적어주세요." required />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <textarea name="content" placeholder="클럽 소개를 자세히 입력 해 주세요."></textarea>
+                    <textarea name="content" placeholder="클럽 소개를 자세히 입력 해 주세요." title="상세 클럽소개" required></textarea>
                 </td>
             </tr>
             <tr>
-                <th class="required">대표종목</th>
+                <th class="required" required title="대표종목">대표종목</th>
                 <td>
-                    <select name="parts">
+                    <select name="parts" title="클럽 대표종목">
                         <option>선택</option>
-                        <option>야구</option>
-                        <option>배드민턴</option>
                     </select>
                 </td>
             </tr>
@@ -60,9 +58,9 @@
 
             <th class = "required">클럽 공개 여부</th>
                 <td>
-                    <input type="radio" name="public" value="2" checked="checked"> 아무나
-                    <input type="radio" name="public" value="1"> 승인제
-                    <input type="radio" name="public" value="0"> 비공개
+                        <label for="public2"><input type="radio" name="public" value="2" id="public2" checked="checked">누구나 <span class="cGry">- 누구나 가입할 수 있습니다.</span> </label><br />
+                        <label for="public1"><input type="radio" name="public" value="1" id="pubilc1">부분제한적 <span class="cGry">- 관리자의 승인을 통해서만 가입이 가능합니다.</span></label><br />
+                        <label for="public0"> <input type="radio" name="public" value="0" id="public0">제한적 <span class="cGry">- 관리자의 초대에 의해서만 가입 가능합니다.</span></label>
                 </td>
             </tr>
             <tr>
@@ -84,6 +82,7 @@
 </article>
 
 <script type="text/javascript">
+
 var settingSido = function(data){
     for(var i=0; i<data.length; i++){
         var aTag = $("<a></a>").attr({'data-idx':i, 'data-name':data[i].name, class:'sidoBtn'})
@@ -114,10 +113,12 @@ var settingSigungu = function(data, idx){
         var lbl = $("<label>").attr("for", addrName);
         lbl.append($("<input type='checkbox' name='addrs' id='"+addrName+"' value='"+parent.data[i]+"'>").change(function(e){
             var pTag = $(".addr").siblings("p");
-            if(pTag.find("i").length > 4){
-                alert("5개 지역까지만 선택 가능합니다.");
-                if($(this).is(":checked")) $(this).prop('checked', false);
-                return;
+            if($(this).prop('checked') == true){
+                if(pTag.find("i").length > 4){
+                    alert("5개 지역까지만 선택 가능합니다.");
+                    if($(this).is(":checked")) $(this).prop('checked', false);
+                    return;
+                }
             }
 
             if($(this).prop('checked') == true){
@@ -129,11 +130,64 @@ var settingSigungu = function(data, idx){
             }
         }));
         lbl.append(parent.data[i]);
+        if($(".addr").siblings("p").find("i."+addrName).length > 0) lbl.find("#"+addrName).prop('checked', true);
         div.append(lbl);
     }
     $(".sido").append(div);
 }
 
+var settingPart = function(){
+    $.ajax({
+        type : "POST",
+        url : "/appData/selectResponse.php",
+        data : {
+            table : "parts",
+            fields : ["partIdx", "name"],
+            where : "purpose = 0 or purpose = 2",
+            order : "order by partIdx asc"
+        },
+        success(data){
+            var d = data.data.data;
+            for(var i=0; i<d.length; i++){
+                var option = $("<option></option>").val(d[i][0]).text(d[i][1]);
+                $("select[name=parts]").append(option);
+            }
+        },
+        error(e){
+            console.log(e);
+        }
+    })
+}
+
+
+var formSubmit = function(){
+
+    if($("input[name=title]").val() == ""){
+        alert("클럽명을 작성하지 않았습니다.");
+        $("input[name=title]").focus();
+        return false;
+    }else if($("input[name='addr[]']").length == 0){
+        alert("클럽 활동 지역을 적어도 한개는 선택해주세요.");
+        $("a.sidoBtn").focus();
+        return false;
+    }else if($("input[name=description]").val() == ""){
+        alert("짧은 클럽소개를 작성하지 않았습니다.");
+        $("input[name=title]").focus();
+        return false;
+    }else if($("select[name=parts]").val() == ""){
+        alert("대표종목을 선택해주세요.");
+        $("select[name=parts]").focus();
+        return false;
+    }
+
+    if(confirm('단 한개의 클럽만 관리자가 되실 수 있습니다.\r\n 클럽을 등록하시겠습니까?')){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+/** 이벤트 셋팅 **/
 var setEvent = function(){
     $.ajax({
         type : "POST",
@@ -146,8 +200,16 @@ var setEvent = function(){
             console.log(e);
         }
     });
+
+    $("#clubRegForm button[type=submit]").click(function(e){
+        e.preventDefault();
+        $("form#clubRegForm").trigger('submit');
+    });
+
+
 }
 $(document).ready(function(){
     setEvent();
+    settingPart();
 });
 </script>

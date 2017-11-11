@@ -41,12 +41,61 @@ class Regist extends CI_Controller {
     /* 클럽 등록 ok */
     private function _ok($data){
         if(!$data){
-            exit('비정상적인 접근입니다.');
-        }else{
-
-            foreach($data as $key=>$val){
-              echo $key."/";
-            }
+            echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back();</script>";
+            exit;
         }
+
+        unset($data['addrs']);
+        $s = array();
+        foreach($data as $key=>$val){
+          if(!is_array($data[$key])){
+            $s[$key] = htmlspecialchars($val);
+          }
+        }
+        $s['addr'] = "";
+        if(is_array($data["addr"])){
+          foreach($data['addr'] as $key=>$val){
+            if(!$s['addr']){
+              $s['addr'] = $s['addr'].$val;
+            }else{
+              $s['addr'] = $s['addr']."|".$val;
+            }
+          }
+        }
+        $config = array(
+          'upload_path' => './site_data/club_img/',
+          'allowed_types' => 'gif|jpg|png|jpeg',
+          'max_size' => '10240',
+          'max_width' => '10240',
+          'max_height' => '7680',
+          'remove_spaces' => true,
+          'encrypt_name' => true
+        );
+
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload("profileImage")){
+          $s['file'] = $this->upload->data("file_name");
+        }else{
+          $s['file'] = "";
+        }
+        $s['idx'] = $_SESSION['idx'];
+
+        $this->load->model('club/club');
+        $val = $this->club->regist($s);
+
+        if($val == true){
+          echo "<script type='text/javascript'>
+            alert('클럽이 생성되었습니다.');
+            document.location.href='/club/myclub';
+          </script>";
+        }else{
+          echo "<script type='text/javascript'>
+            alert('클럽생성에 실패하였습니다. 다시 시도해주세요.');
+            document.location.href='/club/regist';
+          </script>";
+        }
+          //header('Location: /');
+        exit;
     }
 }

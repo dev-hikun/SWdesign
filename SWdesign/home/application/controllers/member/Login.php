@@ -50,7 +50,6 @@ class Login extends CI_Controller {
 			}
 
 			if(isset($_SESSION['logged_in']) == true){
-				echo "ㅇㅇ3";
 			 	exit('비정상적인 접근입니다.');
 			}else{
 				$sessData = array(
@@ -65,11 +64,11 @@ class Login extends CI_Controller {
 				);
 
 				$this->session->set_userdata($sessData);
-				$ref = "index.php";
-				if($_POST['ref']) $ref = "/".$_POST['ref'];
+				$ref = "/";
+				if($_POST['ref']) $ref = $ref.$_POST['ref'];
 
 				echo "<script type='text/javascript'>
-					document.location.href='{$ref}';
+						document.location.href='{$ref}';
 					</script>";
 			}
 		}

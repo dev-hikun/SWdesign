@@ -19,8 +19,8 @@
     </div>
     <div class="btnArea">
         <button class="txtBtn all on">전체</button>
-        <button class="txtBtn area">지역별</button>
-        <button class="txtBtn part">종목별</button>
+        <button class="txtBtn area">지역별 ▼</button>
+        <button class="txtBtn part">종목별 ▼</button>
     </div>
 </div>
 <p class="club_count">

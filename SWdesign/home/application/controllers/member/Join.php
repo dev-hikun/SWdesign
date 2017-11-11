@@ -78,7 +78,7 @@ class Join extends CI_Controller {
 		private function _ok(){
 			    //echo "<script type='text/javascript'>alert('준비중입니다.'); history.back(); exit;</script>";
           if(!$_POST){
-            echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back(); exit;</script>";
+            echo "<script type='text/javascript'>alert('잘못된 접근입니다.'); history.back();</script>";
             exit;
           }
           if(!$_POST) exit('비정상적인 접근입니다.');
@@ -148,13 +148,11 @@ class Join extends CI_Controller {
             echo "<script type='text/javascript'>
               alert('회원가입이 완료되었습니다.');
               document.location.href='/';
-              exit;
             </script>";
           }else{
             echo "<script type='text/javascript'>
               alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
               history.back();
-              exit;
             </script>";
           }
           //header('Location: /');
