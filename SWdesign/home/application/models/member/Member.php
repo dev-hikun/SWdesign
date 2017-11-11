@@ -26,7 +26,6 @@ class Member extends CI_Model {
             $returnVal['birth'] = $row->birth;
             $returnVal['sex'] = $row->sex;
             $returnVal['addr'] = $row->addr1;
-            $returnVal['email'] = $row->email;
             $returnVal['idx'] = $row->memberIdx;
             return $returnVal;
         }

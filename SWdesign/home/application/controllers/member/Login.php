@@ -18,23 +18,29 @@ class Login extends CI_Controller {
 		  }else if($mode == "bye"){
 			  $this->_logout();
 		  }else{
+			if(isset($_SESSION['logged_in'])){
+				exit('비정상적인 접근입니다.');
+			}
 			$this->load->view('member/login', $data);
 		  }
           $this->load->view('templates/footer');
         }
 
 		private function _ok(){
-			if(!$_POST || isset($_SESSION['logged_in'])) exit('비정상적인 접근입니다.');
+
+			if(!$_POST || isset($_SESSION['logged_in'])){
+				exit('비정상적인 접근입니다.');
+			}
 			$mData['pw'] = $_POST['passwd'];
 			$mData['email'] = $_POST['email'];
 			$mData['permit'] = $_POST['permit'];
-			
+
 			if($mData['email'] == "admin@werun.pe.kr")
 				$mData['permit'] = 0;
-			
+
 			$this->load->model('member/member');
 			$res = $this->member->login($mData);
-			
+
 			if($res == false){
 				echo "<script type='text/javascript'>
 					alert('아이디나 비밀번호, 회원구분을 확인해주세요.');
@@ -44,7 +50,8 @@ class Login extends CI_Controller {
 			}
 
 			if(isset($_SESSION['logged_in']) == true){
-			  exit('비정상적인 접근입니다.');
+				echo "ㅇㅇ3";
+			 	exit('비정상적인 접근입니다.');
 			}else{
 				$sessData = array(
 					'email' => $res['email'],
@@ -53,20 +60,26 @@ class Login extends CI_Controller {
 					'nickName' => $res['nickName'],
 					'sex' => $res['sex'],
 					'addr' => $res['addr'],
-					'idx' => $res['memberIdx'],
+					'idx' => $res['idx'],
 					'logged_in' => 'Y'
 				);
+
 				$this->session->set_userdata($sessData);
-				header('Location: /index.php');
+				$ref = "index.php";
+				if($_POST['ref']) $ref = "/".$_POST['ref'];
+
+				echo "<script type='text/javascript'>
+					document.location.href='{$ref}';
+					</script>";
 			}
 		}
-		
+
 		// 로그아웃
 		private function _logout(){
 			if(isset($_SESSION['logged_in']) == false){
 				exit('비정상적인 접근입니다.');
 			}
-			
+
 			unset(
 				$_SESSION['email'],
 				$_SESSION['permit'],
@@ -77,7 +90,7 @@ class Login extends CI_Controller {
 				$_SESSION['memberIdx'],
 				$_SESSION['logged_in']
 			);
-			
+
 			header('Location: /index.php');
 		}
 

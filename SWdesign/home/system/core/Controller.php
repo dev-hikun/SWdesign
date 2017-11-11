@@ -94,4 +94,17 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+	public static function alert($msg){
+		return "<script type='text/javascript'>alert('".$msg."');</script>";
+	}
+	public static function move($link){
+		return "<script type='text/javascript'>document.location.href='".$link."';</script>";
+	}
+	public static function log($log){
+		return "<script type='text/javascript'>console.log('".$log."');</script>";
+	}
+	public static function back(){
+		return "<script type='text/javascript'>history.back();</script>";
+	}
+
 }
