@@ -54,6 +54,7 @@
         foreach($values as $val){
             if($value_str != "") $value_str .= ", ";
             if(strpos($val, "assword") == 1) $value_str .= htmlspecialchars($val);
+            if(strpos($val, "est.jpg") == 1) $value_str .= "'default.jpg'";
             else $value_str .= "'".$val."'";
         }
 

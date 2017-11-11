@@ -53,15 +53,16 @@
 
         $res = mysqli_query($con, $str)or die(failed("Something wrong while the server was sending a query to the database. \r\n you have to check the error and the query", $str, mysqli_error($con)));
 
+        $i = 0;
+        $returnArr = array();
         while($data = mysqli_fetch_array($res)){
-            $returnArr = array();
+            $tempArr = array();
             foreach($data as $key=>$val){
-                $returnArr[$key] = $val;
+                $tempArr[$key] = $val;
             }
+            $returnArr[$i] = $tempArr;
+            $i++;
         }
-
-        printr($returnArr);
-
-        echo json_encode(array("data" => array("success"=>true)));
+        echo json_encode(array("data" => array("success"=>true, "data"=>$returnArr)));
     }
 ?>
