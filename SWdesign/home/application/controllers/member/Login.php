@@ -18,7 +18,9 @@ class Login extends CI_Controller {
 		  }else if($mode == "bye"){
 			  $this->_logout();
 		  }else{
-			if(isset($_SESSION['logged_in'])) exit('비정상적인 접근입니다.');
+			if(isset($_SESSION['logged_in'])){
+				exit('비정상적인 접근입니다.');
+			}
 			$this->load->view('member/login', $data);
 		  }
           $this->load->view('templates/footer');
@@ -26,7 +28,9 @@ class Login extends CI_Controller {
 
 		private function _ok(){
 
-			if(!$_POST || isset($_SESSION['logged_in'])) exit('비정상적인 접근입니다.');
+			if(!$_POST || isset($_SESSION['logged_in'])){
+				exit('비정상적인 접근입니다.');
+			}
 			$mData['pw'] = $_POST['passwd'];
 			$mData['email'] = $_POST['email'];
 			$mData['permit'] = $_POST['permit'];
@@ -46,7 +50,8 @@ class Login extends CI_Controller {
 			}
 
 			if(isset($_SESSION['logged_in']) == true){
-			  exit('비정상적인 접근입니다.');
+				echo "ㅇㅇ3";
+			 	exit('비정상적인 접근입니다.');
 			}else{
 				$sessData = array(
 					'email' => $res['email'],
@@ -55,7 +60,7 @@ class Login extends CI_Controller {
 					'nickName' => $res['nickName'],
 					'sex' => $res['sex'],
 					'addr' => $res['addr'],
-					'idx' => $res['memberIdx'],
+					'idx' => $res['idx'],
 					'logged_in' => 'Y'
 				);
 
