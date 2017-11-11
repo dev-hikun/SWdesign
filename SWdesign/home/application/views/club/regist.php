@@ -8,7 +8,7 @@
 <?php $this->load->view('club/clubNav'); ?>
 
 <article class="regist_wrap">
-<?php echo form_open_multipart('/regist/ok', array('id'=>'clubRegForm', 'name'=>'clubRegForm')); ?>
+<?php echo form_open_multipart('/club/regist/ok', array('id'=>'clubRegForm', 'name'=>'clubRegForm')); ?>
     <table class="bbs_write">
         <caption>클럽정보입력 테이블</caption>
         <colgroup>
@@ -121,11 +121,11 @@ var settingSigungu = function(data, idx){
             }
 
             if($(this).prop('checked') == true){
-                $(".addr").prepend($("<input>").attr({name: 'addr[]', value: parent.name+" "+$(this).val(), class : addrName, type : 'hidden'}));
-                pTag.append("<i class='"+addrName+"'>"+parent.name+" "+$(this).val()+"</i>");
+                $(".addr").prepend($("<input>").attr({name: 'addr[]', value: parent.name+" "+$(this).val(), class : $(this).attr('id'), type : 'hidden'}));
+                pTag.append("<i class='"+$(this).attr('id')+"'>"+parent.name+" "+$(this).val()+"</i>");
             }else{
-                $(".addr input."+addrName).remove();
-                pTag.find("i."+addrName).remove();
+                $(".addr input."+$(this).attr('id')).remove();
+                pTag.find("i."+$(this).attr('id')).remove();
             }
         }));
         lbl.append(parent.data[i]);
