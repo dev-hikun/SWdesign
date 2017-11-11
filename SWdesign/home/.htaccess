@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-RewriteCond $1 !^(libraries|site_data)
+RewriteCond $1 !^(libraries|site_data|appData)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-1
 #RewriteCond %{HTTP_HOST} ^sports\.werun\.pe\.kr\$ [C]
