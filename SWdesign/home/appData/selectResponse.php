@@ -14,13 +14,9 @@
         }else{
             postProcess($_POST, $con);
         }
-
-        //파일업로드시 구현
-        if($_FILES){
-            echo failed("File processing has not been developed.");
-        }
     }
 
+    /* 실패 메세지 */
     function failed($msg, $query="", $error=""){
         $arr = array("success"=>false, "message"=>"hey sunghwan, ".$msg);
 
@@ -29,9 +25,10 @@
         return json_encode(array("data" => $arr));
     }
 
+    /* 셀렉트 뽑아주기~ */
     function postProcess($data, $con){
         foreach($data as $key=>$val){
-            if($key == "table" || $key == "fields" || $key == "values") continue;
+            if($key == "table" || $key == "where" || $key == "order" || $key == "fields") continue;
             else{
                 echo failed("[".$key."] is not necessary for servers.");
                 exit;
@@ -40,9 +37,10 @@
 
         $table = $data['table'];
         $fields = $data['fields'];
-        $values = $data['values'];
+        $where = $data['where'];
+        $order = $data['order'];
 
-        if(!$table || !$fields || !$values) echo failed("Try again after give server all the necessary variable.");
+        if(!$table || !$fields || !$where || !$order) echo failed("Try again after give server all the necessary variable.");
 
         $field_str = "";
         foreach($fields as $val){
@@ -50,20 +48,20 @@
             $field_str .= $val;
         }
 
-        $value_str = "";
-        foreach($values as $val){
-            if($value_str != "") $value_str .= ", ";
-            if(strpos($val, "assword") == 1) $value_str .= htmlspecialchars($val);
-            else $value_str .= "'".$val."'";
+
+        $str = "select {$field_str} from `{$table}` where {$where} {$order}";
+
+        $res = mysqli_query($con, $str)or die(failed("Something wrong while the server was sending a query to the database. \r\n you have to check the error and the query", $str, mysqli_error($con)));
+
+        while($data = mysqli_fetch_array($res)){
+            $returnArr = array();
+            foreach($data as $key=>$val){
+                $returnArr[$key] = $val;
+            }
         }
 
-        $str = "insert into `{$table}`";
-        $str .= " (".$field_str.")";
-        $str .= " values";
-        $str .= " (".$value_str.")";
+        printr($returnArr);
 
-        mysqli_query($con, $str)or die(failed("Something wrong while the server was sending a query to the database. \r\n you have to check the error and the query", $str, mysqli_error($con)));
-
-        echo json_encode(array("data" => array("success"=>true, "message"=>$str)));
+        echo json_encode(array("data" => array("success"=>true)));
     }
 ?>

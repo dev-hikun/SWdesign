@@ -12,7 +12,7 @@ class Regist extends CI_Controller {
           //변수 설정
           $data['page_title'] = '클럽등록';
           $data['css_link'] = '<link href="/libraries/css/club.css" rel="stylesheet" type="text/css" />';
-          $data['mode'] = "Regist";
+          $data['mode'] = "regist";
           $this->load->view('templates/header', $data); //헤더 인클루드
           switch($mode){
             case 'ok': break;

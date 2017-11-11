@@ -25,6 +25,24 @@
                 error(e){
                     console.log(e);
                 }
+            });
+
+            $.ajax({
+                type : "POST",
+                url : "/appData/selectResponse.php",
+                data : {
+                    table : "member",
+                    fields : ["email", "passwd", "name", "nickName", "birth", "addr1"],
+                    where : "email='admin@werun.pe.kr'",
+                    order : "order by memberIdx asc"
+                },
+                async:false,
+                success(data){
+                    console.log(data);
+                },
+                error(e){
+                    console.log(e);
+                }
             })
         </script>
 

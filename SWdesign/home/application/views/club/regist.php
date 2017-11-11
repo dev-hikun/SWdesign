@@ -7,8 +7,8 @@
 
 <?php $this->load->view('club/clubNav'); ?>
 
-
 <article class="regist_wrap">
+<?php echo form_open_multipart('/regist/ok', array('id'=>'clubRegForm', 'name'=>'clubRegForm')); ?>
     <table class="bbs_write">
         <caption>클럽정보입력 테이블</caption>
         <colgroup>
@@ -20,7 +20,6 @@
                 <th class="required">클럽 이름</th>
                 <td>
                     <input type="text" name="title" placeholder="사용하실 클럽명을 입력해주세요." />
-                    <button class="tableBtn">중복확인</button>
                 </td>
             </tr>
             <tr>
@@ -80,6 +79,7 @@
         <button type="reset" class="resetBtn">다시입력</button>
         <button type="submit" class="txtBtn bgBlue">클럽 등록</button>
     </div>
+</form>
 
 </article>
 
