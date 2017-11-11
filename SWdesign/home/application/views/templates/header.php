@@ -52,7 +52,7 @@
                 <div class="gnbArea">
                     <ul>
                         <li class="competition"><a href="#">대회 정보</a></li>
-                        <li class="club"><a href="/club">클럽</a></li>
+                        <li class="club"><a href="/club/lists">클럽</a></li>
                         <li class="rank"><a href="#">랭킹</a></li>
                         <li class="info"><a href="#">사이트 소개</a></li>
                     </ul>

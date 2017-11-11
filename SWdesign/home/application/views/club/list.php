@@ -10,17 +10,12 @@
     </div>
 </article>
 
-<nav class="lnb">
-    <ul class="three">
-        <li class="on">클럽 리스트 / 검색</li>
-        <li>클럽 등록</li>
-        <li>클럽 관리</li>
-    </ul>
-</nav>
+<?php $this->load->view('club/clubNav'); ?>
 
 <div class="club_search">
     <div class="searchArea">
-
+        <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
+        <button type="submit">검색</button>
     </div>
     <div class="btnArea">
         <button class="txtBtn all on">전체</button>
@@ -92,4 +87,14 @@
             </a>
         </li>
     </ul>
+</div>
+
+<div class="paginated">
+    <a href="#" class="first">&lt;&lt;</a>
+    <a href="#" class="prev">&lt;</a>
+    <a href="#" class="now">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="next">&gt;</a>
+    <a href="#" class="end">&gt;&gt;</a>
 </div>

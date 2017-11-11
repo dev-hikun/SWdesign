@@ -55,6 +55,7 @@ class Join extends CI_Controller {
 
         //주최측 회원가입
         private function _host(){
+
             $this->load->view('member/join_select');
         }
 
@@ -104,11 +105,11 @@ class Join extends CI_Controller {
 			  </script>";
 			  exit;
 			}
-			
+
 			if(is_array($_POST["part"])){
 				foreach($_POST['part'] as $key=>$val){
 					if($val == "start") continue;
-					
+
 					if($mdata['parts'] == ""){
 						$mdata['parts'] = $mdata['parts'].$val;
 					}else{
