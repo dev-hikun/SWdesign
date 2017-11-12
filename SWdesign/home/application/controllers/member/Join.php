@@ -68,6 +68,7 @@ class Join extends CI_Controller {
               $this->load->model('member/email_chk');
               $json_dt['id'] = $_POST['id'];
               $json_dt['domain'] = $_POST['domain'];
+
         			$this->email_chk->dupChk($json_dt);
         			echo json_encode($this->email_chk->dupChk($json_dt));
         			exit;
