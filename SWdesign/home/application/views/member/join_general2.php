@@ -122,7 +122,7 @@
                             <input type="checkbox" value="2" name="part[]" id="part2" />배드민턴
                         </label>
                     </div>
-				
+
                     <input type="hidden" name="permit" value="3" />
                 </td>
             </tr>
@@ -215,7 +215,7 @@ var chkDuplicate = function(){
 		   domain: $("[name=domain]").val()
 		},
 	  success:function(data){
-		if(data == "true"){
+		if(data.toString().trim() == "true"){
 			alert("이미 가입되어 있는 이메일입니다.\r\n다른 이메일을 사용하시기 바랍니다.");
 		}else{
 			ChangeDupBtn(confirm("사용 가능한 이메일입니다. 사용하시겠습니까?"));
