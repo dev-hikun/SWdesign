@@ -5,6 +5,9 @@ class Regist extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
+
+        //Model Load
+        $this->load->model('club/club');
     }
 
     public function _remap($mode, $arg="")
@@ -35,6 +38,15 @@ class Regist extends CI_Controller {
         </script>";
         exit;
       }
+
+
+      //An array to pass to model
+      $hasClubAdmin = $this->club->itHasPowerofClub($_SESSION['idx']);
+      if($hasClubAdmin == true){
+          echo "<script type='text/javascript'> alert('이미 운영중인 클럽이 있으므로 추가개설이 불가능합니다.'); history.back(); </script>";
+          exit;
+      }
+
       $this->load->view('club/regist', $mode);
     }
 
@@ -45,8 +57,9 @@ class Regist extends CI_Controller {
             exit;
         }
 
+        //delete unnecessary variable
         unset($data['addrs']);
-        $s = array();
+
         foreach($data as $key=>$val){
           if(!is_array($data[$key])){
             $s[$key] = htmlspecialchars($val);
@@ -62,6 +75,10 @@ class Regist extends CI_Controller {
             }
           }
         }
+
+
+
+
         $config = array(
           'upload_path' => './site_data/club_img/',
           'allowed_types' => 'gif|jpg|png|jpeg',
@@ -79,9 +96,7 @@ class Regist extends CI_Controller {
         }else{
           $s['file'] = "";
         }
-        $s['idx'] = $_SESSION['idx'];
 
-        $this->load->model('club/club');
         $val = $this->club->regist($s);
 
         if($val == true){

@@ -14,8 +14,10 @@
 
 <div class="club_search">
     <div class="searchArea">
-        <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
-        <button type="submit">검색</button>
+        <form onsubmit="return search(this)">
+            <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
+            <button type="submit">검색</button>
+        </form>
     </div>
     <div class="btnArea">
         <button class="txtBtn all on">전체</button>
@@ -48,44 +50,6 @@
                 </span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <span class="imgBox">
-                    <img src="/libraries/images/common/noimage300by150.jpg" alt="등록된 이미지가 없습니다./" />
-                    <div class="tags">
-                        <span class="loc">강원</span>
-                        <span class="part">테니스</span>
-                    </div>
-                </span>
-                <span class="titleBox">
-                    <span class="loc"><strong>강원 춘천시</strong> / <strong>테니스</strong></span>
-                    <span class="title">테레사(테니스 레슨 받는 사람들)asdadasdasdasdadada</span>
-                </span>
-                <span class="btnBox">
-                    <button><strong class="cOrg">14</strong>명</button>
-                    <button>상세</button>
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="imgBox">
-                    <img src="/libraries/images/common/noimage300by150.jpg" alt="등록된 이미지가 없습니다./" />
-                    <div class="tags">
-                        <span class="loc">강원</span>
-                        <span class="part">테니스</span>
-                    </div>
-                </span>
-                <span class="titleBox">
-                    <span class="loc"><strong>강원 춘천시</strong> / <strong>테니스</strong></span>
-                    <span class="title">테레사(테니스 레슨 받는 사람들)asdadasdasdasdadada</span>
-                </span>
-                <span class="btnBox">
-                    <button type="button" class="people"><strong class="cOrg">14</strong>명</button>
-                    <button type="button" class="detail">상세</button>
-                </span>
-            </a>
-        </li>
     </ul>
 </div>
 
@@ -98,3 +62,38 @@
     <a href="#" class="next">&gt;</a>
     <a href="#" class="end">&gt;&gt;</a>
 </div>
+
+
+<script type="text/javascript">
+var load_list = function(key="", part="", area="", start="", limit=""){
+    $.ajax({
+        async : false,
+        type : "POST",
+        data : {
+            Start : start,
+            limit : limit,
+            key : key,
+            part : part,
+            area : area,
+            table : "club"
+        },
+        url : "/appData/clubListResponse.php",
+        success(data){
+            console.log('-------------------');
+            console.log(data);
+        },
+        error(e){
+            console.log(e);
+        }
+    });
+}
+
+var search = function(key){
+
+    //load_list(key);
+}
+
+$(document).ready(function(){
+    load_list();
+});
+</script>

@@ -5,6 +5,16 @@ class Club extends CI_Model {
         parent::__construct();
     }
 
+    public function itHasPowerofClub($s){
+        $sql = "select adminIdx from club where adminIdx='".$s."'";
+        $res = $this->db->query($sql);
+        if($res->num_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function regist($d)
     {
         $sql = "insert into club(adminIdx, title, birth, addr, part, image, description, contents, public) values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
