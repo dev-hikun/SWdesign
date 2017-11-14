@@ -30,7 +30,7 @@
     /* where절 */
     $where = " where clubIdx > 0";
     $limit = "";
-    if($s['key'] != null) $where .= " and (title like '%{$s['key']}%' or content like '%{$s['key']}%' or description like '%{$s['key']}%') or addr like '%{$s['key']}%'";
+    if($s['key'] != null) $where .= " and (title like '%{$s['key']}%' or contents like '%{$s['key']}%' or description like '%{$s['key']}%') or addr like '%{$s['key']}%'";
 
     if($s['area'] != null) $where .= " and (addr like '%{$s['area']}%')";
 

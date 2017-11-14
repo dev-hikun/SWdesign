@@ -14,7 +14,7 @@
 
 <div class="club_search">
     <div class="searchArea">
-        <form onsubmit="return search(this)">
+        <form onsubmit="return search();" name="schForm">
             <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
             <button type="submit">검색</button>
         </form>
@@ -88,12 +88,16 @@ var load_list = function(key="", part="", area="", start="", limit=""){
     });
 }
 
-var search = function(key){
-
-    //load_list(key);
+var search = function(){
+	
+	var form = $("form[name=schForm");
+	if(Werun.util.FormCheck(form) == false) return false;
+	
+    load_list(form.find("[name=clubSearch]").val());
+	return false;
 }
 
 $(document).ready(function(){
-    load_list();
+    //load_list();
 });
 </script>
