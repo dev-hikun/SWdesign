@@ -31,7 +31,7 @@ nav.gnb .gnbArea ul li a {color:white;}
 section{min-height:300px; padding:20px 0px;}
 section > article{width:980px; clear:both; margin:0 auto;}
 section article.title h2{font-size:30px; height:35px; vertical-align:bottom}
-section article.title h2:before{width:30px; height:30px; vertical-align:center; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
+section article.title h2:before{width:30px; height:30px; vertical-align:text-top; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
 section article.title div{margin-top:10px;}
 
 section nav.lnb{width:980px; margin:0 auto; box-sizing:border-box; height:55px; margin-top:15px;}

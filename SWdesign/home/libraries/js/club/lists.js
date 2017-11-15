@@ -34,12 +34,50 @@ var listGenerate = {
         $("button.txtBtn.part").removeAttr('data-idx');
         this.go();
     },
+    setPage : function(idx){
+        this.page = idx;
+        this.start = Number(this.list_num) * (Number(this.page) - 1);
+        this.end = this.start + this.list_num;
+    },
     go : function(){
         load_list(this.key,this.part,this.area,this.start,this.end);
+        this.setPagenate();
     },
     setPagenate : function(){
-        div = $("div.pagenated");
+        div = $("div.paginated");
+        div.html("");
+        //현재페이지 = now;
+        list_num = $('.club_count .cOrg').text();
+        numofAllpage = (Math.ceil(list_num/this.end));
+        console.log(this.end);
+        var aTag = $("<a>");
+        aTagList = [];
 
+        first = (this.page == 1)? "" : aTag.clone().addClass("first").text("<<").attr("data-page", 1);
+        prev = (this.page == 1)? "" : aTag.clone().addClass("prev").text("<");
+        next = (this.page == numofAllpage)? "" : aTag.clone().addClass("next").text(">");
+        final = (this.page == numofAllpage)? "" : aTag.clone().addClass("final").text(">>").attr("data-page", numofAllpage);
+
+        div.append(first).append(prev);
+
+        for(i=1; i<=numofAllpage; i++){
+            var temp = aTag.clone().text(i).attr("data-page", i);
+            if(temp.data("page") == this.page) temp.addClass("now");
+            div.append(temp);
+            temp = null;
+        }
+
+        div.append(next).append(final);
+
+        //이벤트 설정
+        $page = this;
+        div.find('a').each(function(){
+            $(this).click(function(e){
+                e.preventDefault();
+                $page.setPage($(this).data('page'));
+                $page.go();
+            });
+        });
     }
 }
 
@@ -186,7 +224,6 @@ var make_list = function(data){
     $("ul.club_list").remove();
     div = $(".club_list_wrap");
 
-    console.log(data.num)
     if(data.num == 0){
         div.css({
             textAlign: 'center',

@@ -34,7 +34,7 @@ button.tableBtn{border:1px solid #e3e3e3; border-radius:3px 3px; box-sizing:bord
 
 /* 페이지네이션 */
 .paginated{min-width:980px; width:980px; margin:20px auto 0px auto; height:30px; text-align:right; font-size:0px;}
-.paginated a{width:30px; margin-right:3px; height:30px; border:1px solid #e3e3e3; border-radius:3px; text-align:center; line-height:28px; display:inline-block; font-size:12px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+.paginated a{width:30px; cursor:pointer; margin-right:3px; height:30px; border:1px solid #e3e3e3; border-radius:3px; text-align:center; line-height:28px; display:inline-block; font-size:12px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
 .paginated a:hover{text-decoration:none; border:1px solid #666; color:#666;}
 .paginated a:last-child{margin-right:0px;}
 .paginated a.now{background:#1d4082; border:0px; line-height:30px; color:white;}
