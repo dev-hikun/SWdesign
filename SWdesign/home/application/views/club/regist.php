@@ -22,7 +22,7 @@
                     <input type="text" name="title" title="클럽명" placeholder="사용하실 클럽명을 입력해주세요." required />
                 </td>
             </tr>
-            <tr>
+            <tr class="addrTr">
                 <th class="required">활동 지역</th>
                 <td>
                     <p>
@@ -104,6 +104,12 @@ var settingSido = function(data){
     });
 }
 
+var insertAreaTr = function(){
+    if($("addrTr").find("i").length == 0 && $('tr.area').length == 0){
+        $("tr.addrTr").after("<tr class='area'><th class='required'>대표지역</th><td class='areaTd'></td></tr>");
+    }
+}
+
 var settingSigungu = function(data, idx){
     var parent = data[idx];
     var div = $("<div>").addClass("siGungu");
@@ -112,21 +118,38 @@ var settingSigungu = function(data, idx){
         var addrName = "addr_"+idx+"_"+i;
         var lbl = $("<label>").attr("for", addrName);
         lbl.append($("<input type='checkbox' name='addrs' id='"+addrName+"' value='"+parent.data[i]+"'>").change(function(e){
+
             var pTag = $(".addr").siblings("p");
+
             if($(this).prop('checked') == true){
+                var pullName =  parent.name+" "+$(this).val();
+                //tr태그 삽입
+                insertAreaTr();
+                //지역의 갯수가 5개를 초과할경우
                 if(pTag.find("i").length > 4){
                     alert("5개 지역까지만 선택 가능합니다.");
                     if($(this).is(":checked")) $(this).prop('checked', false);
                     return;
                 }
-            }
+                //input 태그 삽입
+                $(".addr").prepend($("<input>").attr({name: 'addr[]', value: pullName, class : $(this).attr('id'), type : 'hidden'}));
+                //i태그 삽입
+                pTag.append("<i class='"+$(this).attr('id')+"'>"+pullName+"</i>");
+                //radio버튼 생성
+                tdTag = $(".areaTd");
+                label = $("<label id='"+$(this).attr('id')+"_label' for='"+$(this).attr('id')+"_radio' style='margin-right:5px'>");
+                label.html("<input type='radio' name='area' id='"+$(this).attr('id')+"_radio' value='"+pullName+"'>"+pullName);
+                tdTag.append(label);
 
-            if($(this).prop('checked') == true){
-                $(".addr").prepend($("<input>").attr({name: 'addr[]', value: parent.name+" "+$(this).val(), class : $(this).attr('id'), type : 'hidden'}));
-                pTag.append("<i class='"+$(this).attr('id')+"'>"+parent.name+" "+$(this).val()+"</i>");
             }else{
+                //대표지역 제거(i 갯수가 0개가 될 경우)
+                if(pTag.find("i").length == 1) $("tr.area").remove();
+                //input 제거
                 $(".addr input."+$(this).attr('id')).remove();
+                //pTag 내의 i태그 제거
                 pTag.find("i."+$(this).attr('id')).remove();
+                //td 내 radio버튼 제거
+                $("label#"+$(this).attr('id')+"_label").remove();
             }
         }));
         lbl.append(parent.data[i]);
@@ -161,7 +184,7 @@ var settingPart = function(){
 
 
 var formSubmit = function(){
-
+console.log();
     if($("input[name=title]").val() == ""){
         alert("클럽명을 작성하지 않았습니다.");
         $("input[name=title]").focus();
@@ -172,11 +195,14 @@ var formSubmit = function(){
         return false;
     }else if($("input[name=description]").val() == ""){
         alert("짧은 클럽소개를 작성하지 않았습니다.");
-        $("input[name=title]").focus();
+        $("input[name=description").focus();
         return false;
     }else if($("select[name=parts]").val() == ""){
         alert("대표종목을 선택해주세요.");
         $("select[name=parts]").focus();
+        return false;
+    }else if($("input:radio[name='area']:checked").val() == undefined){
+        alert("대표지역을 선택해주세요. \r\n만약 활동지역을 선택하지 않으셨다면, \n활동지역 선택 후 대표지역을 지정해주세요.");
         return false;
     }
 
