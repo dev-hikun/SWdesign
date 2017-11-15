@@ -36,7 +36,7 @@
 
     if($s['area'] != null) $where .= " and (addr like '%{$s['area']}%')";
 
-    if($s['part'] != null) $where .= " and (addr like '%{$s['part']}%')";
+    if($s['part'] != null) $where .= " and (part = '{$s['part']}')";
 
     if($s['start'] != null && $s['limit'] != null) $limit = " limit {$s['start']}, {$s['limit']}";
 

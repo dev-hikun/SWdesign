@@ -1,6 +1,155 @@
-var setCateArea = function(){
-    btn = $("button.txtBtn.area");
+var listGenerate = {
+    page : 1,
+    key : "",
+    list_num : 9,
+    start : 0,
+    end : 9,
+    area : "",
+    part : "",
+    init : function(){
+        this.key = "";
+        this.page = 1;
+        this.start = Number(this.list_num) * (Number(this.page) - 1);
+        this.end = this.start + this.list_num;
+        this.area = "";
+        this.part = "";
+        $('.txtBtn.all').addClass("on");
+        $("button.txtBtn.area").text("지역별 ▼").removeClass("on");
+        $("button.txtBtn.part").removeAttr('data-idx').text("종목별 ▼").removeClass("on");
+        this.go();
+    },
+    search : function(){
+        var form = $("form[name=schForm]");
+        if(Werun.util.FormCheck(form) == false) return false;
+        this.key = form.find("[name=clubSearch]").val();
+        this.go();
+        return false;
+    },
+    setArea : function(){
+        this.area = $("button.txtBtn.area").text();
+        this.go();
+    },
+    setPart : function(){
+        this.part = $("button.txtBtn.part").attr('data-idx');
+        $("button.txtBtn.part").removeAttr('data-idx');
+        this.go();
+    },
+    go : function(){
+        load_list(this.key,this.part,this.area,this.start,this.end);
+    },
+    setPagenate : function(){
+        div = $("div.pagenated");
 
+    }
+}
+
+var setCateAreaBtn = function(Werun, listGenerate){
+    var cateSet = {
+        isOpen : false,
+        ul : null,
+        btn : null,
+        areaArr : [],
+        init:function(btn){
+            this.btn = btn;
+            this.ul = this.btn.siblings("ul");
+            this.ul.css('display', 'none');
+            this.isOpen = false;
+            this.areaArr = Werun.util.getSidoArr();
+            this.setUlTag();
+        },
+        setUlTag:function(){
+            $area = this;
+
+            this.btn.click({ul:this.ul, isOpen:this.isOpen}, function(e){
+                e.preventDefault();
+
+                if($area.isOpen == false){
+                    e.data.ul.css('display', 'block');
+                    $area.isOpen = true;
+                    e.data.ul.mouseleave({isOpen:e.data.isOpen}, function(e){
+                        $(this).hide();
+                        $area.isOpen = false;
+                    })
+                }else{
+                    e.data.ul.css('display', 'none');
+                    $area.isOpen = false;
+                }
+            });
+
+            this.generateLiTag();
+        },
+        generateLiTag : function(){
+            for(i=0; i<this.areaArr.length; i++){
+                var li = $("<li>").attr("data-name", this.areaArr[i].name).text(this.areaArr[i].name);
+                $area = this;
+                li.click({btn:this.btn}, function(e){
+                    $area.btn.addClass("on");
+                    $('.txtBtn.all').removeClass("on");
+                    e.data.btn.text($(this).data("name"));
+                    $area.btn.trigger('click');
+                    listGenerate.setArea();
+                });
+                this.ul.append(li);
+            }
+        }
+    }
+
+    cateSet.init($("button.txtBtn.area"));
+}
+
+var setCatePartBtn = function(Werun, listGenerate){
+    var cateSet = {
+        isOpen : false,
+        ul : null,
+        btn : null,
+        partArr : [],
+        init:function(btn){
+            this.btn = btn;
+            this.ul = this.btn.siblings("ul");
+            this.ul.css('display', 'none');
+            this.isOpen = false;
+            this.partArr = Werun.util.getPart();
+            this.setUlTag();
+        },
+        setUlTag:function(){
+            $this = this;
+
+            this.btn.click({ul:this.ul, isOpen:this.isOpen}, function(e){
+                e.preventDefault();
+
+                if($this.isOpen == false){
+                    e.data.ul.css('display', 'block');
+                    $this.isOpen = true;
+                    e.data.ul.mouseleave({isOpen:e.data.isOpen}, function(e){
+                        $(this).hide();
+                        $this.isOpen = false;
+                    })
+                }else{
+                    e.data.ul.css('display', 'none');
+                    $this.isOpen = false;
+                }
+            });
+
+            this.generateLiTag();
+        },
+        generateLiTag : function(){
+            for(i=0; i<this.partArr.length; i++){
+                if(this.partArr[i] == undefined) continue;
+                var li = $("<li>").attr("data-idx", i).text(this.partArr[i]);
+                $this = this;
+                li.click({btn:this.btn}, function(e){
+                    $this.btn.addClass("on");
+                    $('.txtBtn.all').removeClass("on");
+                    e.data.btn.attr('data-idx', $(this).data("idx")).text($(this).text());
+                    $this.btn.trigger('click');
+                    listGenerate.setPart();
+                });
+                this.ul.append(li);
+            }
+        }
+    }
+
+    cateSet.init($("button.txtBtn.part"));
 }
 
 

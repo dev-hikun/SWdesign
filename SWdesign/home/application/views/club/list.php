@@ -21,13 +21,17 @@
     </div>
     <div class="btnArea">
         <span>
-            <button class="txtBtn all on">전체</button>
+            <button class="txtBtn all on" type="button" onclick='listGenerate.init()'>전체</button>
         </span>
         <span>
             <button class="txtBtn area">지역별 ▼</button>
+            <ul>
+            </ul>
         </span>
         <span>
-            <button class="txtBtn area">종목별 ▼</button>
+            <button class="txtBtn part">종목별 ▼</button>
+            <ul>
+            </ul>
         </span>
     </div>
 </div>
@@ -71,33 +75,9 @@
 
 <script type="text/javascript" src="/libraries/js/club/lists.js"></script>
 <script type="text/javascript">
-var listGenerate = {
-    page : 1,
-    key : "",
-    list_num : 9,
-    start : 0,
-    end : 9,
-    area : "",
-    part : "",
-    init : function(){
-        this.key = "";
-        this.page = 1;
-        this.start = Number(this.list_num) * (Number(this.page) - 1);
-        this.end = this.start + this.list_num;
-        this.area = "";
-        this.part = "";
-        load_list(this.key,this.part,this.area,this.start,this.end);
-    },
-    search : function(){
-    	var form = $("form[name=schForm]");
-    	if(Werun.util.FormCheck(form) == false) return false;
-        this.key = form.find("[name=clubSearch]").val();
-        load_list(this.key,this.part,this.area,this.start,this.end);
-    	return false;
-    }
-}
-
 $(document).ready(function(){
     listGenerate.init();
+    setCateAreaBtn(Werun, listGenerate, $("button.txtBtn.area"));
+    setCatePartBtn(Werun, listGenerate, $("button.txtBtn.part"));
 });
 </script>
