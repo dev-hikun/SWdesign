@@ -17,6 +17,35 @@ var Werun = Werun || {};
 
 	var util = Werun.util || {};
 
+	util.getPart = function(idx=""){
+		var arr = [];
+	    $.ajax({
+	        type : "POST",
+	        url : "/appData/selectResponse.php",
+	        async : false,
+	        data : {
+	            table : "parts",
+	            fields : ["partIdx", "name"],
+	            where : "purpose = 0 or purpose = 2",
+	            order : "order by partIdx asc"
+	        },
+	        success(data){
+	            var d = data.data.data;
+	            for(var i=0; i<d.length; i++){
+	                arr[d[i][0]] = d[i][1];
+	            }
+	        },
+	        error(e){
+	            console.log(e);
+	        }
+	    });
+	    if(idx == ""){
+	    	return arr;
+	    }else{
+	     return arr[idx];
+	    }
+	}
+
 	/**
 	 * 이메일 체크
 	 */
@@ -126,7 +155,7 @@ var Werun = Werun || {};
 					obj = $(this);
 				}
 			}
-			
+
 			if(($t.name).indexOf("email") != -1){
 				if(util.EmailCheck(t_val) == false){
 					msg = "이메일 형식이 잘못되었습니다.";

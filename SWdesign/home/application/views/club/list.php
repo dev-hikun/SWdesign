@@ -88,16 +88,17 @@ var load_list = function(key="", part="", area="", start="", limit=""){
 }
 var make_list = function(data){
 	console.log(data);
-	
+    //$("ul.club_list").remove();
+
 	div = $(".club_list_wrap");
 	list = $("<ul>").addClass("club_list");
-	
+
 	for(i=0; i<data.length; i++){
 		li = $("<li>");
 		a = $("<a>").attr("href", "#");
-		
+
 		//////////// img 처리
-		
+
 		imgBox = $("<span>").addClass("imgBox");
 		img = $("<img>");
 		if(!data[i].image){
@@ -107,36 +108,24 @@ var make_list = function(data){
 			img.attr("src", "/site_data/club_img/"+data[i].image);
 			img.attr("alt", data[i].title);
 		}
-		imgBox.append(img);
 		////////////// img처리 끝
-		
+
 		///////////// tag 처리
 		tags = $("<div>").addClass("tags");
-		loc = $("<span>").addClass("loc");
-		locs = data[i].addr.split('|');
-		locArr = [];
-		/* 지역 횟수를 구함
-		 * 경기 광주시|서울 도봉구|경기 용인시 일 경우 locArr[경기] = 2, locArr[서울] = 1
-		 */
-		for(j=0; j<locs.length; j++){
-			if(locArr[locs[j].substring(0,2)] > 0){
-				locArr[locs[j].substring(0,2)]++;
-			}else{
-				locArr[locs[j].substring(0,2)] = 1;				
-			}
-		}
-		
-		
-		
-		var sorted = locArr.sort(function(a,b){return b-a});
-		
-		console.log(sorted);
-		
+		loc = $("<span>").addClass("loc").text(getTag(data[i].addr));
+        part = $("<span>").addClass("part").text(Werun.util.getPart(data[i].part));
+
 		tags.append(loc);
+        tags.append(part);
+
+        imgBox.append(img);
+        imgBox.append(tags);
 		///////////// tag 처리 끝
-		
+
+        titleBox = $("<div>").addClass("titleBox")
+        loc = $("<span>").addClass("loc")
+
 		a.append(imgBox);
-		a.append(tags);
 		li.append(a);
 		list.append(li);
 	}
@@ -146,11 +135,42 @@ var make_list = function(data){
 var search = function(){
 	var form = $("form[name=schForm");
 	if(Werun.util.FormCheck(form) == false) return false;
-	
+
     load_list(form.find("[name=clubSearch]").val());
 	return false;
 }
 
+var getTag = function(addr){
+
+    locs = addr.split('|');
+
+    locArr = [];
+    /* 지역 횟수를 구함
+     * 경기 광주시|서울 도봉구|경기 용인시 일 경우 locArr[경기] = 2, locArr[서울] = 1
+     */
+    for(j=0; j<locs.length; j++){
+        area = locs[j].substring(0,2);
+        locArr.push(area);
+    }
+
+    current = null;
+    var count = 0;
+
+    for(j = 0; j < locArr.length; j++)
+    {
+        if(locArr[j] != current)
+        {
+            current = locArr[j];
+            count = 1;
+        }else count++;
+    }
+
+    if(locs.length-count > 0){
+        return current+"외 "+(locs.length-count)+"지역";
+    }else{
+        return current;
+    }
+}
 
 
 $(document).ready(function(){
