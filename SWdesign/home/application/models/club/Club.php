@@ -17,14 +17,13 @@ class Club extends CI_Model {
 
     public function regist($d)
     {
-		$arr = array($d['idx'], $d['title'], date("Y-m-d",time()), $d['addr'], $d['parts'], $d['file'], $d['description'], $d['content'], $d['public']);
-        
+		$arr = array($d['idx'], $d['title'], date("Y-m-d",time()), $d['addr'], $d['area'], $d['parts'], $d['file'], $d['description'], $d['content'], $d['public']);
+
 		print_r($arr);
-		
-		$sql = "insert into club(adminIdx, title, birth, addr, part, image, description, contents, public) values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+		$sql = "insert into club(adminIdx, title, birth, addr, area, part, image, description, contents, public) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $res = $this->db->query($sql, $arr);
-		
-		
+
         if(!$res){
             return false;
         }else{

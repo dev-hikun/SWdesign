@@ -14,23 +14,29 @@
 
 <div class="club_search">
     <div class="searchArea">
-        <form onsubmit="return search();" name="schForm">
+        <form onsubmit="return listGenerate.search();" name="schForm">
             <input type="text" name="clubSearch" placeholder="검색어를 입력해주세요." />
             <button type="submit">검색</button>
         </form>
     </div>
     <div class="btnArea">
-        <button class="txtBtn all on">전체</button>
-        <button class="txtBtn area">지역별 ▼</button>
-        <button class="txtBtn part">종목별 ▼</button>
+        <span>
+            <button class="txtBtn all on">전체</button>
+        </span>
+        <span>
+            <button class="txtBtn area">지역별 ▼</button>
+        </span>
+        <span>
+            <button class="txtBtn area">종목별 ▼</button>
+        </span>
     </div>
 </div>
 <p class="club_count">
-    총 <strong class="cOrg">941</strong>건의 클럽이 있습니다.
+    총 <strong class="cOrg">0</strong>건의 클럽이 있습니다.
 </p>
 
 <div class="club_list_wrap">
-    <ul class="club_list">
+    <!-- <ul class="club_list">
         <li>
             <a href="#">
                 <span class="imgBox">
@@ -50,7 +56,7 @@
                 </span>
             </a>
         </li>
-    </ul>
+    </ul> -->
 </div>
 
 <div class="paginated">
@@ -63,117 +69,35 @@
     <a href="#" class="end">&gt;&gt;</a>
 </div>
 
-
+<script type="text/javascript" src="/libraries/js/club/lists.js"></script>
 <script type="text/javascript">
-var load_list = function(key="", part="", area="", start="", limit=""){
-    $.ajax({
-        async : false,
-        type : "POST",
-        data : {
-            Start : start,
-            limit : limit,
-            key : key,
-            part : part,
-            area : area,
-            table : "club"
-        },
-        url : "/appData/clubListResponse.php",
-        success(data){
-            make_list(data.list)
-        },
-        error(e){
-            console.log(e);
-        }
-    });
-}
-var make_list = function(data){
-	console.log(data);
-    //$("ul.club_list").remove();
-
-	div = $(".club_list_wrap");
-	list = $("<ul>").addClass("club_list");
-
-	for(i=0; i<data.length; i++){
-		li = $("<li>");
-		a = $("<a>").attr("href", "#");
-
-		//////////// img 처리
-
-		imgBox = $("<span>").addClass("imgBox");
-		img = $("<img>");
-		if(!data[i].image){
-			img.attr("src", "/libraries/images/common/noimage300by150.jpg");
-			img.attr("alt", "등록된 이미지가 없습니다.");
-		}else{
-			img.attr("src", "/site_data/club_img/"+data[i].image);
-			img.attr("alt", data[i].title);
-		}
-		////////////// img처리 끝
-
-		///////////// tag 처리
-		tags = $("<div>").addClass("tags");
-		loc = $("<span>").addClass("loc").text(getTag(data[i].addr));
-        part = $("<span>").addClass("part").text(Werun.util.getPart(data[i].part));
-
-		tags.append(loc);
-        tags.append(part);
-
-        imgBox.append(img);
-        imgBox.append(tags);
-		///////////// tag 처리 끝
-
-        titleBox = $("<div>").addClass("titleBox")
-        loc = $("<span>").addClass("loc")
-
-		a.append(imgBox);
-		li.append(a);
-		list.append(li);
-	}
-	div.append(list);
-}
-
-var search = function(){
-	var form = $("form[name=schForm");
-	if(Werun.util.FormCheck(form) == false) return false;
-
-    load_list(form.find("[name=clubSearch]").val());
-	return false;
-}
-
-var getTag = function(addr){
-
-    locs = addr.split('|');
-
-    locArr = [];
-    /* 지역 횟수를 구함
-     * 경기 광주시|서울 도봉구|경기 용인시 일 경우 locArr[경기] = 2, locArr[서울] = 1
-     */
-    for(j=0; j<locs.length; j++){
-        area = locs[j].substring(0,2);
-        locArr.push(area);
-    }
-
-    current = null;
-    var count = 0;
-
-    for(j = 0; j < locArr.length; j++)
-    {
-        if(locArr[j] != current)
-        {
-            current = locArr[j];
-            count = 1;
-        }else count++;
-    }
-
-    if(locs.length-count > 0){
-        return current+"외 "+(locs.length-count)+"지역";
-    }else{
-        return current;
+var listGenerate = {
+    page : 1,
+    key : "",
+    list_num : 9,
+    start : 0,
+    end : 9,
+    area : "",
+    part : "",
+    init : function(){
+        this.key = "";
+        this.page = 1;
+        this.start = Number(this.list_num) * (Number(this.page) - 1);
+        this.end = this.start + this.list_num;
+        this.area = "";
+        this.part = "";
+        load_list(this.key,this.part,this.area,this.start,this.end);
+    },
+    search : function(){
+    	var form = $("form[name=schForm]");
+    	if(Werun.util.FormCheck(form) == false) return false;
+        this.key = form.find("[name=clubSearch]").val();
+        load_list(this.key,this.part,this.area,this.start,this.end);
+    	return false;
     }
 }
-
 
 $(document).ready(function(){
-    load_list();
+    listGenerate.init();
 });
 </script>

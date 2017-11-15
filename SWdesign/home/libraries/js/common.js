@@ -17,6 +17,22 @@ var Werun = Werun || {};
 
 	var util = Werun.util || {};
 
+	util.getSidoArr = function(){
+		var arr = [];
+	    $.ajax({
+	        type : "POST",
+	        url : "/libraries/korea_administrative_district.json",
+	        async:false,
+	        success(data){
+	            arr = (data.data);
+	        },
+	        error(e){
+	            console.log(e);
+	        }
+	    });
+	    return arr;
+	};
+
 	util.getPart = function(idx=""){
 		var arr = [];
 	    $.ajax({
@@ -164,11 +180,27 @@ var Werun = Werun || {};
 				}
 			}
 		});
-
 		if(msg != null) alert(msg);
 		if(obj != null) obj.focus();
 		return returnVal;
 	}
-
 	Werun.util = util;
 })(Werun, jQuery);
+
+
+//$_GET 설정
+var $_GET = {};
+if(document.location.toString().indexOf('?') !== -1) {
+    var query = document.location
+                   .toString()
+                   // get the query string
+                   .replace(/^.*?\?/, '')
+                   // and remove any existing hash string (thanks, @vrijdenker)
+                   .replace(/#.*$/, '')
+                   .split('&');
+
+    for(var i=0, l=query.length; i<l; i++) {
+       var aux = decodeURIComponent(query[i]).split('=');
+       $_GET[aux[0]] = aux[1];
+    }
+}

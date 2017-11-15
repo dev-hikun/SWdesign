@@ -215,7 +215,9 @@ console.log();
 
 /** 이벤트 셋팅 **/
 var setEvent = function(){
-    $.ajax({
+
+    settingSido(Werun.util.getSidoArr());
+   /* $.ajax({
         type : "POST",
         url : "/libraries/korea_administrative_district.json",
         async:false,
@@ -225,7 +227,7 @@ var setEvent = function(){
         error(e){
             console.log(e);
         }
-    });
+    });*/
 
     $("#clubRegForm button[type=submit]").click(function(e){
         e.preventDefault();

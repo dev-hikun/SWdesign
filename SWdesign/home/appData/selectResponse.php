@@ -25,6 +25,9 @@
         return json_encode(array("data" => $arr));
     }
 
+    //없어도 되는 항목 에러 안나도록 추가해주기
+    $data['order'] = ";";
+
     /* 셀렉트 뽑아주기~ */
     function postProcess($data, $con){
         foreach($data as $key=>$val){
@@ -40,7 +43,10 @@
         $where = $data['where'];
         $order = $data['order'];
 
-        if(!$table || !$fields || !$where || !$order) echo failed("Try again after give server all the necessary variable.");
+        if(!$table || !$fields || !$where){
+         echo failed("Try again after give server all the necessary variable.");
+         exit;
+        }
 
         $field_str = "";
         foreach($fields as $val){
