@@ -25,7 +25,7 @@
         </span>
         <span>
             <button class="txtBtn area">지역별 ▼</button>
-            <ul>
+            <ul style="top:-140px">
             </ul>
         </span>
         <span>

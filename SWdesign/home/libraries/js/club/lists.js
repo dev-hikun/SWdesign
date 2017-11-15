@@ -191,7 +191,12 @@ var setCatePartBtn = function(Werun, listGenerate){
 }
 
 
-var load_list = function(key="", part="", area="", start="", limit=""){
+var load_list = function(){
+    var key = arguments.length > 4 && arguments[0] !== undefined ? arguments[0] : "";
+    var part = arguments.length > 4 && arguments[1] !== undefined ? arguments[1] : "";
+    var area = arguments.length > 4 && arguments[2] !== undefined ? arguments[2] : "";
+    var start = arguments.length > 4 && arguments[3] !== undefined ? arguments[3] : "";
+    var limit = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "";
     $.ajax({
         async : false,
         type : "POST",
@@ -204,7 +209,7 @@ var load_list = function(key="", part="", area="", start="", limit=""){
             table : "club"
         },
         url : "/appData/clubListResponse.php",
-        success(data){
+        success : function(data){
             console.log(data);
             if(data.success == true){
                 make_list(data);
@@ -213,7 +218,7 @@ var load_list = function(key="", part="", area="", start="", limit=""){
                 console.log(data);
             }
         },
-        error(e){
+        error : function(e){
             console.log(e);
         }
     });
@@ -306,10 +311,10 @@ var memberofClub = function(idx){
             order : "order by cnt asc"
         },
         async:false,
-        success(data){
+        success : function(data){
             returnNum = Number(data.data.data[0].cnt) + 1; //admin까지
         },
-        error(e){
+        error : function(e){
             console.log(e);
         }
     });

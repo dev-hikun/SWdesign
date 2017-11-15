@@ -41,7 +41,7 @@
 .club_list li a span.titleBox span.loc{font-size:12px; line-height:15px; height:15px; color:#666;}
 .club_list li a span.titleBox span.title{font-size:14px; line-height:25px; height:25px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal}
 .club_list li a span.btnBox{margin:9px 10px 0px 10px; border-top:1px solid #e3e3e3; height:33px; line-height:33px; text-align:right;}
-.club_list li a span.btnBox button{padding-left:17px; font-size:12px; border:0px; background:0px; position:relative; color:#666;}
+.club_list li a span.btnBox button{padding-left:17px; line-height:18px; height:18px; font-size:12px; border:0px; background:0px; position:relative; color:#666;}
 .club_list li a span.btnBox button:hover{text-decoration:underline;}
 .club_list li a span.btnBox button:before{content:''; width:12px; height:12px; position:absolute; display:block; top:4px; left:0px; background:url('/libraries/images/common/i_common.png') no-repeat; background-position:-51px -0px;}
 .club_list li a span.btnBox button.detail:before{background-position:-68px 0px;}

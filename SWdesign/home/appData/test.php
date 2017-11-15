@@ -19,10 +19,10 @@
                     values : ["test@test.codm4", "password('test')", "한글왜깨져~", "test111", "1980-01-01", "경기도 성남시 수정구 제일로 216번길 7(태평동)"]
                 },
                 async:false,
-                success(data){
+                success : function(data){
                     console.log(data);
                 },
-                error(e){
+                error : function(e){
                     console.log(e);
                 }
             });
@@ -37,10 +37,10 @@
                     order : "order by memberIdx asc"
                 },
                 async:false,
-                success(data){
+                success : function(data){
                     console.log(data);
                 },
-                error(e){
+                error : function(e){
                     console.log(e);
                 }
             })

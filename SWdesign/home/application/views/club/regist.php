@@ -169,14 +169,14 @@ var settingPart = function(){
             where : "purpose = 0 or purpose = 2",
             order : "order by partIdx asc"
         },
-        success(data){
+        success : function(data){
             var d = data.data.data;
             for(var i=0; i<d.length; i++){
                 var option = $("<option></option>").val(d[i][0]).text(d[i][1]);
                 $("select[name=parts]").append(option);
             }
         },
-        error(e){
+        error : function(e){
             console.log(e);
         }
     })
@@ -221,10 +221,10 @@ var setEvent = function(){
         type : "POST",
         url : "/libraries/korea_administrative_district.json",
         async:false,
-        success(data){
+        success : function(data){
             settingSido(data.data);
         },
-        error(e){
+        error : function(e){
             console.log(e);
         }
     });*/

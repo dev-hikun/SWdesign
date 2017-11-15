@@ -23,17 +23,18 @@ var Werun = Werun || {};
 	        type : "POST",
 	        url : "/libraries/korea_administrative_district.json",
 	        async:false,
-	        success(data){
+	        success : function(data){
 	            arr = (data.data);
 	        },
-	        error(e){
+	        error : function(e){
 	            console.log(e);
 	        }
 	    });
 	    return arr;
 	};
 
-	util.getPart = function(idx=""){
+	util.getPart = function(){
+		idx = arguments.length == 1 && arguments[0] !== undefined ? arguments[0] : "";
 		var arr = [];
 	    $.ajax({
 	        type : "POST",
@@ -45,13 +46,13 @@ var Werun = Werun || {};
 	            where : "purpose = 0 or purpose = 2",
 	            order : "order by partIdx asc"
 	        },
-	        success(data){
+	        success : function(data){
 	            var d = data.data.data;
 	            for(var i=0; i<d.length; i++){
 	                arr[d[i][0]] = d[i][1];
 	            }
 	        },
-	        error(e){
+	        error : function(e){
 	            console.log(e);
 	        }
 	    });
