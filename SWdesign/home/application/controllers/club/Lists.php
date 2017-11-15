@@ -12,8 +12,12 @@ class Lists extends CI_Controller {
     $data['css_link'] = '<link href="/libraries/css/club.css" rel="stylesheet" type="text/css" />';
     $data['mode'] = 'lists';
     $this->load->view('templates/header', $data); //헤더 인클루드
-    $this->load->view('club/list', $data);
+    $this->_List($data);
     $this->load->view('templates/footer'); //푸터 인클루드
+  }
+
+  private function _List($d){
+    $this->load->view('club/list', $d);
   }
 }
 ?>

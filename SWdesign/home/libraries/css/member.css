@@ -18,10 +18,10 @@ p.login span.radioBox{display:block;}
 p.login span.radioBox input{padding-left:0px; margin-left:0px; margin-right:3px;}
 p.login span.radioBox label{margin-left:10px;}
 p.login span.inputBox:after{clear:both; display:block; content:'';}
-p.login span.inputBox span.input{display:block; float:left;}
+p.login span.inputBox span.input{display:block; float:left; width:165px;}
 p.login span.inputBox span.input input{display:block; background:#fff}
 p.login span.inputBox span.input input[type=password]{margin-top:5px;}
-p.login span.inputBox button{display:block; float:left; margin-left:5px; height:65px; width:90px; border:3px 3px;}
+p.login span.inputBox button{display:block; float:right; margin:0px 0px; height:65px; width:90px; border-radius:3px 3px;}
 p.login span.txtBox{display:block; line-height:20px; padding:0px 10px; margin-top:10px; background:#e3e3e3; border-radius:3px 3px;}
 p.login span.txtBox i{display:block; position:relative; padding-left:10px;}
 p.login span.txtBox i:before{width:3px; height:3px; position:absolute; top:9px; left:0px; border-radius:3px; background:#333; display:inline-block; vertical-align:middle; content:'';}

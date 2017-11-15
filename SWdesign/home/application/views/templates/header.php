@@ -2,14 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>
-        <?php
-        echo "We run";
-        if($page_title != ""):
-		?>
-				<?= " - ".$page_title; ?>
-        <?php endif; ?>
-    </title>
+    <title><?php echo "We run"; if($page_title != ""): echo " - ".$page_title;  endif; ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
