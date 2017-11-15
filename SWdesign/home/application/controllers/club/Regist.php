@@ -75,6 +75,7 @@ class Regist extends CI_Controller {
             }
           }
         }
+		$s['idx'] = $_SESSION['idx'];
 
 
 

@@ -17,7 +17,7 @@
 .club_count{display:block; margin-top:15px; height:25px; line-height:25px; text-align:center; font-size:14px;}
 
 .club_list_wrap{min-width:980px; width:980px; margin:10px auto 0px auto;}
-.club_list_wrap:after{content:''; clear:both; display:block;}
+.club_list_wrap:after, .club_list:after{content:''; clear:both; display:block;}
 .club_list > li{width:314px; height:245px; border:1px solid #e3e3e3; float:left; margin-right:19px; overflow:hidden; position:relative; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
 .club_list > li:nth-child(3n){margin-right:0px;}
 .club_list > li:hover{border:3px solid #1d4082;}
@@ -25,8 +25,8 @@
 .club_list > li > a:hover{text-decoration:none}
 .club_list > li:hover > a{top:-2px; left:-2px;}
 .club_list > li > a > span{display:block;}
-.club_list li a span.imgBox{position:relative;}
-.club_list li a span.imgBox img{display:block; z-index:0;}
+.club_list li a span.imgBox{position:relative; overflow:hidden; height:150px;}
+.club_list li a span.imgBox img{display:block; z-index:0; max-width:314px}
 .club_list li a span.imgBox div.tags{position:absolute; z-index:1; right:10px; top:10px;}
 .club_list li:hover a span.imgBox div.tags{right:10px;}
 .club_list li a span.imgBox div.tags span{ color:white; height:15px; padding:0px 5px; background:#e85840;}

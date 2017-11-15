@@ -79,17 +79,71 @@ var load_list = function(key="", part="", area="", start="", limit=""){
         },
         url : "/appData/clubListResponse.php",
         success(data){
-            console.log('-------------------');
-            console.log(data);
+            make_list(data.list)
         },
         error(e){
             console.log(e);
         }
     });
 }
+var make_list = function(data){
+	console.log(data);
+	
+	div = $(".club_list_wrap");
+	list = $("<ul>").addClass("club_list");
+	
+	for(i=0; i<data.length; i++){
+		li = $("<li>");
+		a = $("<a>").attr("href", "#");
+		
+		//////////// img 처리
+		
+		imgBox = $("<span>").addClass("imgBox");
+		img = $("<img>");
+		if(!data[i].image){
+			img.attr("src", "/libraries/images/common/noimage300by150.jpg");
+			img.attr("alt", "등록된 이미지가 없습니다.");
+		}else{
+			img.attr("src", "/site_data/club_img/"+data[i].image);
+			img.attr("alt", data[i].title);
+		}
+		imgBox.append(img);
+		////////////// img처리 끝
+		
+		///////////// tag 처리
+		tags = $("<div>").addClass("tags");
+		loc = $("<span>").addClass("loc");
+		locs = data[i].addr.split('|');
+		locArr = [];
+		/* 지역 횟수를 구함
+		 * 경기 광주시|서울 도봉구|경기 용인시 일 경우 locArr[경기] = 2, locArr[서울] = 1
+		 */
+		for(j=0; j<locs.length; j++){
+			if(locArr[locs[j].substring(0,2)] > 0){
+				locArr[locs[j].substring(0,2)]++;
+			}else{
+				locArr[locs[j].substring(0,2)] = 1;				
+			}
+		}
+		
+		
+		
+		var sorted = locArr.sort(function(a,b){return b-a});
+		
+		console.log(sorted);
+		
+		tags.append(loc);
+		///////////// tag 처리 끝
+		
+		a.append(imgBox);
+		a.append(tags);
+		li.append(a);
+		list.append(li);
+	}
+	div.append(list);
+}
 
 var search = function(){
-	
 	var form = $("form[name=schForm");
 	if(Werun.util.FormCheck(form) == false) return false;
 	
@@ -97,7 +151,9 @@ var search = function(){
 	return false;
 }
 
+
+
 $(document).ready(function(){
-    //load_list();
+    load_list();
 });
 </script>
