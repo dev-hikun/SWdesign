@@ -57,7 +57,7 @@ var listGenerate = {
 			},
 			url : "/appData/clubListResponse.php",
 			success : function(data){
-				
+
 				console.log(data);
 				if(data.success == true){
 					$page.totalCnt = data.num;
@@ -76,31 +76,29 @@ var listGenerate = {
     setPagenate : function(){
         div = $("div.paginated"); //초기화
         div.html("");
-		
+
         totalPage = (Math.ceil(this.totalCnt/this.list_num)); //전체 페이지 갯수
 		page_num = 10;
 		totalSec = Math.ceil(totalPage/page_num);
-		section = Math.floor(this.page/page_num)
-		startPage = section*page_num+1;
-		endPage = (startPage+9) > totalPage? totalPage : startPage+9;
-		
-		if(startPage == 1) endPage = 10;
 		nowSec = Math.ceil(this.page/page_num);
-		nextSec = (nowSec+1 == totalSec)? totalSec : nowSec+1;
-		console.log(nextSec);
-		
+		startPage = ((nowSec-1)*page_num)+1;
+		endPage = (startPage+9) > totalPage? totalPage : startPage+9;
+		nowSec = Math.ceil(this.page/page_num);
+        nextBtnPage = (nowSec*page_num)+1;
+        prevBtnPage = ((nowSec-2)*page_num)+1;
+
 		/* aTag 정의 */
         var aTag = $("<a>");
         aTagList = [];
 
         first = (this.page == 1)? "" : aTag.clone().addClass("first").text("<<").attr("data-page", 1);
-        prev = (nowSec == 1)? "" : aTag.clone().addClass("prev").text("<");
-        next = (nextSec-1 == totalSec)? "" : aTag.clone().addClass("next").text(">").attr("data-page", (nextSec-1)*page_num);
+        prev = (nowSec == 1)? "" : aTag.clone().addClass("prev").text("<").attr("data-page", prevBtnPage);
+        next = (nextBtnPage > totalPage)? "" : aTag.clone().addClass("next").text(">").attr("data-page", nextBtnPage);
         last = (this.page == totalPage)? "" : aTag.clone().addClass("last").text(">>").attr("data-page", totalPage);
 
         div.append(first).append(prev);
 
-        for(i=startPage; i<=endPage; i++){
+        for(var i=startPage; i<=endPage; i++){
             var temp = aTag.clone().text(i).attr("data-page", i);
             if(temp.data("page") == this.page) temp.addClass("now");
             div.append(temp);
