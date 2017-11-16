@@ -6,13 +6,14 @@ var listGenerate = {
     end : 9,
     area : "",
     part : "",
+	totalCnt : "",
     init : function(){
         this.key = "";
+        this.area = "";
+        this.part = "";
         this.page = 1;
         this.start = Number(this.list_num) * (Number(this.page) - 1);
         this.end = this.start + this.list_num;
-        this.area = "";
-        this.part = "";
         $('.txtBtn.all').addClass("on");
         $("button.txtBtn.area").text("지역별 ▼").removeClass("on");
         $("button.txtBtn.part").removeAttr('data-idx').text("종목별 ▼").removeClass("on");
@@ -34,48 +35,87 @@ var listGenerate = {
         $("button.txtBtn.part").removeAttr('data-idx');
         this.go();
     },
-    setPage : function(idx){
-        this.page = idx;
+	setPage : function(){
+		var idx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        this.page = idx == undefined? 1 : idx;
         this.start = Number(this.list_num) * (Number(this.page) - 1);
         this.end = this.start + this.list_num;
-    },
+		this.go();
+	},
     go : function(){
-        load_list(this.key,this.part,this.area,this.start,this.end);
-        this.setPagenate();
+		$page = this;
+		$.ajax({
+			async : false,
+			type : "POST",
+			data : {
+				start : $page.start,
+				limit : $page.list_num,
+				key : $page.key,
+				part : $page.part,
+				area : $page.area,
+				table : "club"
+			},
+			url : "/appData/clubListResponse.php",
+			success : function(data){
+				
+				console.log(data);
+				if(data.success == true){
+					$page.totalCnt = data.num;
+					$page.setPagenate();
+					make_list(data);
+				}else{
+					alert("리스트 로딩에 실패했습니다.");
+					console.log(data);
+				}
+			},
+			error : function(e){
+				console.log(e);
+			}
+		});
     },
     setPagenate : function(){
-        div = $("div.paginated");
+        div = $("div.paginated"); //초기화
         div.html("");
-        //현재페이지 = now;
-        list_num = $('.club_count .cOrg').text();
-        numofAllpage = (Math.ceil(list_num/this.end));
-        console.log(this.end);
+		
+        totalPage = (Math.ceil(this.totalCnt/this.list_num)); //전체 페이지 갯수
+		page_num = 10;
+		totalSec = Math.ceil(totalPage/page_num);
+		section = Math.floor(this.page/page_num)
+		startPage = section*page_num+1;
+		endPage = (startPage+9) > totalPage? totalPage : startPage+9;
+		
+		if(startPage == 1) endPage = 10;
+		nowSec = Math.ceil(this.page/page_num);
+		nextSec = (nowSec+1 == totalSec)? totalSec : nowSec+1;
+		console.log(nextSec);
+		
+		/* aTag 정의 */
         var aTag = $("<a>");
         aTagList = [];
 
         first = (this.page == 1)? "" : aTag.clone().addClass("first").text("<<").attr("data-page", 1);
-        prev = (this.page == 1)? "" : aTag.clone().addClass("prev").text("<");
-        next = (this.page == numofAllpage)? "" : aTag.clone().addClass("next").text(">");
-        final = (this.page == numofAllpage)? "" : aTag.clone().addClass("final").text(">>").attr("data-page", numofAllpage);
+        prev = (nowSec == 1)? "" : aTag.clone().addClass("prev").text("<");
+        next = (nextSec-1 == totalSec)? "" : aTag.clone().addClass("next").text(">").attr("data-page", (nextSec-1)*page_num);
+        last = (this.page == totalPage)? "" : aTag.clone().addClass("last").text(">>").attr("data-page", totalPage);
 
         div.append(first).append(prev);
 
-        for(i=1; i<=numofAllpage; i++){
+        for(i=startPage; i<=endPage; i++){
             var temp = aTag.clone().text(i).attr("data-page", i);
             if(temp.data("page") == this.page) temp.addClass("now");
             div.append(temp);
             temp = null;
         }
 
-        div.append(next).append(final);
+        div.append(next).append(last);
 
         //이벤트 설정
         $page = this;
         div.find('a').each(function(){
+			$(this).off('click');
             $(this).click(function(e){
                 e.preventDefault();
-                $page.setPage($(this).data('page'));
-                $page.go();
+                $page.setPage($(this).data("page"));
             });
         });
     }
@@ -188,40 +228,6 @@ var setCatePartBtn = function(Werun, listGenerate){
     }
 
     cateSet.init($("button.txtBtn.part"));
-}
-
-
-var load_list = function(){
-    var key = arguments.length > 4 && arguments[0] !== undefined ? arguments[0] : "";
-    var part = arguments.length > 4 && arguments[1] !== undefined ? arguments[1] : "";
-    var area = arguments.length > 4 && arguments[2] !== undefined ? arguments[2] : "";
-    var start = arguments.length > 4 && arguments[3] !== undefined ? arguments[3] : "";
-    var limit = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "";
-    $.ajax({
-        async : false,
-        type : "POST",
-        data : {
-            start : start,
-            limit : limit,
-            key : key,
-            part : part,
-            area : area,
-            table : "club"
-        },
-        url : "/appData/clubListResponse.php",
-        success : function(data){
-            console.log(data);
-            if(data.success == true){
-                make_list(data);
-            }else{
-                alert("리스트 로딩에 실패했습니다.");
-                console.log(data);
-            }
-        },
-        error : function(e){
-            console.log(e);
-        }
-    });
 }
 
 var make_list = function(data){

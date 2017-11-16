@@ -15,7 +15,7 @@
     }
 
     if(!in_array("start", $keyCheckArr)) $s['start'] = 0;
-    if(!in_array("Limit", $keyCheckArr)) $s['limit'] = 9;
+    if(!in_array("limit", $keyCheckArr)) $s['limit'] = 9;
     if(!in_array("key", $keyCheckArr)) $s['key'] = null;
     if(!in_array("area", $keyCheckArr)) $s['area'] = null;
     if(!in_array("part", $keyCheckArr)) $s['part'] = null;
