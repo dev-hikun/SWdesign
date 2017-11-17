@@ -15,7 +15,7 @@
     }
 
     if(!in_array("start", $keyCheckArr)) $s['start'] = 0;
-    if(!in_array("Limit", $keyCheckArr)) $s['limit'] = 9;
+    if(!in_array("limit", $keyCheckArr)) $s['limit'] = 9;
     if(!in_array("key", $keyCheckArr)) $s['key'] = null;
     if(!in_array("area", $keyCheckArr)) $s['area'] = null;
     if(!in_array("part", $keyCheckArr)) $s['part'] = null;
@@ -57,6 +57,7 @@
         $tempArr = array();
         foreach($data as $key=>$val){
             $tempArr[$key] = $val;
+            if(($key == "image" || $key == "8") && ($val==null && $val=="")) $tempArr[$key] = "noImage300by150.jpg";
         }
         $returnArr[$i] = $tempArr;
         $i++;
