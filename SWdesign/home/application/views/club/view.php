@@ -1,24 +1,13 @@
 <div class="myclubBanner"></div>
 
-<div class="selectArea">
-    <span class="left">
-        <span>가입된 다른 클럽 선택 : </span>
-        <select name='choiceClub'>
-        </select>
-    </span>
-    <span class="right">
-        <button type="button" class="txtBtn bgBlue" onclick="document.location.href='/club/lists'">전체 클럽 리스트</button>
-    </span>
-</div>
 
 <article class="title club">
-    <h2>-</h2>
+    <h2>클럽 리스트/검색</h2>
     <div>
-        <span>-</span>
+        <span>내 주변 또는 종목별로 클럽을 검색하고 가입해보세요.</span>
     </div>
+    <button class="txtBtn" style="margin:0px; position:absolute; right:0; top:0" onclick="document.location.href='/club/lists'">목록으로</button>
 </article>
-
-<?php $this->load->view('club/clubNav'); ?>
 
 <article class="myclubContentWrap">
     <div class="clubImg">
@@ -65,20 +54,17 @@
             지도 Area. Error시 이 메세지 보임.
         </div>
         <div class="buttonArea">
-        <?php if($mode == "views"): ?>
             <button type="button" class="txtBtn bgBlue">가입신청</button>
-        <?php endif; ?>
-            <button type="button" class="txtBtn bgBlue">탈퇴하기</button>
         </div>
     </div>
 </article>
 
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=bhxp3gGawGimS6A0p0uC&submodules=geocoder"></script>
-<script type="text/javascript" src="/libraries/js/club/myclub.js"></script>
+<script type="text/javascript" src="/libraries/js/club/view.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
-    myclubController.clubIdx = <?= $_SESSION['idx'] ?>;
-    myclubController.init();
+    clubController.clubIdx = <?= $clubIdx ?>;
+    clubController.init();
 });
 </script>
