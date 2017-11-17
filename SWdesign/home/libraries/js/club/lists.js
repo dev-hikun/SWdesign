@@ -1,7 +1,7 @@
 var listGenerate = {
     page : 1,
     key : "",
-    list_num : 9,
+    list_num : 6,
     start : 0,
     end : 9,
     area : "",
@@ -57,8 +57,6 @@ var listGenerate = {
 			},
 			url : "/appData/clubListResponse.php",
 			success : function(data){
-
-				console.log(data);
 				if(data.success == true){
 					$page.totalCnt = data.num;
 					$page.setPagenate();
@@ -252,7 +250,7 @@ var make_list = function(data){
 
     for(i=0; i<data.length; i++){
         li = $("<li>");
-        a = $("<a>").attr("href", "#");
+        a = $("<a>").attr("href", "/club/view/"+data[i].clubIdx);
 
         //////////// img 처리
 
