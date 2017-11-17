@@ -36,6 +36,25 @@
                 </td>
             </tr>
             <tr>
+                <th class="required">클럽 운동 장소</th>
+                <td>
+                    <p>
+                        <button class="tableBtn" type="button" name="addrSearch">주소검색</button>
+                        <input type="text" name="juso1" readonly="readonly" />
+                    </p>
+
+                    <p class="mt5">
+                        <input type="text" name="juso2" title="상세주소" placeholder="상세주소" />
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th class="required">클럽 운동 시간</th>
+                <td>
+                    <input type="text" name="sigan" title="클럽 운동 시간" placeholder="예) 매주 토요일 오전 11시~" />
+                </td>
+            </tr>
+            <tr>
                 <th class="required">클럽소개(간단히)</th>
                 <td>
                     <input type="text" name="description" title="짧은 클럽소개" placeholder="이곳에 간단히 클럽 소개를 적어주세요." required />
@@ -82,6 +101,16 @@
 </article>
 
 <script type="text/javascript">
+/* 주소 받아주기 */
+var jusoCallBack = function(addr1, addr2, addr3){
+    $("[name=juso1]").val(addr1+" "+addr2);
+    $("[name=juso2]").val(addr3);
+}
+
+/* 주소검색 팝업 */
+var goPopup = function(){
+    var pop = window.open("/popup/juso","pop","width=570,height=440, scrollbars=yes, resizable=yes");
+}
 
 var settingSido = function(data){
     for(var i=0; i<data.length; i++){
@@ -204,6 +233,13 @@ console.log();
     }else if($("input:radio[name='area']:checked").val() == undefined){
         alert("대표지역을 선택해주세요. \r\n만약 활동지역을 선택하지 않으셨다면, \n활동지역 선택 후 대표지역을 지정해주세요.");
         return false;
+    }else if($("input[name=juso1]").val() == "" || $("input[name=juso2]").val() == "" ){
+        alert("클럽의 운동장소를 지정해주세요.");
+        return false;
+    }else if($("input[name=sigan]").val() == ""){
+        alert("클럽의 운동시간을 작성해주세요.");
+        $("input[name=sigan]").focus();
+        return false;
     }
 
     if(confirm('단 한개의 클럽만 관리자가 되실 수 있습니다.\r\n 클럽을 등록하시겠습니까?')){
@@ -215,6 +251,9 @@ console.log();
 
 /** 이벤트 셋팅 **/
 var setEvent = function(){
+
+    $("[name=juso1]").click(function(){ goPopup(); });
+    $("[name=addrSearch]").click(function(){ goPopup(); });
 
     settingSido(Werun.util.getSidoArr());
    /* $.ajax({

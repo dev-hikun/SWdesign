@@ -78,7 +78,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    myclubController.clubIdx = <?= $_SESSION['idx'] ?>;
+    myclubController.memberIdx = <?= $_SESSION['idx'] ?>;
     myclubController.init();
 });
 </script>
