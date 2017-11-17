@@ -42,7 +42,7 @@ ul,ol,dl,dd,li{list-style: none;}
 i{font-style: normal}
 body,div,ul,li,header,section,footer,nav,h1,h2,h3,h4,h5,h6,img,p,form{margin:0px; padding:0px;}
 h1,h2,h3,h4,h5,h6{-webkit-margin-before:0px;-webkit-margin-after:0px;}
-img{display:inline-block;}
+img{display:inline-block; border:0px;}
 a:link, a:active, a:visited{color:#333; text-decoration: none;}
 a:hover{color:#666; text-decoration: underline;}
 

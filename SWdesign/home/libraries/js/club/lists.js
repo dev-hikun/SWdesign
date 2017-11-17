@@ -6,13 +6,14 @@ var listGenerate = {
     end : 9,
     area : "",
     part : "",
+	totalCnt : "",
     init : function(){
         this.key = "";
+        this.area = "";
+        this.part = "";
         this.page = 1;
         this.start = Number(this.list_num) * (Number(this.page) - 1);
         this.end = this.start + this.list_num;
-        this.area = "";
-        this.part = "";
         $('.txtBtn.all').addClass("on");
         $("button.txtBtn.area").text("지역별 ▼").removeClass("on");
         $("button.txtBtn.part").removeAttr('data-idx').text("종목별 ▼").removeClass("on");
@@ -34,12 +35,87 @@ var listGenerate = {
         $("button.txtBtn.part").removeAttr('data-idx');
         this.go();
     },
+	setPage : function(){
+		var idx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        this.page = idx == undefined? 1 : idx;
+        this.start = Number(this.list_num) * (Number(this.page) - 1);
+        this.end = this.start + this.list_num;
+		this.go();
+	},
     go : function(){
-        load_list(this.key,this.part,this.area,this.start,this.end);
+		$page = this;
+		$.ajax({
+			async : false,
+			type : "POST",
+			data : {
+				start : $page.start,
+				limit : $page.list_num,
+				key : $page.key,
+				part : $page.part,
+				area : $page.area,
+				table : "club"
+			},
+			url : "/appData/clubListResponse.php",
+			success : function(data){
+
+				console.log(data);
+				if(data.success == true){
+					$page.totalCnt = data.num;
+					$page.setPagenate();
+					make_list(data);
+				}else{
+					alert("리스트 로딩에 실패했습니다.");
+					console.log(data);
+				}
+			},
+			error : function(e){
+				console.log(e);
+			}
+		});
     },
     setPagenate : function(){
-        div = $("div.pagenated");
+        div = $("div.paginated"); //초기화
+        div.html("");
 
+        totalPage = (Math.ceil(this.totalCnt/this.list_num)); //전체 페이지 갯수
+		page_num = 10;
+		totalSec = Math.ceil(totalPage/page_num);
+		nowSec = Math.ceil(this.page/page_num);
+		startPage = ((nowSec-1)*page_num)+1;
+		endPage = (startPage+9) > totalPage? totalPage : startPage+9;
+		nowSec = Math.ceil(this.page/page_num);
+        nextBtnPage = (nowSec*page_num)+1;
+        prevBtnPage = ((nowSec-2)*page_num)+1;
+
+		/* aTag 정의 */
+        var aTag = $("<a>");
+        aTagList = [];
+
+        first = (this.page == 1)? "" : aTag.clone().addClass("first").text("<<").attr("data-page", 1);
+        prev = (nowSec == 1)? "" : aTag.clone().addClass("prev").text("<").attr("data-page", prevBtnPage);
+        next = (nextBtnPage > totalPage)? "" : aTag.clone().addClass("next").text(">").attr("data-page", nextBtnPage);
+        last = (this.page == totalPage)? "" : aTag.clone().addClass("last").text(">>").attr("data-page", totalPage);
+
+        div.append(first).append(prev);
+
+        for(var i=startPage; i<=endPage; i++){
+            var temp = aTag.clone().text(i).attr("data-page", i);
+            if(temp.data("page") == this.page) temp.addClass("now");
+            div.append(temp);
+            temp = null;
+        }
+
+        div.append(next).append(last);
+
+        //이벤트 설정
+        $page = this;
+        div.find('a').each(function(){
+			$(this).off('click');
+            $(this).click(function(e){
+                e.preventDefault();
+                $page.setPage($(this).data("page"));
+            });
+        });
     }
 }
 
@@ -152,41 +228,11 @@ var setCatePartBtn = function(Werun, listGenerate){
     cateSet.init($("button.txtBtn.part"));
 }
 
-
-var load_list = function(key="", part="", area="", start="", limit=""){
-    $.ajax({
-        async : false,
-        type : "POST",
-        data : {
-            start : start,
-            limit : limit,
-            key : key,
-            part : part,
-            area : area,
-            table : "club"
-        },
-        url : "/appData/clubListResponse.php",
-        success(data){
-            console.log(data);
-            if(data.success == true){
-                make_list(data);
-            }else{
-                alert("리스트 로딩에 실패했습니다.");
-                console.log(data);
-            }
-        },
-        error(e){
-            console.log(e);
-        }
-    });
-}
-
 var make_list = function(data){
     $('.club_count .cOrg').text(data.num);
     $("ul.club_list").remove();
     div = $(".club_list_wrap");
 
-    console.log(data.num)
     if(data.num == 0){
         div.css({
             textAlign: 'center',
@@ -269,10 +315,10 @@ var memberofClub = function(idx){
             order : "order by cnt asc"
         },
         async:false,
-        success(data){
+        success : function(data){
             returnNum = Number(data.data.data[0].cnt) + 1; //admin까지
         },
-        error(e){
+        error : function(e){
             console.log(e);
         }
     });

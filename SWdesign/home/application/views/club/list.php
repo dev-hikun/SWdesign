@@ -1,9 +1,4 @@
-<script type="text/javascript">
-    //alert('준비중인 페이지입니다.');
-</script>
-
-
-<article class="title">
+<article class="title club">
     <h2>클럽 리스트/검색</h2>
     <div>
         <span>내 주변 또는 종목별로 클럽을 검색하고 가입해보세요.</span>
@@ -25,7 +20,7 @@
         </span>
         <span>
             <button class="txtBtn area">지역별 ▼</button>
-            <ul>
+            <ul style="top:-140px">
             </ul>
         </span>
         <span>
