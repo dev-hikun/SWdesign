@@ -27,10 +27,10 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-    $query = "select * from {$s['table']}";
+    $query = "select c.*, count(m.memberIdx) as memberCnt from `club` as c, `clubmember` as m WHERE c.clubIdx = m.clubIdx";
 
     /* where절 */
-    $where = " where clubIdx > 0";
+    $where = "";
     $limit = "";
     if($s['key'] != null) $where .= " and (title like '%{$s['key']}%' or contents like '%{$s['key']}%' or description like '%{$s['key']}%')";
 
@@ -41,8 +41,11 @@
     if($s['start'] != null && $s['limit'] != null) $limit = " limit {$s['start']}, {$s['limit']}";
 
     $query .= $where;
+    $query .= " group by m.clubIdx";
     $num_res = mysqli_query($con, $query)or die(failed("Something wrong while the server was sending a query to the database. \r\n you have to check the error and the query", $query, mysqli_error($con)));
+
     $query .= $limit;
+
 
     //echo json_encode($query);
 
@@ -63,9 +66,7 @@
         $i++;
     }
 
-
-
-    echo json_encode(array("num"=>mysqli_num_rows($num_res), "list"=>$returnArr, "success"=>true, "query"=>$query));
+    echo json_encode(array("num"=>mysqli_num_rows($num_res), "list"=>$returnArr, "success"=>true/*, "query"=>$query*/));
 
 //////////////////////////////////////////////////////////////////////////////
 

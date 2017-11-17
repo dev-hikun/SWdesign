@@ -290,7 +290,7 @@ var make_list = function(data){
 
         ////////// btn 처리
         btnBox = $("<span>").addClass("btnBox");
-        btn1 = $("<button type='button'>").html("<strong class='cOrg'>"+memberofClub(data[i].clubIdx)+"</strong>명");
+        btn1 = $("<button type='button'>").html("<strong class='cOrg'>"+data[i].memberCnt+"</strong>명");
         btnBox.append(btn1);
         ////////// btn 처리 끝
         a.append(imgBox);
@@ -301,26 +301,4 @@ var make_list = function(data){
         list.append(li);
     }
     div.append(list);
-}
-
-var memberofClub = function(idx){
-    var returnNum = 0;
-    $.ajax({
-        type : 'POST',
-        url : "/appData/selectResponse.php",
-        data : {
-            table : "clubmember",
-            fields : ["count(*) as cnt"],
-            where : "clubIdx = "+idx,
-            order : "order by cnt asc"
-        },
-        async:false,
-        success : function(data){
-            returnNum = Number(data.data.data[0].cnt) + 1; //admin까지
-        },
-        error : function(e){
-            console.log(e);
-        }
-    });
-    return returnNum;
 }

@@ -76,7 +76,7 @@ class Regist extends CI_Controller {
           }
         }
 		    $s['idx'] = $_SESSION['idx'];
-
+        $s['contents'] = nl2br($s['contents']);
 
 
 
