@@ -62,7 +62,9 @@ class Regist extends CI_Controller {
 
         foreach($data as $key=>$val){
           if(!is_array($data[$key])){
-            $s[$key] = htmlspecialchars($val);
+            if($key == "contents"){
+              $s['contents'] = htmlspecialchars(nl2br($s['contents']));
+            }else $s[$key] = htmlspecialchars($val);
           }
         }
         $s['addr'] = "";
@@ -76,7 +78,6 @@ class Regist extends CI_Controller {
           }
         }
 		    $s['idx'] = $_SESSION['idx'];
-        $s['contents'] = nl2br($s['contents']);
 
 
 

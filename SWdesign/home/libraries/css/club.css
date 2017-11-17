@@ -58,7 +58,8 @@
 .regist_wrap .addr input[type=checkbox]{height:14px; line-height:14px;}
 .regist_wrap input[name=title]{width:300px;}
 .regist_wrap input[name=description]{width:100%;}
-
+.regist_wrap input[name=juso1]{width:576px;}
+.regist_wrap input[name=juso2]{width:650px;}
 .myclubBanner{height:283px; min-width:980px; width:100%; background:url('/libraries/images/club/myclubTopBanner.jpg') center center;}
 article.club{position:relative;}
 div.selectArea{min-width:980px; width:980px; margin:20px auto 0 auto; padding-bottom:20px; border-bottom:1px solid #e3e3e3; height:30px; line-height:30px;}

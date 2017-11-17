@@ -17,10 +17,10 @@ class Club extends CI_Model {
 
     public function regist($d)
     {
-		$arr = array($d['idx'], $d['title'], date("Y-m-d",time()), $d['addr'], $d['area'], $d['parts'], $d['file'], $d['description'], $d['content'], $d['public']);
+		$arr = array($d['idx'], $d['title'], date("Y-m-d",time()), $d['addr'], $d['area'], $d['juso1'], $d['juso2'], $d['sigan'], $d['parts'], $d['file'], $d['description'], $d['content'], $d['public']);
 
         $this->db->trans_start();
-    		$sql = "insert into club(adminIdx, title, birth, addr, area, part, image, description, contents, public) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    		$sql = "insert into club(adminIdx, title, birth, addr, area, juso1, juso2, sigan, part, image, description, contents, public) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             $res = $this->db->query($sql, $arr);
 
             $sql2 = "select clubIdx from club where title=? and adminIdx=?";
