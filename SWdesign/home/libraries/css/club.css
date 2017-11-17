@@ -58,3 +58,25 @@
 .regist_wrap .addr input[type=checkbox]{height:14px; line-height:14px;}
 .regist_wrap input[name=title]{width:300px;}
 .regist_wrap input[name=description]{width:100%;}
+
+.myclubBanner{height:283px; min-width:980px; width:100%; background:url('/libraries/images/club/myclubTopBanner.jpg') center center;}
+article.club{position:relative;}
+div.selectArea{min-width:980px; width:980px; margin:20px auto 0 auto; padding-bottom:20px; border-bottom:1px solid #e3e3e3; height:30px; line-height:30px;}
+div.selectArea > span{display:inline-block;}
+div.selectArea:after{clear:both; content:''; display:block;}
+div.selectArea .left{float:left;} div.selectArea .right{float:right;}
+div.selectArea button{height:30px; vertical-align:middle; line-height:30px; margin:0px;}
+div.selectArea select{width:160px; vertical-align:middle; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal}
+article.myclubContentWrap{margin-bottom:20px; min-height:400px;}
+.myclubContentWrap .clubImg{width:100%; margin-top:10px; text-align:center;}
+.myclubContentWrap .clubImg > * {display:block;}
+.myclubContentWrap .infoList{margin-top:10px;}
+.myclubContentWrap .listBox{background:#f6f6f6; position:relative; border:1px solid #e3e3e3; padding:20px 20px; box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box;}
+.myclubContentWrap .infoList .listTable{margin-top:10px; display:table; table-layout:fixed; width:100%;}
+.myclubContentWrap .infoList .listTable > li{display:table-cell; vertical-align:top;}
+.myclubContentWrap .infoList .listTable .listBlank{width:10px;}
+.myclubContentWrap .infoList p{font-size:12px; color:#777; line-height:18px;}
+.myclubContentWrap .infoList h3, h4{font-size:24px; line-height:40px; margin-bottom:5px; font-weight:normal;}
+.myclubContentWrap .infoList h4{font-size:18px; line-height:26px; margin:5px 0 10px 0;}
+.myclubContentWrap .infoList .line{height:1px; width:100%; margin:30px 0; background:#e3e3e3;}
+.myclubContentWrap div#map{width:100%; margin-top:10px; height:250px; border:1px solid #e3e3e3; display:inline-block;}

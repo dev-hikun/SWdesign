@@ -15,6 +15,7 @@ class MyClub extends CI_Controller {
       $data['page_title'] = '나의클럽';
       $data['css_link'] = '<link href="/libraries/css/club.css" rel="stylesheet" type="text/css" />';
       $data['mode'] = "myclub";
+      $data['submode'] = 'info';
       $this->load->view('templates/header', $data); //헤더 인클루드
       $this->load->view('club/myclub', $data);
       $this->load->view('templates/footer'); //푸터 인클루드

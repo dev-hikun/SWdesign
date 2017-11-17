@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-p.join{height:485px; width:980px; margin:60px auto; display:block; text-align:center; background:url('../images/member/bg_choice.jpg') no-repeat;}
+p.join{height:485px; width:980px; margin:90px auto; display:block; text-align:center; background:url('../images/member/bg_choice.jpg') no-repeat;}
 p.join .tit{font-size:16px; display:block; padding-top:20px; height:20px;}
 p.join .msg{font-size:30px; display:block; height:50px; line-height:50px;}
 p.join .contWrap{width:820px; height:185px; margin:185px auto 0px auto; display:block;}
@@ -10,7 +10,7 @@ p.join .contWrap > span > i{font-size:14px; margin-top:20px; line-height:25px; d
 p.join .contWrap > span > button{width:200px; height:40px; border-radius:3px 3px; border:0px none; font-weight:700; color:#fff; font-size:18px;}
 
 /* 로그인폼 */
-p.login{margin:150px auto; width:310px; display:block;}
+p.login{margin:185px auto; width:310px; display:block;}
 p.login .tit{font-size:16px; display:block; text-align:center; padding-top:20px; height:20px; font-weight:700;}
 p.login .contWrap{margin-top:20px; background:#f6f6f6; display:block; padding:20px 20px; box-sizing:border-box; border:1px solid #e3e3e3; border-radius:3px 3px;}
 p.login .contWrap:after{content:''; clear:both; display:block;}

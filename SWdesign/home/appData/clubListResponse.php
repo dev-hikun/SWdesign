@@ -57,6 +57,7 @@
         $tempArr = array();
         foreach($data as $key=>$val){
             $tempArr[$key] = $val;
+            if(($key == "image" || $key == "8") && ($val==null && $val=="")) $tempArr[$key] = "noImage300by150.jpg";
         }
         $returnArr[$i] = $tempArr;
         $i++;
