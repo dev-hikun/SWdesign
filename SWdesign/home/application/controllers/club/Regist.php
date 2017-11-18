@@ -62,9 +62,7 @@ class Regist extends CI_Controller {
 
         foreach($data as $key=>$val){
           if(!is_array($data[$key])){
-            if($key == "contents"){
-              $s['contents'] = htmlspecialchars(nl2br($s['contents']));
-            }else $s[$key] = htmlspecialchars($val);
+            $s[$key] = htmlspecialchars($val);
           }
         }
         $s['addr'] = "";

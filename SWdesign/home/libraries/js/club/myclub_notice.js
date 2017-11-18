@@ -66,9 +66,14 @@ var myclubController = {
     setPage : function(){
         this.getPageInfo();
         data = this.clubInfo[0];
-        console.log(this.clubInfo);
         $("article.title h2").html(data.title);
         $("article.title div span").html(data.description);
+
+
+        notice = $("nav.lnb a[title='공지사항']");
+        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
+        notice = $("nav.lnb a[title='게시판']");
+        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
     }
 }
 
