@@ -3,7 +3,9 @@
 <div class="selectArea">
     <span class="left">
         <span>가입된 다른 클럽 선택 : </span>
+
         <select name='choiceClub'>
+
         </select>
     </span>
     <span class="right">

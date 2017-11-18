@@ -56,4 +56,4 @@ select{height:30px; outline:0px; box-sizing:border-box; border:0; padding:0 8px;
 
 /*table*/
 caption{display:none;}
-table{width: 100%; border-collapse: collapse; border-spacing: 0; text-align: left;}
+table{width: 100%; border-collapse: collapse; border-spacing: 0; text-align: left; background-color:transparent;}

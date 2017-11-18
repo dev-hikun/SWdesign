@@ -21,6 +21,7 @@
 <?php $this->load->view('club/clubNav'); ?>
 
 <article class="myclubContentWrap">
+       <?php $this->werunboard->getList() ?>
 </article>
 
 
