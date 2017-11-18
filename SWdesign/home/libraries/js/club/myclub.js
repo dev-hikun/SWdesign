@@ -69,7 +69,6 @@ var myclubController = {
         $("article.title h2, .listTop h3").html(data.title);
         $("article.title div span").html(data.description);
         $(".clubImg img").attr('src', '/site_data/club_img/'+data.image);
-        $(".listTop p").html(data.contents);
         console.log(data);
         $("h4[data-name='memberCnt']").html(data.memberCnt);
 
@@ -94,6 +93,8 @@ var myclubController = {
         $("h4[data-name='sigan']").html(data.sigan);
 
         notice = $("nav.lnb a[title='공지사항']");
+        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
+        notice = $("nav.lnb a[title='게시판']");
         notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
         this.mapSetting();
     },

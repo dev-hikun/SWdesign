@@ -34,9 +34,11 @@ var clubController = {
         $(".listTop p").html(data.contents);
         $("h4[data-name='memberCnt']").html(data.memberCnt);
 
+        console.log(data.public);
+
         if(data.public == 2) data.public = "누구나. 즉시가입.";
         else if(data.public == 1) data.public = "운영진 승인제";
-        else if(data.public == 3) data.public = "운영진 초대에 한해 가입가능";
+        else if(data.public == 0) data.public = "운영진 초대에 한해 가입가능";
         $("h4[data-name='public']").html(data.public);
 
         areas = data.addr.split('|');
