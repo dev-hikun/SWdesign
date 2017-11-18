@@ -21,6 +21,10 @@
 .pl20{padding-left:20px;}
 .mt5{margin-top:5px;}
 .ml10{margin-left:10px;}
+.mt10{margin-top:10px;}
+
+.height80{height:80px !important;}
+.tLeft{text-align:left !important;}
 
 /* button */
 button.icoBtn{border:0px; background:none; padding:0px; margin-right:10px;}
@@ -65,3 +69,5 @@ button.tableBtn{border:1px solid #e3e3e3; border-radius:3px 3px; box-sizing:bord
 .boardWrap table.board thead th{background:#333; line-height:30px; height:30px; text-align:center; color:white; font-size:14px;}
 .boardWrap table.board tbody td{border-bottom:1px dotted #e3e3e3; line-height:30px; height:30px; text-align:center; font-size:14px;}
 .boardWrap table.board tbody td a{text-align:left; display:block; width:600px; overflow: hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal}
+.boardWrap table.board tbody td button{height:24px; line-height:24px; border:0px; font-weight:bold;}
+.boardWrap table.board tbody td button.bgBlue{color:white;}

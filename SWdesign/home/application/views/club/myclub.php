@@ -3,7 +3,9 @@
 <div class="selectArea">
     <span class="left">
         <span>가입된 다른 클럽 선택 : </span>
+
         <select name='choiceClub'>
+
         </select>
     </span>
     <span class="right">
@@ -80,7 +82,5 @@
 $(document).ready(function(){
     myclubController.memberIdx = <?= $_SESSION['idx'] ?>;
     myclubController.init();
-
-    $(".listTop p").html(myclubController.clubInfo[0].contents);
 });
 </script>

@@ -10,10 +10,13 @@
     endif;
 if($mode == 'myclub'): ?>
 <nav class="lnb">
-    <ul class="three">
+    <ul class="<?php if($isAdmin=='N'): ?>three<?php else: ?>four<?php endif; ?>">
         <li <?php if($submode == 'index'): ?> class="on"<?php endif; ?>><a href="/club/myclub" title="클럽정보">클럽정보</a></li>
-        <li <?php if($submode == 'notice'): ?> class="on"<?php endif; ?>><a href="/club/myclub/notice" title="공지사항">공지사항</a></li>
-        <li <?php if($submode == 'board'): ?> class="on"<?php endif; ?>><a href="/club/myclub/board" title="게시판">게시판</a></li>
+        <li <?php if($submode == 'notice'): ?> class="on"<?php endif; ?>><a href="/club/myclub/notice?clubIdx=<?= $clubIdx ?>" title="공지사항">공지사항</a></li>
+        <li <?php if($submode == 'board'): ?> class="on"<?php endif; ?>><a href="/club/myclub/board?clubIdx=<?= $clubIdx ?>" title="게시판">게시판</a></li>
+        <?php if($isAdmin == 'Y'): ?>
+            <li <?php if($submode == 'admin'): ?> class="on"<?php endif; ?>><a href="/club/myclub/admin?clubIdx=<?= $clubIdx ?>" title="클럽관리">클럽관리</a></li>
+        <?php endif; ?>
     </ul>
 </nav>
 <?php endif; ?>

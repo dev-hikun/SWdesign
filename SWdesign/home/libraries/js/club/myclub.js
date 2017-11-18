@@ -8,8 +8,13 @@ var myclubController = {
     clubInfo : null,
     init : function(){
         $myclub = this;
+        if($_GET['clubIdx'] != undefined && $_GET['clubIdx'] != null){
+            this.clubIdx = $_GET['clubIdx'];
+        }
         this.setClubList();
         this.setEventtoSelect();
+        this.getPageInfo();
+        this.setPage();
     },
     getClubList : function(){
         $.ajax({
@@ -32,17 +37,33 @@ var myclubController = {
     setClubList : function(){
         this.getClubList();
         this.select = $("[name=choiceClub]");
+        var isChecked = false;
+
         for(i=0; i<this.clubList.length; i++){
+            if(i==0 && this.clubIdx==null) this.clubIdx = this.clubList[i].clubIdx;
             option = $("<option>").attr('value', this.clubList[i].clubIdx).text(this.clubList[i].title);
             this.select.append(option);
+            if(this.clubIdx == this.clubList[i].clubIdx) isChecked = true;
         }
+
+        if(this.clubList.length == 0){
+            alert('먼저 클럽을 가입해주세요.');
+            document.location.href='/club/lists';
+        }
+
+        if(isChecked == false && this.clubIdx != null){
+            alert('가입되지 않은 클럽입니다.');
+            document.location.href='/club/lists';
+        }
+
+        this.select.val(this.clubIdx);
     },
     setEventtoSelect : function(){
         this.select.change(function(){
             $myclub.clubIdx = $(this).val();
-            $myclub.setPage();
+            document.location.href= '?clubIdx='+ $(this).val();
         });
-        this.select.trigger("change");
+        if($_GET['clubIdx'] == undefined) this.select.trigger('change');
     },
     getPageInfo : function(){
         $.ajax({
@@ -64,14 +85,17 @@ var myclubController = {
         });
     },
     setPage : function(){
-        this.getPageInfo();
         data = this.clubInfo[0];
+        if(!data){
+            alert("데이터 처리 오류\r\n잠시 후 다시 시도해주세요.");
+            history.back();
+            return;
+        }
         $("article.title h2, .listTop h3").html(data.title);
+        $(".listTop p").html(myclubController.clubInfo[0].contents);
         $("article.title div span").html(data.description);
         $(".clubImg img").attr('src', '/site_data/club_img/'+data.image);
-        console.log(data);
         $("h4[data-name='memberCnt']").html(data.memberCnt);
-
         if(data.public == 2) data.public = "누구나. 즉시가입.";
         else if(data.public == 1) data.public = "운영진 승인제";
         else if(data.public == 3) data.public = "운영진 초대에 한해 가입가능";
@@ -92,10 +116,6 @@ var myclubController = {
         $("h4[data-name='juso'] .addr2").html(data.juso2);
         $("h4[data-name='sigan']").html(data.sigan);
 
-        notice = $("nav.lnb a[title='공지사항']");
-        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
-        notice = $("nav.lnb a[title='게시판']");
-        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
         this.mapSetting();
     },
     mapSetting : function(){
