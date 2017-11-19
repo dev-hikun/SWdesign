@@ -55,15 +55,11 @@
 
 
 
-	<div class="termsForm">
+<div class="termsForm">
     <div class="agreeHeader">
         <div class="agreeText">
-            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다</p>
+            <p>아래 <strong class="cOrg">*</strong> 표시 된 내용은 필수입력사항입니다..</p>
         </div>
-    </div>
-
-	<div class="termsHeader">
-        <p class="tit">기본정보</p>
     </div>
     <table class="bbs_write">
         <caption>클럽정보</caption>
@@ -75,7 +71,7 @@
             <tr>
                 <th class="required">클럽 이름</th>
                 <td>
-                    <input type="text" name="club name"> <!--placeholder = "한글이나 영문으로 2글자 이상 입력"--> 
+                    <input type="text" placeholder = "한글이나 영문으로 2글자 이상 입력" name="club name">
                     <button class="tableBtn">중복확인</button>
                 </td>
             </tr>
@@ -127,20 +123,31 @@
                 </td>
             </tr>
             <tr>
+			<th class = "required">클럽 가입 방식 (클럽 등록 후 변경 가능)</th>
+				<td>
+					<input type="radio" name="public" value="public" checked> 공개 (가입이 자유로운 방식입니다)<br>
+					<input type="radio" name="apply" value="apply"> 승인방식 (관리자가 가입 신청을 승인 하는 방식입니다)<br>
+					<input type="radio" name="private" value="private"> 비공개 (가입이 불가능합니다)
+				</td>
+			</tr>
+			<tr>
+			<th class = "required">클럽 소개</th>
+				<td>
+					<input type="text" place holder="클럽에 대한 간단한 설명을 넣어주세요" name="description">
+				</td>
+			</tr>
+			<tr>
+				<th>클럽 인사말</th>
+				<td>
+					<input type="text" place holder="클럽에 대한 간단한 설명을 넣어주세요" name="contents">
+				</td>
+			</tr>
+			<tr>
                 <th>클럽 프로필 이미지</th>
                 <td>
                     <input type="file" name="profileImage">
                 </td>
             </tr>
-            <tr>
-            <!--
-			<th class = "required">클럽 공개 여부</th>
-				<td>
-					<input type="radio" name="public" value="public" checked> 공개
-					<input type="radio" name="private" value="private"> 비공개
-				</td>
-			</tr>
-		-->
         </tbody>
     </table>
 
@@ -150,9 +157,6 @@
         <button type="submit" class="txtBtn bgBlue">클럽 등록</button>
     </div>
 </div>
-
-
-
 
 		<nav class="bottom">
 			<div class="bottomArea">

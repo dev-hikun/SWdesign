@@ -10,8 +10,28 @@
 <body>
 	<div class="wrap">
 		<header>
-			헤더영역
+			<div class="globalArea">
+				<nav class="global">
+						<a href="#" class="login">로그인</a>
+						<a href="#" class="join">회원가입</a>
+						<a href="#" class="findInfo">정보찾기</a>
+				</nav>
+			</div>
+			<h1 class="logo">
+				<img src="../../images/common/c_logo_big.jpg" alt="We run" />
+			</h1>
+			<nav class="gnb">
+				<div class="gnbArea">
+					<ul>
+						<li class="competition"><a href="#">대회 정보</a></li>
+						<li class="club"><a href="#">클럽</a></li>
+						<li class="rank"><a href="#">랭킹</a></li>
+						<li class="info"><a href="#">사이트 소개</a></li>
+					</ul>
+				</div>
+			</nav>
 		</header>
+
 		<section>
 			<article class="title">
 				<h2>전체대회</h2>
@@ -27,25 +47,34 @@
 					<li>대회 운영/관리</li>
 				</ul>
 			</nav>
-			<article class="banner">
-				배너영역
-			</article>
-			<article class="sort">
-				<div class="sortWrap">
-					<p>원하는 지역 또는 종목을 선택하여 각 대회 정보를 확인하고 신청하세요! 키워드로도 검색 가능합니다.</p>
-					<p class="cOrg">* 클럽대회의 경우 클럽장 또는 부클럽장에게만 신청권한이 있습니다.</p>
-					<div class="comboWrap">
-						<select>
-							<option>시/도</option>
-						</select>
-						<select>
-							<option>시/군/구</option>
-						</select>
-						<select>
-							<option>종목</option>
-						</select>
-					</div>
+			<div class="competition_search">
+				<div class="searchArea">
 				</div>
+				
+			    <div class="btnArea">
+			        <button class="txtBtn all on">전체</button>
+			        <button class="txtBtn seoul">서울권</button>
+			        <button class="txtBtn kyeongki">경기권</button>
+			        <button class="txtBtn jungbu">중부권</button>
+			        <button class="txtBtn youngnam">영남권</button>
+			        <button class="txtBtn honam">호남권</button>
+			    </div>
+				<span class="icon"></span>
+				<!--
+				<a href="#" class="btn_value">종목</a>
+				<div class="comboWrap">
+					<select>
+						<option>시/도</option>
+					</select>
+					<select>
+						<option>시/군/구</option>
+					</select>
+					<select>
+						<option>종목</option>
+					</select>
+				</div>
+			-->
+			</div>
 			</article>
 			<article class="listTopWrap">
 				<strong>총 <i class="cOrg">941</i>건</strong>
@@ -62,6 +91,9 @@
 						<span class="icon searchIconSmall"></span>
 					</button>
 				</div>
+				<p class="competition_count">
+				    총 <strong class="cOrg">941</strong>건의 대회가 있습니다.
+				</p>
 			</article>
 			<article class="listWrap">
 				<ul>
