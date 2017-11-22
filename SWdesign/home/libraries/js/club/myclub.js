@@ -8,7 +8,7 @@ var myclubController = {
     clubInfo : null,
     init : function(){
         $myclub = this;
-        if($_GET['clubIdx'] != undefined && $_GET['clubIdx'] != null){
+        if($_GET['clubIdx'] != undefined && $_GET['clubIdx'] != null && $_GET['clubIdx'] != ""){
             this.clubIdx = $_GET['clubIdx'];
         }
         this.setClubList();
