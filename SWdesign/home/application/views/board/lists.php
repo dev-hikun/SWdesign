@@ -4,7 +4,6 @@
 <?php
 ///////////////////////////// 클럽 게시판 ///////////////////////////
 if($type == 0):
-
 ?>
 <div class="boardWrap">
     <table class="board">
@@ -30,12 +29,6 @@ if($type == 0):
     </table>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        boardController.init();
-    });
-</script>
-
 
 <?php
 //////////////////////// 클럽 게시판 끝 //////////////////////////////////
@@ -55,6 +48,8 @@ var boardController = {
     start : 0,
     limit : 9,
     list_num : 10,
+    list_data : null,
+    total_num : 0,
     init : function(){
         $board = this;
         this.getList();
@@ -62,7 +57,7 @@ var boardController = {
     getList : function(){ //리스트 가져오는 메소드
         $.ajax({
             type : "POST",
-            async : false,
+            async : true,
             url : "/appData/boardResponse.php",
             data : {
                 type : 'list',
@@ -71,9 +66,25 @@ var boardController = {
                 isNotice : $board.notice
             },
             success : function(data){
-                console.log(data);
+                $board.data_list = data.list;
+                $board.total_num = 4;
+                $board.makeList();
             }
         });
+    },
+    makeList : function(){
+        tbody = $("tbody");
+
+        tr = $("<tr>");
+        td = $("<td>");
     }
 }
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        boardController.init();
+    });
 </script>

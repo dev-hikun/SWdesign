@@ -33,8 +33,6 @@ class MyClub extends CI_Controller {
 
       if($mode != 'index' && $mode != 'admin'){
         $data['type'] = 0;
-        $data['clubIdx'] = $args[0];
-
         if($mode == 'notice') $data['notice'] = 0;
         if($mode == 'board') $data['notice'] = 1;
         //게시판 가져옴

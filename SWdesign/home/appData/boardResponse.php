@@ -29,7 +29,7 @@
     $limit = "";
     $where = "";
 
-    $query = "SELECT `parentIdx`, `adminIdx`, `type`, `subject`, b.`memberIdx`, IF(m.public=0, m.nickName, m.name) as name, `time` FROM `board` b, `member` m WHERE b.memberIdx = m.memberIdx";
+    $query = "SELECT IF(m.public=0, m.nickName, m.name) as name, b.* FROM `board` b, `member` m WHERE b.memberIdx = m.memberIdx";
 
     $where .= " and (adminIdx = '{$s['adminIdx']}')";
     if($s['start'] != null && $s['limit'] != null) $limit = " limit {$s['start']}, {$s['limit']}";
@@ -38,6 +38,7 @@
 
     $num_res = mysqli_query($con, $query)or die(failed("Something wrong while the server was sending a query to the database. \r\n you have to check the error and the query", $query, mysqli_error($con)));
     $query .= $limit;
+    $query .= " order by groupIdx desc, depth asc, idx asc";
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
