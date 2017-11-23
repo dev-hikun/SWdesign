@@ -66,17 +66,37 @@ var boardController = {
                 isNotice : $board.notice
             },
             success : function(data){
-                $board.data_list = data.list;
+				console.log(data);
+                $board.list_data = data.list;
                 $board.total_num = 4;
                 $board.makeList();
-            }
+            },
+			error : function(e){
+				console.log(e.responseText);
+			}
         });
     },
     makeList : function(){
+		console.log(this.list_data);
         tbody = $("tbody");
-
-        tr = $("<tr>");
-        td = $("<td>");
+		var data = this.list_data;
+		tbody.html("");
+		var idx = 0;
+        for(i=this.start; i<this.total_num; i++){
+			tr = $("<tr>"); 
+			no = $("<td>").text(i);
+			subject = $("<td>").append($("<a>").text(data[idx]["subject"]));
+			author = $("<td>").text(data[idx]["name"]);
+			time = $("<td>").text(data[idx]["time"]);
+			hit = $("<td>").text(data[idx]["hit"]);
+			tr.append(no);
+			tr.append(subject);
+			tr.append(author);
+			tr.append(time);
+			tr.append(hit);
+			tbody.append(tr);
+			idx++;
+		}
     }
 }
 </script>
