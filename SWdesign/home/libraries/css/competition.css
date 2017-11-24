@@ -25,6 +25,17 @@
 
 .competition_count{display:block; margin-top:15px; height:25px; line-height:25px; text-align:center; font-size:14px;}
 
+.competition_apply .btnArea .txtBtn{width:630px; height:45px; font-size:0px; padding-top:20px; border-top:1px dashed #406088; margin:auto 20px 0 auto;}
+
+.tags{position:absolute; right:10px; top:230px;}
+.tags span{ color:white; height:15px; padding:0px 5px; background:#e85840;}
+.tags span.part{background-color:#768cc6;}
+.tags{right:10px;}
+
+
+.table{max-width: 1000px;} table, th, td {border: 1px solid black; margin: 20px auto 20px auto;}
+
+
 .listWrap:after{content:''; clear:both; display:block;}
 .listWrap ul{font-size:0px; clear:both;}
 .listWrap ul:after{content:''; clear:both; display:block;}
