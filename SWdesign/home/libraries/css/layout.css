@@ -43,6 +43,8 @@ section nav.lnb ul li.on+li, section nav.lnb ul li:hover+li{border-left:0px;}
 section nav.lnb ul.four li{width:25%}
 section nav.lnb ul.three li{width:33%}
 section nav.lnb ul.three li:last-child{width:34%}
+section nav.lnb ul.six li{width:16.6%;}
+section nav.lnb ul.six li:last-child{width:16.7%;}
 section nav.lnb ul li a{width:100%; height:53px; display:block; line-height:53px;}
 section nav.lnb ul li a:hover{text-decoration:none;}
 

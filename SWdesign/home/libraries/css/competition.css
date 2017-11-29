@@ -5,7 +5,7 @@
 .sort > div.sortWrap > p{line-height:25px;}
 .sort > div.sortWrap > div.comboWrap{margin-top:15px; height:25px; text-align:center;}
 
-/*
+
 .competition_search .searchArea{width:392px; font-size:0px; height:52px; margin:0 auto; border:3px solid #fff; background:#1a406e; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
 .competition_search .searchArea > *{display:block;}
 .competition_search .searchArea input{width:322px; height:46px; border:0px; color:white; font-size:14px; float:left;}
@@ -13,10 +13,7 @@
 .competition_search .searchArea input::-webkit-placeholder{color:#ddd;}
 .competition_search .searchArea input::-moz-placeholder{color:#ddd;}
 .competition_search .searchArea input::-ms-placeholder{color:#ddd;}
-*/
-/*
 .competition_search .searchArea button{width:64px; font-size:14px; height:46px; color:#333; outline:0px; margin:0px; border:0px; background:white; float:left; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
-*/
 .competition_search{max-width:1200px; min-width:980px; height:280px; padding-top:123px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; margin:20px auto 0px auto; background:url('../../libraries/images/competition/bg_search.jpg') top center no-repeat;}
 .competition_search .btnArea{width:1200px; height:45px; font-size:0px; padding-top:20px; border-top:1px dashed #406088; margin:20px auto 0 auto;}
 .competition_search .btnArea .txtBtn{width:101px; margin:0px; margin-left:12px; height:45px; background:rgba(0,0,0,.5); color:white; font-size:14px; font-weight:normal;}
@@ -24,17 +21,6 @@
 .competition_search .btnArea button:first-child{margin-left:0px;}
 
 .competition_count{display:block; margin-top:15px; height:25px; line-height:25px; text-align:center; font-size:14px;}
-
-.competition_apply .btnArea .txtBtn{width:630px; height:45px; font-size:0px; padding-top:20px; border-top:1px dashed #406088; margin:auto 20px 0 auto;}
-
-.tags{position:absolute; right:10px; top:230px;}
-.tags span{ color:white; height:15px; padding:0px 5px; background:#e85840;}
-.tags span.part{background-color:#768cc6;}
-.tags{right:10px;}
-
-
-.table{max-width: 1000px;} table, th, td {border: 1px solid black; margin: 20px auto 20px auto;}
-
 
 .listWrap:after{content:''; clear:both; display:block;}
 .listWrap ul{font-size:0px; clear:both;}
@@ -71,3 +57,22 @@
 .listWrap ul li div.block p{line-height:195px; font-weight: bold; font-size:14px;}
 .listWrap ul li div.block button{line-height:30px; padding:0px 10px; border:1px solid #fff; background:transparent; color:white; cursor:pointer;}
 
+
+
+
+
+.title{font-size:14px; color:#333; font-weight:bold; letter-spacing: -0.1em; line-height:25px;}
+
+.competition_title{vertical-align: baseline; display: inline-block;}
+.competition_title .tags span{ color:white; height:15px; padding:0px 5px; background:#e85840;}
+.competition_title .tags > span{display:inline-block; color:white; height:15px; padding:0px 5px; background:#e85840; font-size:11px; font-weight: bold; line-height: 15px;}
+.competition_title .tags > span.loc{}
+.competition_title .tags > span.part{background-color:#768cc6;}
+
+.tableTitle{max-width: 980px; height: 30px; margin: 20px auto 10px auto;  background-color: #333333; color: white; font-size: 13pt}
+
+.table{max-width: 980px; text-align: center; font-size: 11pt;  margin: 20px auto 20px auto;} th {background-color: #0B4A97; color: white;} tr, td {border: 1px solid black; padding: 5px;}
+.table .tableBtn{width: auto; height: auto; padding: 1px 10px 1px 10px; margin: 1px 1px 1px 1px; background-color: #E35C3E; font-size:12px; color: white;}
+.subtitle{vertical-align: baseline;}
+.location{color: #0A4D9A;}
+.subtitle .competition_apply .txtBtn{width: 80px; height: 35px; font-size:14px; background: #333333; color: white;}
