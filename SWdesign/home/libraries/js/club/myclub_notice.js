@@ -41,7 +41,7 @@ var myclubController = {
     },
     setEventtoSelect : function(){
         this.select.change(function(){
-            document.location.href='/club/myclub/notice/' + $(this).val();
+            document.location.href='/club/myclub/notice?clubIdx=' + $(this).val();
         });
     },
     getPageInfo : function(){
@@ -68,12 +68,6 @@ var myclubController = {
         data = this.clubInfo[0];
         $("article.title h2").html(data.title);
         $("article.title div span").html(data.description);
-
-
-        notice = $("nav.lnb a[title='공지사항']");
-        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
-        notice = $("nav.lnb a[title='게시판']");
-        notice.attr('href', notice.attr('href')+'/'+this.clubIdx);
     }
 }
 

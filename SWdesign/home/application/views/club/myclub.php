@@ -1,3 +1,8 @@
+<?php
+
+$clubIdx = $this->myclubs->getMyClubList($_SESSION['idx']);
+if(!isset($clubIdx)) echo "document.location.href='{$clubIdx[0]['clubIdx']}';";
+?>
 <div class="myclubBanner"></div>
 
 <div class="selectArea">
