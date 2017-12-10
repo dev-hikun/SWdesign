@@ -1,10 +1,11 @@
 @charset 'UTF-8';
 .banner{height:205px; width:980px; margin:0 auto; margin-top:20px; background:#ddd;}
-.sort{background:#f6f6f6; height:130px; margin-top:20px; width:100%;}
+.sort{background:#f6f6f6; height:130px; margin-top:20px; width:100%; min-width:980px;}
 .sort > div.sortWrap{width:980px; margin:0 auto; padding:20px 0px;}
 .sort > div.sortWrap > p{line-height:25px;}
 .sort > div.sortWrap > div.comboWrap{margin-top:15px; height:25px; text-align:center;}
 
+.search input[type='text']{border:0px;}
 
 .listWrap:after{content:''; clear:both; display:block;}
 .listWrap ul{font-size:0px; clear:both;}
@@ -41,3 +42,30 @@
 .listWrap ul li div.block p{line-height:195px; font-weight: bold; font-size:14px;}
 .listWrap ul li div.block button{line-height:30px; padding:0px 10px; border:1px solid #fff; background:transparent; color:white; cursor:pointer;}
 
+
+.competitionViewWrap{min-width:980px; width:980px; margin:0 auto;}
+.competitionViewWrap article.title h2{font-size:20px; line-height:20px; height:20px;}
+.competitionViewWrap article.title h2:before{content:none;}
+article.title .tags{display:inline-block; font-size:12px;}
+article.title .tags .loc{color: white; height: 15px; padding: 0px 5px; background: #e85840;}
+article.title .tags .part{color: white; height: 15px; padding: 0px 5px; background: #768cc6;}
+.competitionViewWrap article.title > div{position:relative;}
+.competitionViewWrap article.title .btnArea{position:absolute; right:0px; top:-15px;}
+
+.viewDetail{display:table; width:100%; margin-top:20px; padding:20px; border:1px solid #e3e3e3; background:#f6f6f6; box-sizing:border-box;}
+.viewDetail div{display:table-cell; width:50%;}
+.viewDetail div p{width:100%; clear:both; margin-top:5px;}
+.viewDetail div p i{display:inline-block; width:55px; margin-right:10px;}
+.viewDetail div p i span{display:block; height:20px; line-height:20px; background:#333; color:white; text-align:center;}
+.viewDetail div p i+span{display:inline-block; vertical-align:top; line-height:1.5em;}
+.competitionViewWrap h3{height:40px; line-height:40px; background:#333; color:white; font-weight:800; margin-top:20px; font-size:14px; padding-left:20px;}
+
+.applyTable{margin-top:10px;}
+.applyTable thead th{background:#094a96; text-align:center; color:white; height:30px; line-height:30px;}
+.applyTable tbody tr > *{border:1px solid #e3e3e3; height:30px; text-align:center; color:#333;}
+.applyTable tbody tr:nth-child(2n) > *{background:#f6f6f6;}
+.applyTable tbody tr.etc > *{height:auto; vertical-align:text-top;}
+.applyTable tbody tr.etc th{line-height:30px;}
+.applyTable tbody tr.etc td{text-align:left; line-height:25px; padding:10px 10px;}
+.applyTable .txtBtn.smallest{background:#e85840; border:0px none; color:white;}
+.applyTable .txtBtn.smallest[disabled]{background:#aaa;}

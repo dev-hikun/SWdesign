@@ -5,7 +5,7 @@ class Club extends CI_Model {
         parent::__construct();
     }
 
-    public function itHasPowerofClub($s, $cIdx){
+    public function itHasPowerofClub($s){
         $sql = "select * from clubmember where memberIdx='".$s."' and permit='0'";
         $res = $this->db->query($sql);
         if($res->num_rows() > 0){
