@@ -29,7 +29,7 @@ nav.gnb .gnbArea ul li.info:before{background-position:-63px -17px;}
 nav.gnb .gnbArea ul li a {color:white;}
 
 section{min-height:300px; position:relative;}
-section > article{width:980px; clear:both; margin:0 auto;}
+section > article{min-width:980px; width:980px; clear:both; margin:0 auto;}
 section article.title{margin-top:20px;}
 section article.title h2{font-size:30px; height:35px; vertical-align:bottom}
 section article.title h2:before{width:30px; height:30px; vertical-align:text-top; margin-right:5px; content:'★'; display:inline-block; overflow:hidden}
@@ -39,12 +39,16 @@ section article.title.club h2:before{content:''; background:url('/libraries/imag
 section nav.lnb{width:980px; margin:0 auto; box-sizing:border-box; height:55px; margin-top:15px;}
 section nav.lnb ul{font-size:0px;}
 section nav.lnb ul li{font-size:14px; height:55px; line-height:55px; box-sizing:border-box; display:inline-block; color:#aaa; text-align:center; border:1px solid #d5d5d5; border-right:0px;}
+section nav.lnb ul li a{color:#aaa;}
 section nav.lnb ul li:last-child{border-right:1px solid #d5d5d5}
 section nav.lnb ul li.on, section nav.lnb ul li:hover{border:1px solid #333; color:#333;}
+section nav.lnb ul li.on a, section nav.lnb ul li:hover a{color:#333;}
 section nav.lnb ul li.on+li, section nav.lnb ul li:hover+li{border-left:0px;}
 section nav.lnb ul.four li{width:25%}
 section nav.lnb ul.three li{width:33%}
 section nav.lnb ul.three li:last-child{width:34%}
+section nav.lnb ul.six li{width:16.5%}
+section nav.lnb ul.six li:last-child{width:17.5%}
 section nav.lnb ul li a{width:100%; height:53px; display:block; line-height:53px;}
 section nav.lnb ul li a:hover{text-decoration:none;}
 

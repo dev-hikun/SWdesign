@@ -5,10 +5,12 @@
 .cOrg{color:#e85840 !important;}
 .cMint{color:#29c2b5 !important;}
 .cCeruleanBlue{color:#618bdf !important;}
+.cBlue{color:#094a96 !important;}
+.cGry{color:#999;}
+.cWhite{color:White !important;}
+
 .cBold{font-weight:700;}
 .cExBold{font-weight:800;}
-.cWhite{color:White !important;}
-.cGry{color:#999;}
 
 /* background */
 .bgMint{background:#29c2b5;}
@@ -33,6 +35,13 @@ button.icoBtn > span.icon.searchIconSmall{background-position: -36px 0px;}
 
 button.txtBtn{border:1px solid #1d4082; font-weight:700; color:#666; font-size:14px; width:160px; height:38px; line-height:38px; background:transparent; padding:0px; margin:0 4px; display:inline-block;}
 button.txtBtn.bgBlue{color:white;}
+
+button.txtBtn.small{height:30px; line-height:30px; margin:0px; padding:0px 10px; width:auto; font-size:12px; font-weight:700;}
+button.txtBtn.smallest{height:20px; line-height:20px; margin:0px; padding:0px 10px; width:auto; font-size:12px; font-weight:700px;}
+
+button.txtBtn.btnBlk{background:#333333; border:0px; color:white;}
+button.txtBtn.btnOrg{background:#e85840; border:0px; color:white;}
+
 button.resetBtn{background:#bbb; border:1px solid #999; width:160px; font-weight:700; color:#666; height:38px; line-height:38px; font-size:14px; display:inline-block; margin:0 4px; padding:0px;}
 button.tableBtn{border:1px solid #e3e3e3; border-radius:3px 3px; box-sizing:border-box; color:#333; background:#eee; height:30px; line-height:30px; font-size:14px; display:inline-block; vertical-align:middle;}
 
