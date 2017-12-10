@@ -52,7 +52,7 @@
 			<article class="listWrap">
 				<ul>
 					<li>
-						<a href="#">
+						<a href="/competition/view">
 							<span class="imgBox">
 								<img src="/site_data/competition_img/01_small.jpg" />
 								<div class="tags">
