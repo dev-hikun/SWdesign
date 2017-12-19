@@ -54,13 +54,14 @@
             $tempArr[$key] = $val;
             if($key == "time"){
 				//시간처리
-				$signdate = $val; //DB의 datetime형식이 오늘 21시 05분인경우.
-				$now = date("Y-m-d H:i:s"); // 현재시간 23시 35임..
-				echo date("현재 : d일 H시 i분 s초입니다.\r\n", strtotime($now));
-				echo date("게시물 : d일 H시 i분 s초입니다\r\n", strtotime($signdate));
+				date_default_timezone_set("Asia/Seoul");
+				$signdate = $val;
+				$now = date("Y-m-d H:i:s"); 
 				$someTime = strtotime($now) - strtotime("{$signdate} GMT");
-				if($someTime != strtotime($now)){
-					echo date("d일 H시 i분 s초 지났습니다.\r\n", $someTime);
+				if($someTime != strtotime($now) && $someTime < 86400){
+					$hourStr = date("H시간 전", $someTime);
+					echo $hourStr;
+					$tempArr[$key] = $val;
 				}
 			}
         }
